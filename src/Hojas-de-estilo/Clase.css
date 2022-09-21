@@ -1,0 +1,29 @@
+.clase {
+    box-sizing: border-box;
+    height: 300px;
+    width: 300px;
+    border-radius: 5%;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+}
+
+.titulo{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.descripcion{
+    margin-bottom: 20px;
+}
+
+.descripcion, .detalles{
+    margin-left: 15px;
+}
+
+
+.clase:hover{
+    cursor: pointer;
+}
