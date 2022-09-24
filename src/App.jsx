@@ -9,22 +9,18 @@ import {
 import InicioSesion from './Pantallas/Inicio-sesion';
 import MisClases from './Pantallas/Mis-clases';
 import Registro from './Pantallas/Registro';
+import Cambiocontraseña from './Pantallas/Cambio-contraseña';
 
 function App() {
   return (
     <div className="App">
       <Router>
         <div className="container mt-5">
-          <div className="btn-group">
-            <NavLink to='/' className='btn btn-dark' activeClassName='active'>Inicio Sesion</NavLink>
-            <NavLink to='/Mis-clases' className='btn btn-dark' activeClassName='active'>Mis clases</NavLink>
-            <NavLink to='/Registro' className='btn btn-dark' activeClassName='active'>Registro</NavLink>
-          </div>
-          <hr />
           <Routes>
             <Route path='/' exact element={<InicioSesion/>}/>
-            <Route path='/Mis-clases' element={<MisClases/>}/>
             <Route path='/Registro' element={<Registro/>}/>
+            <Route path='/Mis-clases' element={<MisClases/>}/>
+            <Route path='/Cambio-contraseña' element={<Cambiocontraseña/>}/>
           </Routes>
         </div>
       </Router>
