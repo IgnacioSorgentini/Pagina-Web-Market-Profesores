@@ -1,7 +1,7 @@
 import React from "react";
-import '../Hojas-de-estilo/Clase.css';
+import '../Hojas-de-estilo/ClaseDisponible.css'
 
-function Clase({Nombre, Descripcion, Profesor, Dia, Horario}) {
+function ClaseDisponible({Nombre, Descripcion, Profesor, Dia, Horario}) {
     return(
         <div className="clase">
             <div className="titulo">
@@ -19,4 +19,4 @@ function Clase({Nombre, Descripcion, Profesor, Dia, Horario}) {
     )
 }
 
-export default Clase;
+export default ClaseDisponible;
