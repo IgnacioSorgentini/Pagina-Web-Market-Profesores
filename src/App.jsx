@@ -7,7 +7,7 @@ import {
   NavLink
 } from 'react-router-dom';
 import InicioSesion from './Pantallas/Inicio-sesion';
-import MisClases from './Pantallas/Mis-clases';
+import MisClases from './Pantallas/Mis-clases-alumno';
 import Registro from './Pantallas/Registro';
 import Cambiocontraseña from './Pantallas/Cambio-contraseña';
 
