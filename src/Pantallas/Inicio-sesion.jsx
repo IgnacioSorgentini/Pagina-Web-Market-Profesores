@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import '../Hojas-de-estilo/Inicio-sesion.css';
-import MisClases from "./Mis-clases";
+import MisClases from "./Mis-clases-alumno";
 import {Link} from "react-router-dom";
 
 function InicioSesion() {
