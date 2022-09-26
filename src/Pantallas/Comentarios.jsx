@@ -2,7 +2,10 @@ import React from "react";
 
 function Comentarios () {
     return(
-        <h1>Esta es la pantalla de comentarios</h1>
+        <div className="contenedor">
+            <h1>Esta es la pantalla de comentarios</h1>
+        </div>
+        
     )
 }
 
