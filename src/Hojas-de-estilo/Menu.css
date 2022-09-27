@@ -2,6 +2,7 @@
     height: 100px;
     width: 100%;
     display: flex;
+    margin-bottom: 20px;
 }
 nav{
     width: 100%;
