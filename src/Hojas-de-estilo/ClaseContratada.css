@@ -12,21 +12,42 @@
 }
 
 .titulo-clase{
+    margin-left: 15px;
     display: flex;
-    justify-content: center;
     margin-top: 15px;
     margin-bottom: 20px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    color: #000000;
 }
 
 .descripcion-clase{
     margin-bottom: 20px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #000000;
+    opacity: 0.6;
 }
 
 .descripcion-clase, .detalles-clase{
     margin-left: 15px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #000000;
+    opacity: 0.6;
 }
 
 
 .contenedor-clase:hover{
     cursor: pointer;
 }
+
