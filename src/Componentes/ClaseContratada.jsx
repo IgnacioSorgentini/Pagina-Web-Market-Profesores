@@ -1,4 +1,5 @@
 import React from "react";
+import '../Hojas-de-estilo/ClaseGeneral.css';
 import '../Hojas-de-estilo/ClaseContratada.css';
 
 function ClaseContratada({Nombre, Descripcion, Profesor, Dia, Horario}) {

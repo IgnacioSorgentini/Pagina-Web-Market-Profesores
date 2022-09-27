@@ -1,5 +1,6 @@
 import React from "react";
-import '../Hojas-de-estilo/ClaseDisponible.css'
+import '../Hojas-de-estilo/ClaseGeneral.css';
+import '../Hojas-de-estilo/ClaseDisponible.css';
 
 function ClaseDisponible({Nombre, Descripcion, Profesor, Dia, Horario}) {
     return(
