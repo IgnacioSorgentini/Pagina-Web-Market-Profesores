@@ -1,0 +1,9 @@
+.titulo-pantalla{
+    margin-bottom: 100px;
+}
+
+
+.lista-clases{
+    display: flex;
+    flex-direction: row;
+}

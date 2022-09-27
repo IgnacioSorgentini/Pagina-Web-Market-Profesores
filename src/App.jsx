@@ -7,7 +7,7 @@ import {
   NavLink
 } from 'react-router-dom';
 import InicioSesion from './Pantallas/Inicio-sesion';
-import MisClases from './Pantallas/Mis-clases-alumno';
+import MisClasesAlumno from './Pantallas/Mis-clases-alumno';
 import Registro from './Pantallas/Registro';
 import Cambiocontraseña from './Pantallas/Cambio-contraseña';
 
@@ -19,7 +19,7 @@ function App() {
           <Routes>
             <Route path='/' exact element={<InicioSesion/>}/>
             <Route path='/Registro' element={<Registro/>}/>
-            <Route path='/Mis-clases' element={<MisClases/>}/>
+            <Route path='/Mis-clases' element={<MisClasesAlumno/>}/>
             <Route path='/Cambio-contraseña' element={<Cambiocontraseña/>}/>
           </Routes>
         </div>

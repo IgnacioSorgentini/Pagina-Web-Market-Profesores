@@ -3,17 +3,17 @@ import '../Hojas-de-estilo/ClaseContratada.css';
 
 function ClaseContratada({Nombre, Descripcion, Profesor, Dia, Horario}) {
     return(
-        <div className="clase">
-            <div className="titulo">
+        <div className="contenedor-clase">
+            <div className="titulo-clase">
                 <h3>{Nombre}</h3>
             </div>
-            <div className="descripcion">
+            <div className="descripcion-clase">
                 <h6>{Descripcion}</h6>
             </div>
-            <div className="detalles">
-                <div className="profesor"><h6>{Profesor}</h6></div>
-                <div className="dia"><h6>{Dia}</h6></div>
-                <div className="horario"><h6>{Horario}</h6></div>
+            <div className="detalles-clase">
+                <div className="profesor-clase"><h6>{Profesor}</h6></div>
+                <div className="dia-clase"><h6>{Dia}</h6></div>
+                <div className="horario-clase"><h6>{Horario}</h6></div>
             </div>
         </div>
     )

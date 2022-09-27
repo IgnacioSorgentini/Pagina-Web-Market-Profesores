@@ -1,4 +1,4 @@
-.contenedor{
+.contenedor-comentario{
     width: 80%;
     background-color: rgb(220, 220, 253);
     display: flex;
@@ -7,25 +7,26 @@
     margin-bottom: 10px;
 }
 
-.nombre{
+.nombre-comentador{
     padding-left: 20px;
     padding-bottom: 0px;
     margin-top: 10px;
     border-bottom:grey solid thin;
 }
 
-.nombre h4{
+.nombre-comentador h4{
     font-size: large;
 }
 
-.texto{
+.texto-comentario{
     margin-top: 10px;
+    padding-left: 20px;
     min-height: 60px;
     display: flex;
     align-items: center;
 }
 
-p {
+.texto-comentario p {
     color: black;
 }
 

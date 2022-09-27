@@ -1,4 +1,4 @@
-.clase {
+.contenedor-clase {
     box-sizing: border-box;
     height: 300px;
     width: 300px;
@@ -7,20 +7,21 @@
     border-top: 20px solid #3649F9;
     display: flex;
     flex-direction: column;
+    margin-right: 30px;
 }
 
-.titulo{
+.titulo-clase{
     display: flex;
     justify-content: center;
     margin-top: 15px;
     margin-bottom: 20px;
 }
 
-.descripcion{
+.descripcion-clase{
     margin-bottom: 20px;
 }
 
-.descripcion, .detalles{
+.descripcion-clase, .detalles-clase{
     margin-left: 15px;
 }
 

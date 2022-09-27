@@ -1,4 +1,4 @@
-.menu{
+.contenedor-menu{
     height: 100px;
     width: 100%;
     display: flex;
@@ -7,15 +7,15 @@ nav{
     width: 100%;
 }
 
-.titulo{
+.titulo-menu{
     margin-left: 20px;
 }
 
-.itemsMenu{
+.items-menu{
     margin-left: 45%;
 }
 
-.btn{
+.btn-menu{
     margin-left: 10px;
     width: 140px;
 }

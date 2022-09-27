@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import '../Hojas-de-estilo/Inicio-sesion.css';
-import MisClases from "./Mis-clases-alumno";
 import {Link} from "react-router-dom";
+import Comentarios from "./Comentarios";
+import MisClasesAlumno from "./Mis-clases-alumno";
+import MisClasesProfesor from './Mis-clases-profesor';
 
 function InicioSesion() {
 
@@ -69,7 +71,7 @@ function InicioSesion() {
     else{
         return(
             <div>
-            <MisClases/>
+            <MisClasesAlumno/>
             </div>
         )
     }
