@@ -9,6 +9,10 @@ function MisClasesProfesor () {
             </div>
             <div className="lista-clases">
                 <ClaseContratada Nombre='Matematica' Descripcion='Clase de matematica nivel avanzado' Profesor='Juan Perez' Dia='Martes' Horario='9am' />
+                <ClaseContratada Nombre='Matematica' Descripcion='Clase de matematica nivel avanzado' Profesor='Juan Perez' Dia='Martes' Horario='9am' />
+                <ClaseContratada Nombre='Matematica' Descripcion='Clase de matematica nivel avanzado' Profesor='Juan Perez' Dia='Martes' Horario='9am' />
+                <ClaseContratada Nombre='Matematica' Descripcion='Clase de matematica nivel avanzado' Profesor='Juan Perez' Dia='Martes' Horario='9am' />
+                <ClaseContratada Nombre='Matematica' Descripcion='Clase de matematica nivel avanzado' Profesor='Juan Perez' Dia='Martes' Horario='9am' />
             </div>
         </div>
     )

@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import Comentarios from "./Comentarios";
 import MisClasesAlumno from "./Mis-clases-alumno";
 import MisClasesProfesor from './Mis-clases-profesor';
+import ContratarClase from './Contratar-clase';
 
 function InicioSesion() {
 

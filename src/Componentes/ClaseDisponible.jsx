@@ -3,7 +3,7 @@ import '../Hojas-de-estilo/ClaseDisponible.css'
 
 function ClaseDisponible({Nombre, Descripcion, Profesor, Dia, Horario}) {
     return(
-        <div className="contenedor-clase-disponible">
+        <div className="contenedor-clase">
             <div className="titulo-clase">
                 <h3>{Nombre}</h3>
             </div>
