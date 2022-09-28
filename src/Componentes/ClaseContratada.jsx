@@ -1,8 +1,13 @@
 import React from "react";
+import { useState } from "react";
+import PopupWindowComment from '../Componentes/PopupWindowComment';
 import '../Hojas-de-estilo/ClaseGeneral.css';
 import '../Hojas-de-estilo/ClaseContratada.css';
 
 function ClaseContratada({Nombre, Descripcion, Profesor, Dia, Horario}) {
+
+    const [buttonPopupComment, setButtonPopupComment] = useState(false);
+
     return(
         <div className="contenedor-clase">
             <div className="titulo-clase">
@@ -18,10 +23,12 @@ function ClaseContratada({Nombre, Descripcion, Profesor, Dia, Horario}) {
             </div>
             <div className="caja-comentarios-clase">
                 <div className="caja-boton-comentar">
-                    <button className="btn-comentar">COMENTAR</button>
+                    <button className="btn-comentar" onClick={() => setButtonPopupComment(true)}>COMENTAR</button>
                 </div>
                 <div className="comentarios-clase-cont"><ion-icon name="chatbox-outline"></ion-icon></div>
             </div>
+            <PopupWindowComment trigger={buttonPopupComment} setTrigger={setButtonPopupComment}>
+            </PopupWindowComment>
         </div>
     )
 }
