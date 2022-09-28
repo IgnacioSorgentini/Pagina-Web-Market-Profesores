@@ -1,3 +1,81 @@
+
 .titulo-popup{
     margin-bottom: 10px;
 }
+
+.cabecera-clase{
+    display: flex;
+    flex-direction: row;
+}
+
+.profesor-clase{
+    display: flex;
+    flex-direction: row;
+}
+
+.fecha-clase{
+    display: flex;
+    flex-direction: row;
+}
+
+.dia-clase{
+    display: flex;
+    flex-direction: row;
+}
+
+.critica-clase{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.horario-clase-disp{
+    display: flex;
+    flex-direction: row;
+    margin-left: 30px;
+}
+
+.icono{
+    margin-right: 20px;
+}
+
+.detalles-clase h6{
+    margin-left: 5px;
+}
+
+.comentarios-clase-disp{
+    margin-right: 20px;
+}
+
+.comentarios-clase-disp:hover{
+    cursor: pointer;
+}
+
+.costo-clase{
+    display: flex;
+    flex-direction: row;
+    margin-left: 30%;
+    margin-top: 25px;
+}
+
+.caja-boton-contratar{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn-contratar{
+    width: 122px;
+    height: 40px;
+    background: #3649F9;
+    border-radius: 5px;
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 14px;
+    color: #FFFFFF;
+    border-style: none;
+    opacity: 100%;
+}
+

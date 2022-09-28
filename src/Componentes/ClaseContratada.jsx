@@ -1,4 +1,5 @@
 import React from "react";
+import '../Hojas-de-estilo/ClaseGeneral.css';
 import '../Hojas-de-estilo/ClaseContratada.css';
 
 function ClaseContratada({Nombre, Descripcion, Profesor, Dia, Horario}) {
@@ -11,9 +12,15 @@ function ClaseContratada({Nombre, Descripcion, Profesor, Dia, Horario}) {
                 <h6>{Descripcion}</h6>
             </div>
             <div className="detalles-clase">
-                <div className="profesor-clase"><h6>{Profesor}</h6></div>
-                <div className="dia-clase"><h6>{Dia}</h6></div>
-                <div className="horario-clase"><h6>{Horario}</h6></div>
+                <div className="profesor-clase"><ion-icon name="person-outline"></ion-icon><h6>{Profesor}</h6></div>
+                <div className="dia-clase"><ion-icon name="calendar-outline"></ion-icon><h6>{Dia}</h6></div>
+                <div className="horario-clase-cont"><ion-icon name="time-outline"></ion-icon><h6>{Horario}</h6></div>
+            </div>
+            <div className="caja-comentarios-clase">
+                <div className="caja-boton-comentar">
+                    <button className="btn-comentar">COMENTAR</button>
+                </div>
+                <div className="comentarios-clase-cont"><ion-icon name="chatbox-outline"></ion-icon></div>
             </div>
         </div>
     )

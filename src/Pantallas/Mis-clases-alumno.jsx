@@ -15,6 +15,8 @@ function MisClasesAlumno () {
                 <ClaseContratada Nombre='Matematica' Descripcion='Clases de matematica nivel avanzado' Profesor='Jose Lopez' Dia='Jueves' Horario='7:45hs a 11:45hs'/>
                 <ClaseContratada Nombre='Matematica' Descripcion='Clases de matematica nivel avanzado' Profesor='Jose Lopez' Dia='Jueves' Horario='7:45hs a 11:45hs'/>
                 <ClaseContratada Nombre='Matematica' Descripcion='Clases de matematica nivel avanzado' Profesor='Jose Lopez' Dia='Jueves' Horario='7:45hs a 11:45hs'/>
+                <ClaseContratada Nombre='Matematica' Descripcion='Clases de matematica nivel avanzado' Profesor='Jose Lopez' Dia='Jueves' Horario='7:45hs a 11:45hs'/>
+
 
             </div>
         </div>
