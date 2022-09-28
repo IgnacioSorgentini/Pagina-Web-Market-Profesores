@@ -1,5 +1,5 @@
 import React from "react";
-import '../Hojas-de-estilo/ClaseGeneral';
+import '../Hojas-de-estilo/ClaseGeneral.css';
 
 
 function ClaseCreada({Nombre, Descripcion, Materia, Dia, Horario}) {
@@ -12,9 +12,12 @@ function ClaseCreada({Nombre, Descripcion, Materia, Dia, Horario}) {
                 <h6>{Descripcion}</h6>
             </div>
             <div className="detalles-clase">
+                <div className="materia-clase"><h6>{Materia}</h6></div>
                 <div className="dia-clase"><ion-icon name="calendar-outline"></ion-icon><h6>{Dia}</h6></div>
                 <div className="horario-clase-cont"><ion-icon name="time-outline"></ion-icon><h6>{Horario}</h6></div>
             </div>
         </div>
     )
 }
+
+export default ClaseCreada;
