@@ -1,3 +1,8 @@
+
+.titulo-popup{
+    margin-bottom: 10px;
+}
+
 .cabecera-clase{
     display: flex;
     flex-direction: row;

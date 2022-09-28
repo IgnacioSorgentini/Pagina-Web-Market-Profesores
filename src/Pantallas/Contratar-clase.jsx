@@ -1,8 +1,11 @@
 import React from "react";
+import PopupWindow from '../Componentes/PopupWindow';
+import { useState } from "react";
 import '../Hojas-de-estilo/Contratar-clase.css';
 import ClaseDisponible from '../Componentes/ClaseDisponible';
 
 function ContratarCLase () {
+
     return(
         <div className="contenedor-mis-clases">
             <div className="titulo-pantalla">
