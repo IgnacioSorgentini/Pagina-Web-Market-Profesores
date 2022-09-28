@@ -11,7 +11,9 @@
 .profesor-clase{
     display: flex;
     flex-direction: row;
+    cursor: pointer;
 }
+
 
 .fecha-clase{
     display: flex;
