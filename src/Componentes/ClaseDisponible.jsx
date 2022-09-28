@@ -16,11 +16,11 @@ function ClaseDisponible({Nombre, Descripcion, Profesor, Dia, Horario}) {
                 <div className="profesor-clase"><ion-icon name="person-outline"></ion-icon><h6>{Profesor}</h6></div>
                 <div className="fecha-clase">
                     <div className="dia-clase"><ion-icon name="calendar-outline"></ion-icon><h6>{Dia}</h6></div>
-                    <div className="horario-clase"><ion-icon name="time-outline"></ion-icon><h6>{Horario}</h6></div>
+                    <div className="horario-clase-disp"><ion-icon name="time-outline"></ion-icon><h6>{Horario}</h6></div>
                 </div>
                 <div className="critica-clase">
                     <div className="calificacion-clase"><h6>Calif</h6></div>
-                    <div className="comentarios-clase"><ion-icon name="chatbox-outline"></ion-icon></div>
+                    <div className="comentarios-clase-disp"><ion-icon name="chatbox-outline"></ion-icon></div>
                 </div>
             </div>
             <div className="caja-boton-contratar">

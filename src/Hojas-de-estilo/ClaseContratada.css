@@ -1,0 +1,42 @@
+.horario-clase-cont{
+    display: flex;
+    flex-direction: row;
+}
+
+.comentarios-clase-cont{
+    margin-right: 20px;
+    margin-top: 20px;
+    opacity: 0.6;
+}
+
+.comentarios-clase-cont:hover{
+    cursor: pointer;
+}
+
+.caja-boton-comentar{
+    display: flex;
+    justify-content: start;
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+.btn-comentar{
+    width: 122px;
+    height: 40px;
+    background: #3649F9;
+    border-radius: 5px;
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 14px;
+    color: #FFFFFF;
+    border-style: none;
+    opacity: 100%;
+}
+
+.caja-comentarios-clase{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

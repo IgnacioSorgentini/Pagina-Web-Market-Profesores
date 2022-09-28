@@ -21,24 +21,29 @@
 .critica-clase{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
 
-.horario-clase{
+.horario-clase-disp{
     display: flex;
     flex-direction: row;
     margin-left: 30px;
 }
 
-.calificacion-clase{
-    margin-right: 70%;
-}
-
 .icono{
-    margin-right: 10px;
+    margin-right: 20px;
 }
 
 .detalles-clase h6{
     margin-left: 5px;
+}
+
+.comentarios-clase-disp{
+    margin-right: 20px;
+}
+
+.comentarios-clase-disp:hover{
+    cursor: pointer;
 }
 
 .costo-clase{

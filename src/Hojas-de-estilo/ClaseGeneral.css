@@ -12,6 +12,9 @@
 }
 
 .titulo-clase{
+    width: 285px;
+    height: 41.59px;
+    box-sizing: border-box;
     margin-left: 15px;
     display: flex;
     margin-top: 15px;
@@ -47,7 +50,5 @@
 }
 
 
-.contenedor-clase:hover{
-    cursor: pointer;
-}
+
 
