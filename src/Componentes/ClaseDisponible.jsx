@@ -18,7 +18,7 @@ function ClaseDisponible({Nombre, Descripcion, Profesor, Dia, Horario}) {
                 <h6>{Descripcion}</h6>
             </div>
             <div className="detalles-clase">
-                <div className="profesor-clase"><a onClick={() => setButtonPopup(true)}><ion-icon name="person-outline"></ion-icon><h6>{Profesor}</h6></div>
+                <div className="profesor-clase"><a onClick={() => setButtonPopup(true)}><ion-icon name="person-outline"></ion-icon><h6>{Profesor}</h6></a></div>
                 <div className="fecha-clase">
                     <div className="dia-clase"><ion-icon name="calendar-outline"></ion-icon><h6>{Dia}</h6></div>
                     <div className="horario-clase-disp"><ion-icon name="time-outline"></ion-icon><h6>{Horario}</h6></div>
