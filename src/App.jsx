@@ -13,6 +13,7 @@ import Cambiocontraseña from './Pantallas/Cambio-contraseña';
 import Comentarios from './Pantallas/Comentarios';
 import Menu from './Componentes/Menu';
 import ContratarCLase from './Pantallas/Contratar-clase';
+import VentanaCrearComentario from './Componentes/VentanaCrearComentario';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/contratar-clase" element={<ContratarCLase/>}/>
           <Route path="/Cambio-contraseña" element={<Cambiocontraseña/>}/>
           <Route path="/Registro" element={<Registro/>}/>
+          <Route path='/Ventana-comentario' element={<VentanaCrearComentario />}/>
          </Routes>
         </div>
       </Router>

@@ -1,6 +1,7 @@
 import React from "react";
 import '../Hojas-de-estilo/ClaseGeneral.css';
 import '../Hojas-de-estilo/ClaseContratada.css';
+import {Link} from 'react-router-dom';
 
 function ClaseContratada({Nombre, Descripcion, Profesor, Dia, Horario}) {
     return(
@@ -18,7 +19,7 @@ function ClaseContratada({Nombre, Descripcion, Profesor, Dia, Horario}) {
             </div>
             <div className="caja-comentarios-clase">
                 <div className="caja-boton-comentar">
-                    <button className="btn-comentar">COMENTAR</button>
+                    <Link to="/Ventana-comentario"><button className="btn-comentar">COMENTAR</button></Link>
                 </div>
                 <div className="comentarios-clase-cont"><ion-icon name="chatbox-outline"></ion-icon></div>
             </div>
