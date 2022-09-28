@@ -6,6 +6,8 @@ import {
   Routes,
   NavLink
 } from 'react-router-dom';
+import { useState } from 'react';
+import PopupWindow from './Componentes/PopupWindow';
 import InicioSesion from './Pantallas/Inicio-sesion';
 import MisClasesAlumno from './Pantallas/Mis-clases-alumno';
 import Registro from './Pantallas/Registro';
@@ -15,6 +17,9 @@ import Menu from './Componentes/Menu';
 import ContratarCLase from './Pantallas/Contratar-clase';
 
 function App() {
+
+  
+
   return (
     <div className="App">
       <Router>
