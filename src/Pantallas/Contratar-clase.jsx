@@ -9,7 +9,14 @@ function ContratarCLase () {
                 <h3>Clases disponbles</h3>
             </div>
             <div className="lista-clases">
-                <ClaseDisponible Nombre='Biologia' Descripcion='Clase de biologia nivel intermedio' Profesor='Fernanda Gimenez' Dia='Viernes' Horario='10am'/>
+                <ClaseDisponible Nombre='Biologia' Descripcion='Clase de biologia nivel intermedio' Profesor='Fernanda Gimenez' Dia='Viernes' Horario='7:45am a 11:45am'/>
+                <ClaseDisponible Nombre='Biologia' Descripcion='Clase de biologia nivel intermedio' Profesor='Fernanda Gimenez' Dia='Viernes' Horario='7:45am a 11:45am'/>
+                <ClaseDisponible Nombre='Biologia' Descripcion='Clase de biologia nivel intermedio' Profesor='Fernanda Gimenez' Dia='Viernes' Horario='7:45am a 11:45am'/>
+                <ClaseDisponible Nombre='Biologia' Descripcion='Clase de biologia nivel intermedio' Profesor='Fernanda Gimenez' Dia='Viernes' Horario='7:45am a 11:45am'/>
+                <ClaseDisponible Nombre='Biologia' Descripcion='Clase de biologia nivel intermedio' Profesor='Fernanda Gimenez' Dia='Viernes' Horario='7:45am a 11:45am'/>
+                <ClaseDisponible Nombre='Biologia' Descripcion='Clase de biologia nivel intermedio' Profesor='Fernanda Gimenez' Dia='Viernes' Horario='7:45am a 11:45am'/>
+
+
             </div>
         </div>
     )

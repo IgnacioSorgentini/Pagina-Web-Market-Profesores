@@ -1,32 +1,42 @@
-.contenedor-clase {
-    box-sizing: border-box;
-    height: 300px;
-    width: 300px;
-    border-radius: 5%;
-    background-color: #FFFFFF;
-    border-top: 20px solid #3649F9;
+.horario-clase-cont{
     display: flex;
-    flex-direction: column;
-    margin-right: 30px;
-    margin-bottom: 30px;
+    flex-direction: row;
 }
 
-.titulo-clase{
+.comentarios-clase-cont{
+    margin-right: 20px;
+    margin-top: 20px;
+    opacity: 0.6;
+}
+
+.comentarios-clase-cont:hover{
+    cursor: pointer;
+}
+
+.caja-boton-comentar{
     display: flex;
-    justify-content: center;
-    margin-top: 15px;
-    margin-bottom: 20px;
-}
-
-.descripcion-clase{
-    margin-bottom: 20px;
-}
-
-.descripcion-clase, .detalles-clase{
+    justify-content: start;
+    margin-top: 6px;
     margin-left: 15px;
 }
 
+.btn-comentar{
+    width: 122px;
+    height: 40px;
+    background: #3649F9;
+    border-radius: 5px;
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 14px;
+    color: #FFFFFF;
+    border-style: none;
+    opacity: 100%;
+}
 
-.contenedor-clase:hover{
-    cursor: pointer;
+.caja-comentarios-clase{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
