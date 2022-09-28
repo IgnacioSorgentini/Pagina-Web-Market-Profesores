@@ -9,7 +9,7 @@ function MisClasesProfesor () {
                 <h3>Mis clases</h3>
             </div>
             <div className="lista-clases">
-                <ClaseCreada />
+                <ClaseCreada Nombre="Matematica A" Descripcion="Clase de matematica nivel avanzado" Materia="Matematica" Dia="Miercoles" Horario="6am a 8am" Frecuencia="Semanal" />
             </div>
         </div>
     )
