@@ -10,6 +10,9 @@ function Contrataciones() {
             </div>
             <div className="lista-contrataciones">
                 <Contratacion Clase="Matematica Basica" Alumno="Juan Navarro" Telefono="339449384" Mail="juan@gmail.com" HorarioRef="17hs" Mensaje="Holaaa quiero inscribirme a esta clase porque me re interesa maannn, dale wachoo aceptame"/>
+                <Contratacion Clase="Matematica Basica" Alumno="Juan Navarro" Telefono="339449384" Mail="juan@gmail.com" HorarioRef="17hs" Mensaje="Holaaa quiero inscribirme a esta clase porque me re interesa maannn, dale wachoo aceptame"/>
+                <Contratacion Clase="Matematica Basica" Alumno="Juan Navarro" Telefono="339449384" Mail="juan@gmail.com" HorarioRef="17hs" Mensaje="Holaaa quiero inscribirme a esta clase porque me re interesa maannn, dale wachoo aceptame"/>
+                <Contratacion Clase="Matematica Basica" Alumno="Juan Navarro" Telefono="339449384" Mail="juan@gmail.com" HorarioRef="17hs" Mensaje="Holaaa quiero inscribirme a esta clase porque me re interesa maannn, dale wachoo aceptame"/>
             </div>
         </div>
     )

@@ -23,11 +23,21 @@ function Contratacion ({Clase, Alumno, Telefono, Mail, HorarioRef, Mensaje}) {
                     </div>
                 </div>
                 <div className="mensaje-contratador">
+                    <h5>Mensaje</h5>
+                    <hr/>
                     <h6>{Mensaje}</h6>
                 </div>
             </div>
             <div className="acciones-contratacion">
-                <h6>Estado y botones</h6>
+                <div className="estado-contratacion">
+                    <h6>Estado: Solicitada</h6>
+                </div>
+                <div className="boton-cambiar-estado-contratacion">
+                    <button type="button" class="btn btn-outline-primary btn-sm">CAMBIAR ESTADO</button>
+                </div>
+                <div className="boton-eliminar-contratacion">
+                    <button type="button" class="btn btn-outline-primary btn-sm">ELIMINAR</button>
+                </div>
             </div>
         </div>
 
