@@ -1,0 +1,9 @@
+.cabecera-pantalla-profesor{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.boton-crear-clase{
+    margin-right: 60px;
+}
