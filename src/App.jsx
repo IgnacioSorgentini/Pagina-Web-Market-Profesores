@@ -15,6 +15,8 @@ import Cambiocontraseña from './Pantallas/Cambio-contraseña';
 import Comentarios from './Pantallas/Comentarios';
 import Menu from './Componentes/Menu';
 import ContratarCLase from './Pantallas/Contratar-clase';
+import MisClasesProfesor from './Pantallas/Mis-clases-profesor';
+
 
 function App() {
 
@@ -32,6 +34,7 @@ function App() {
           <Route path="/contratar-clase" element={<ContratarCLase/>}/>
           <Route path="/Cambio-contraseña" element={<Cambiocontraseña/>}/>
           <Route path="/Registro" element={<Registro/>}/>
+          <Route path="/Clases-profesor" element={<MisClasesProfesor/>}/>
          </Routes>
         </div>
       </Router>

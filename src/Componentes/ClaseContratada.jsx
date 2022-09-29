@@ -3,6 +3,7 @@ import { useState } from "react";
 import PopupWindowComment from '../Componentes/PopupWindowComment';
 import '../Hojas-de-estilo/ClaseGeneral.css';
 import '../Hojas-de-estilo/ClaseContratada.css';
+import {Link} from 'react-router-dom';
 
 function ClaseContratada({Nombre, Descripcion, Profesor, Dia, Horario}) {
 
