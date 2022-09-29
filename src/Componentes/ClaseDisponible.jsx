@@ -1,12 +1,14 @@
 import React from "react";
 import { useState } from "react";
 import PopupWindow from '../Componentes/PopupWindow';
+import PopupContratar from "./PopupWindowContratar";
 import '../Hojas-de-estilo/ClaseGeneral.css';
 import '../Hojas-de-estilo/ClaseDisponible.css';
 
 function ClaseDisponible({Nombre, Descripcion, Profesor, Dia, Horario}) {
 
     const [buttonPopup, setButtonPopup] = useState(false);
+    const [buttonPopupContratar, setButtonPopupContratar] = useState(false);
 
     return(
         <div className="contenedor-clase">
@@ -29,7 +31,7 @@ function ClaseDisponible({Nombre, Descripcion, Profesor, Dia, Horario}) {
                 </div>
             </div>
             <div className="caja-boton-contratar">
-                    <button className="btn-contratar">CONTRATAR</button>
+                    <button className="btn-contratar" onClick={() => setButtonPopupContratar(true)}>CONTRATAR</button>
             </div>
             <PopupWindow trigger={buttonPopup} setTrigger={setButtonPopup}>
                 <div className="titulo-popup">
@@ -40,6 +42,7 @@ function ClaseDisponible({Nombre, Descripcion, Profesor, Dia, Horario}) {
                     <h5>Descripcion del profesor</h5>
                 </div>
             </PopupWindow>
+            <PopupContratar trigger={buttonPopupContratar} setTrigger={setButtonPopupContratar}></PopupContratar>
         </div>
     )
 }
