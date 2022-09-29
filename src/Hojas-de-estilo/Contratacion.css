@@ -1,0 +1,35 @@
+.contenedor-contratacion{
+        display: flex;
+        width: 90%;
+        box-sizing: border-box;
+        margin: auto;
+        border-radius: 10px;
+}
+
+.datos-contratacion{
+    min-width: 80%;
+    background-color: #FFFFFF;
+}
+
+.acciones-contratacion{
+    min-width: 20%;
+    background-color: grey;
+    opacity: 0.4;
+}
+
+.clase-contratada, .detalles-contratacion, .mensaje-contratador{
+    margin-left: 10px;
+}
+
+.clase-contratada{
+    margin-top: 10px;
+}
+
+.detalles-contratacion{
+    margin-top: 30px;
+}
+
+.mensaje-contratador{
+    margin-top: 20px;
+    padding-bottom: 10px;
+}
