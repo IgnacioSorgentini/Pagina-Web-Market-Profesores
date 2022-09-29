@@ -13,7 +13,7 @@ function Menu() {
                 <div class="items-menu collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#"><button type="button" class="btn-menu btn-outline-dark"><Link to="/Clases-profesor">Mis clases</Link></button></a>
+                            <a class="nav-link" href="#"><button type="button" class="btn-menu btn-outline-dark"><Link to="/mis-clases-alumno">Mis clases</Link></button></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#"><button type="button" class="btn-menu btn-outline-dark"><Link to="/contratar-clase">Contratar clase</Link></button></a>
