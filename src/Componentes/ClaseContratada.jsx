@@ -19,7 +19,7 @@ function ClaseContratada({Nombre, Descripcion, Profesor, Dia, Horario}) {
             </div>
             <div className="caja-comentarios-clase">
                 <div className="caja-boton-comentar">
-                    <Link to="/Ventana-comentario"><button className="btn-comentar">COMENTAR</button></Link>
+                    <button className="btn-comentar">COMENTAR</button>
                 </div>
                 <div className="comentarios-clase-cont"><ion-icon name="chatbox-outline"></ion-icon></div>
             </div>
