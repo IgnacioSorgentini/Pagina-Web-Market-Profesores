@@ -32,6 +32,7 @@ function App() {
           <Route path="/contratar-clase" element={<ContratarCLase/>}/>
           <Route path="/Cambio-contraseña" element={<Cambiocontraseña/>}/>
           <Route path="/Registro" element={<Registro/>}/>
+          <Route path="/Comentarios" element={<Comentarios />}/>
          </Routes>
         </div>
       </Router>

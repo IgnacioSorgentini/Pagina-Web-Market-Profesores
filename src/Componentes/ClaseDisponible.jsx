@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import PopupWindow from '../Componentes/PopupWindow';
 import '../Hojas-de-estilo/ClaseGeneral.css';
 import '../Hojas-de-estilo/ClaseDisponible.css';
@@ -25,7 +26,7 @@ function ClaseDisponible({Nombre, Descripcion, Profesor, Dia, Horario}) {
                 </div>
                 <div className="critica-clase">
                     <div className="calificacion-clase"><h6>Calif</h6></div>
-                    <div className="comentarios-clase-disp"><ion-icon name="chatbox-outline"></ion-icon></div>
+                    <div className="comentarios-clase-disp"><Link to="/Comentarios"><ion-icon name="chatbox-outline"></ion-icon></Link></div>
                 </div>
             </div>
             <div className="caja-boton-contratar">
