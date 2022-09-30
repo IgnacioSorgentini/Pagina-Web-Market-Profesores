@@ -1,9 +1,16 @@
 import React from "react";
 import '../Hojas-de-estilo/ClaseGeneral.css';
 import '../Hojas-de-estilo/ClaseCreada.css';
-
+import { useState } from "react";
+import PopupWindowPublicar from '../Componentes/PopupWindowPublicar';
+import PopupWindowDespublicar from '../Componentes/PopupWindowDespublicar';
 
 function ClaseCreada({Nombre, Descripcion, Materia, Dia, Horario, Frecuencia}) {
+    
+    const [buttonPopupPublicar, setButtonPopupPublicar] = useState(false);
+    const [buttonPopupDespublicar, setButtonPopupDespublicar] = useState(false);
+
+
     return(
         <div className="contenedor-clase">
             <div className="cabecera-clase">
@@ -27,13 +34,17 @@ function ClaseCreada({Nombre, Descripcion, Materia, Dia, Horario, Frecuencia}) {
                 <div className="botones-clase-creada">
                     <button><ion-icon name="trash-outline"></ion-icon></button>
                     <button><ion-icon name="build-outline"></ion-icon></button>
-                    <button><ion-icon name="arrow-up-circle-outline"></ion-icon></button>
-                    <button><ion-icon name="arrow-down-circle-outline"></ion-icon></button>
+                    <button onClick={() => setButtonPopupPublicar(true)}><ion-icon name="arrow-up-circle-outline"></ion-icon></button>
+                    <button onClick={() => setButtonPopupDespublicar(true)}><ion-icon name="arrow-down-circle-outline"></ion-icon></button>
                 </div>
                 <div className="comentarios-clase-creada">
                     <button><ion-icon name="chatbubble-outline"></ion-icon></button>
                 </div>
             </div>
+            <PopupWindowPublicar trigger={buttonPopupPublicar} setTrigger={setButtonPopupPublicar}>
+            </PopupWindowPublicar>
+            <PopupWindowDespublicar trigger={buttonPopupDespublicar} setTrigger={setButtonPopupDespublicar}>
+            </PopupWindowDespublicar>
         </div>
     )
 }
