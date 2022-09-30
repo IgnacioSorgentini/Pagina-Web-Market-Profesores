@@ -3,7 +3,6 @@ import { useState } from "react";
 import PopupEditarClase from '../Componentes/PopupWindowEditar';
 import '../Hojas-de-estilo/ClaseGeneral.css';
 import '../Hojas-de-estilo/ClaseCreada.css';
-import { useState } from "react";
 import PopupWindowPublicar from '../Componentes/PopupWindowPublicar';
 import PopupWindowDespublicar from '../Componentes/PopupWindowDespublicar';
 
