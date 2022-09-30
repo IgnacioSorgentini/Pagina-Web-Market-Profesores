@@ -6,7 +6,7 @@ function Menu() {
     return(
         <div className="contenedor-menu">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand titulo-menu" href="#">Nombre de la pagina</a>
+                <a class="navbar-brand titulo-menu" href="#">Cursos Online</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
