@@ -3,12 +3,16 @@ import { useState } from "react";
 import PopupEditarClase from '../Componentes/PopupWindowEditar';
 import '../Hojas-de-estilo/ClaseGeneral.css';
 import '../Hojas-de-estilo/ClaseCreada.css';
-
+import { useState } from "react";
+import PopupWindowPublicar from '../Componentes/PopupWindowPublicar';
+import PopupWindowDespublicar from '../Componentes/PopupWindowDespublicar';
 
 function ClaseCreada({Nombre, Descripcion, Materia, Duracion, Tipo, Frecuencia, Precio}) {
     
     const [buttonPopupEditar, setButtonPopupEditar] = useState(false);
-    
+    const [buttonPopupPublicar, setButtonPopupPublicar] = useState(false);
+    const [buttonPopupDespublicar, setButtonPopupDespublicar] = useState(false);
+
     return(
         <div className="contenedor-clase">
             <div className="cabecera-clase">
@@ -32,13 +36,17 @@ function ClaseCreada({Nombre, Descripcion, Materia, Duracion, Tipo, Frecuencia, 
                 <div className="botones-clase-creada">
                     <button><ion-icon name="trash-outline"></ion-icon></button>
                     <button onClick={() => setButtonPopupEditar(true)}><ion-icon name="build-outline"></ion-icon></button>
-                    <button><ion-icon name="arrow-up-circle-outline"></ion-icon></button>
-                    <button><ion-icon name="arrow-down-circle-outline"></ion-icon></button>
+                    <button onClick={() => setButtonPopupPublicar(true)}><ion-icon name="arrow-up-circle-outline"></ion-icon></button>
+                    <button onClick={() => setButtonPopupDespublicar(true)}><ion-icon name="arrow-down-circle-outline"></ion-icon></button>
                 </div>
                 <div className="comentarios-clase-creada">
                     <button><ion-icon name="chatbubble-outline"></ion-icon></button>
                 </div>
             </div>
+            <PopupWindowPublicar trigger={buttonPopupPublicar} setTrigger={setButtonPopupPublicar}>
+            </PopupWindowPublicar>
+            <PopupWindowDespublicar trigger={buttonPopupDespublicar} setTrigger={setButtonPopupDespublicar}>
+            </PopupWindowDespublicar>
             <PopupEditarClase trigger={buttonPopupEditar} setTrigger={setButtonPopupEditar} Descripcion={Descripcion} Precio={Precio} Materia={Materia} Duracion={Duracion} Frecuencia={Frecuencia}/>
         </div>
     )
