@@ -73,7 +73,7 @@ function InicioSesion() {
     else{
         return(
             <div>
-            <Contrataciones/>
+            <MisClasesAlumno/>
             </div>
         )
     }
