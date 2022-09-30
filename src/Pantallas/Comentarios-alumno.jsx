@@ -11,6 +11,12 @@ function Comentarios () {
             <div className="lista-comentarios">
                 <ComentarioAlumno Nombre='Ignacio Sorgentini' Comentario='Bla Bla Bla Bla' />
                 <ComentarioAlumno Nombre='Ignacio Sorgentini' Comentario='Bla Bla Bla Bla' />
+                <ComentarioAlumno Nombre='Ignacio Sorgentini' Comentario='Bla Bla Bla Bla' />
+                <ComentarioAlumno Nombre='Ignacio Sorgentini' Comentario='Bla Bla Bla Bla' />
+                <ComentarioAlumno Nombre='Ignacio Sorgentini' Comentario='Bla Bla Bla Bla' />
+                <ComentarioAlumno Nombre='Ignacio Sorgentini' Comentario='Bla Bla Bla Bla' />
+                <ComentarioAlumno Nombre='Ignacio Sorgentini' Comentario='Bla Bla Bla Bla' />
+                
             </div>
         </div>
         
