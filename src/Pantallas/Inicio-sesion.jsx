@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import '../Hojas-de-estilo/Inicio-sesion.css';
 import {Link} from "react-router-dom";
-import Comentarios from "./Comentarios";
+import ComentariosAlumno from "./Comentarios-Alumno";
 import MisClasesAlumno from "./Mis-clases-alumno";
 import MisClasesProfesor from './Mis-clases-profesor';
 import ContratarClase from './Contratar-clase';
+import Contrataciones from './Contrataciones'
 
 function InicioSesion() {
 

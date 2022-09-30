@@ -61,13 +61,14 @@ function ContratarCLase () {
                 </div>
             </div>
             <div className="lista-clases">
-                <ClaseDisponible Nombre='Biologia' Descripcion='Clase de biologia nivel intermedio' Profesor='Fernanda Gimenez' Dia='Viernes' Horario='7:45am a 11:45am'/>
-                <ClaseDisponible Nombre='Biologia' Descripcion='Clase de biologia nivel intermedio' Profesor='Fernanda Gimenez' Dia='Viernes' Horario='7:45am a 11:45am'/>
-                <ClaseDisponible Nombre='Biologia' Descripcion='Clase de biologia nivel intermedio' Profesor='Fernanda Gimenez' Dia='Viernes' Horario='7:45am a 11:45am'/>
-                <ClaseDisponible Nombre='Biologia' Descripcion='Clase de biologia nivel intermedio' Profesor='Fernanda Gimenez' Dia='Viernes' Horario='7:45am a 11:45am'/>
-                <ClaseDisponible Nombre='Biologia' Descripcion='Clase de biologia nivel intermedio' Profesor='Fernanda Gimenez' Dia='Viernes' Horario='7:45am a 11:45am'/>
-                <ClaseDisponible Nombre='Biologia' Descripcion='Clase de biologia nivel intermedio' Profesor='Fernanda Gimenez' Dia='Viernes' Horario='7:45am a 11:45am'/>
-
+                <ClaseDisponible Nombre='Biologia A' Descripcion='Clase de biologia nivel intermedio' Materia="Biologia" Profesor='Fernanda Gimenez' Horario='3 horas' Tipo="Grupal" Frecuencia="Unica" Calificacion="3" Costo="$2350,00"/>
+                <ClaseDisponible Nombre='Geometria' Descripcion='Clases de geometria para principiantes' Materia="Matematica" Profesor='Gustavo Hernandez' Horario='1 hora' Tipo="Individual" Frecuencia="Semanal" Calificacion="5" Costo="$1000,00"/>
+                <ClaseDisponible Nombre='Logica' Descripcion='Clases cortas de logica para principiantes' Materia="Programacion" Profesor='Ricardo Tomilsonn' Horario='1 hora' Tipo="Grupal" Frecuencia="Semanal" Calificacion="4" Costo="$1050,00"/>
+                <ClaseDisponible Nombre='Estadistica Gral.' Descripcion='Introduccion a las variables aleatorias' Materia="Estadistica" Profesor='Sergio Salas' Horario='2 horas' Tipo="Grupal" Frecuencia="Mensual" Calificacion="3" Costo="$3000,00"/>
+                <ClaseDisponible Nombre='1ra Guerra Mundial' Descripcion='Clase general sobre el gran hecho historico' Materia="Historia" Profesor='Antonelia Ramos' Horario='4 horas' Tipo="Grupal" Frecuencia="Unica" Calificacion="5" Costo="$4000,00"/>
+                <ClaseDisponible Nombre='AutoCAD' Descripcion='Curso de introduccion a AutoCAD' Materia="Tecnologia" Profesor='Ariel Morales' Horario='1 hora' Tipo="Grupal" Frecuencia="Semanal" Calificacion="4" Costo="$1460,00"/>
+                <ClaseDisponible Nombre='Gases' Descripcion='Introduccion a los distintos gases' Materia="Quimica" Profesor='Martina Ares' Horario='1 hora' Tipo="Individual" Frecuencia="Semanal" Calificacion="5" Costo="$1000,00"/>
+                <ClaseDisponible Nombre='Past Simple' Descripcion='Clases del tiempo Past Simple. Inicial.' Materia="Ingles" Profesor='Ana de Armas' Horario='2 horas' Tipo="Individual" Frecuencia="Unica" Calificacion="5" Costo="$2500,00"/>
 
             </div>
         </div>
