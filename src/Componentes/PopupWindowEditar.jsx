@@ -1,4 +1,5 @@
 import React from "react";
+import '../Hojas-de-estilo/PopupWindowEditar.css';
 
 function PopupEditarClase(props) {
     return (props.trigger) ? (
@@ -11,22 +12,24 @@ function PopupEditarClase(props) {
                     <input type="text" className="titulo-ventana-nueva-clase" placeholder="Titulo de la clase..." />
                 </div>
                 <div className="contenedor-texto-ventana">
-                    <input type="text" className="texto-ventana" placeholder="Descripcion..." maxLength={100} />
+                    <input type="text" className="texto-ventana" defaultvalue={props.Descripcion} maxLength={100} />
                 </div>
                 <div className="contenedor-texto-ventana">
-                    <input type="text" className="texto-ventana" placeholder="Precio..." maxLength={100} />
+                    <input type="text" className="texto-ventana" defaultvalue={props.Precio} maxLength={100} />
                 </div>
                 <div className="contenedor-texto-ventana">
-                    <input type="text" className="texto-ventana" placeholder="Materia..." maxLength={100} />
+                    <input type="text" className="texto-ventana" defaultValue={props.Materia} maxLength={100} />
                 </div>
                 <div className="contenedor-texto-ventana">
-                    <input type="text" className="texto-ventana" placeholder="Dias de cursada..." maxLength={100} />
+                    <input type="text" className="texto-ventana" defaultValue={props.Tipo} maxLength={100} />
                 </div>
                 <div className="contenedor-texto-ventana">
-                    <input type="text" className="texto-ventana" placeholder="Frecuencia..." maxLength={100} />
+                    <input type="text" className="texto-ventana" defaultValue={props.Frecuencia} maxLength={100} />
                 </div>
                 <div className="contenedor-btn-ventana-nueva-clase">
-                    <button onClick={() => props.setTrigger(false)}>CREAR</button>
+                    <button onClick={() => props.setTrigger(false)}>CONFIRMAR</button>
+                    <button onClick={() => props.setTrigger(false)}>CANCELAR</button>
+
                 </div>
             </div>
         </div>
