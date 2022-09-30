@@ -1,0 +1,78 @@
+.ventana-contratar{
+    width: 500px;
+    height: 500px;
+    border-radius: 5%;
+    background-color: #F8F5F5;
+    margin: auto;
+    padding-top: 10px;
+}
+
+.contenedor-titulo-ventana-contratar{
+    width: 90%;
+    margin-top: 30px;
+    margin-left: 15px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 30px;
+    color: #000000;
+}
+
+.titulo-ventana-contratar{
+    width: 100%;
+    border-style: hidden;
+}
+
+.contenedor-texto-ventana{
+    width: 90%;
+    margin-left: 15px;
+    display: inline-block;
+}
+
+.texto-ventana{
+    width: 100%;
+    border-style: hidden;
+}
+
+
+.contenedor-btn-ventana-contratar{
+    margin-left: 15px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.contenedor-btn-ventana-contratar button{
+    width: 122px;
+    height: 40px;
+    background: #3649F9;
+    border-radius: 5px;
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 14px;
+    color: #FFFFFF;
+    border-style: none;
+}
+
+.contratar{
+    height: 50%;
+}
+
+.contratar input{
+    margin-bottom: 10px;
+    
+}
+
+input:focus{
+    outline: none;
+}
+
+.popup input{
+    background-color: #F1F5F9;
+    border-radius: 3px;
+}

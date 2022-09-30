@@ -14,7 +14,13 @@ import Registro from './Pantallas/Registro';
 import Cambiocontraseña from './Pantallas/Cambio-contraseña';
 import Menu from './Componentes/Menu';
 import ContratarCLase from './Pantallas/Contratar-clase';
+<<<<<<< HEAD
 import ComentariosAlumno from './Pantallas/Comentarios-Alumno';
+=======
+import MisClasesProfesor from './Pantallas/Mis-clases-profesor';
+import Contrataciones from './Pantallas/Contrataciones';
+
+>>>>>>> aad1cc5bfae6ab01ed5a12eba727e4b5dd3973f4
 
 function App() {
 
@@ -31,7 +37,12 @@ function App() {
           <Route path="/contratar-clase" element={<ContratarCLase/>}/>
           <Route path="/Cambio-contraseña" element={<Cambiocontraseña/>}/>
           <Route path="/Registro" element={<Registro/>}/>
+<<<<<<< HEAD
           <Route path="/Comentarios-alumno" element={<ComentariosAlumno />}/>
+=======
+          <Route path="/Clases-profesor" element={<MisClasesProfesor/>}/>
+          <Route path="/Contrataciones" element={<Contrataciones />}/>
+>>>>>>> aad1cc5bfae6ab01ed5a12eba727e4b5dd3973f4
          </Routes>
         </div>
       </Router>

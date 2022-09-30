@@ -1,0 +1,45 @@
+.pie-de-clase{
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.pie-de-clase button{
+    box-sizing: border-box;
+    border-style: hidden;
+    background-color: #FFFFFF;
+    margin-top: 70px;
+}
+
+.botones-clase-creada{
+    padding-left: 10px;
+}
+
+
+.comentarios-clase-creada{
+    padding-right: 10px;
+}
+
+.frecuencia-clase{
+    display: flex;
+    flex-direction: row;
+}
+
+.materia-clase{
+    display: flex;
+    flex-direction: row;
+}
+
+.cabecera-clase{
+    display: flex;
+    flex-direction: row;
+}
+
+.precio-clase{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-right: 10px;
+}
+

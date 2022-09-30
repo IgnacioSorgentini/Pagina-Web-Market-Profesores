@@ -1,5 +1,6 @@
 import React from "react";
-import '../Hojas-de-estilo/PopupWindow.css'
+import '../Hojas-de-estilo/PopupWindow.css';
+import '../Hojas-de-estilo/PopupWindowComment.css';
 
 function PopupComment(props) {
     return (props.trigger) ? (

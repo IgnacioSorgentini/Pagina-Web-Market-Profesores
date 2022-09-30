@@ -1,0 +1,22 @@
+.cabecera-pantalla{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.filtro-clases{
+    margin-right: 0px;
+}
+
+.filtro-clases .btn-group{
+    margin-right: 15px;
+}
+
+.filtro-clases .btn-group .btn{
+    background-color: #5B4FA6;
+    color: white;
+}
+
+.estrellas ul li button{
+    color: yellowgreen;
+}
