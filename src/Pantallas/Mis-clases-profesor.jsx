@@ -15,7 +15,7 @@ function MisClasesProfesor () {
                     <h3>Mis clases</h3>
                 </div>
                 <div className="boton-crear-clase">
-                    <button type="button" className="btn" onClick={() => setButtonPopup(true)}>CREAR CLASE</button>
+                    <button type="button" className="btn btn-primary" onClick={() => setButtonPopup(true)}>CREAR CLASE</button>
                 </div>
             </div>
             <div className="lista-clases">

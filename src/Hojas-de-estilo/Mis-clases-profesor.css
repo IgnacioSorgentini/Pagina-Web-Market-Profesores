@@ -11,6 +11,7 @@
 .boton-crear-clase button{
     background-color: #5B4FA6;
     color: white;
+    border-style: hidden;
 }
 
 .boton-crear-clase button:hover{
