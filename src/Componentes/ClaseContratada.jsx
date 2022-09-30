@@ -28,6 +28,7 @@ function ClaseContratada({Nombre, Descripcion, Materia, Profesor, Horario, Tipo,
             <div className="caja-comentarios-clase">
                 <div className="caja-boton-comentar">
                     <button className="btn-comentar" onClick={() => setButtonPopupComment(true)}>COMENTAR</button>
+                    <button className="btn-valorar">VALORAR</button>
                 </div>
                 <div className="comentarios-clase-cont"><ion-icon name="chatbox-outline"></ion-icon></div>
             </div>
