@@ -5,6 +5,7 @@ import ComentariosAlumno from "./Comentarios-alumno";
 import MisClasesAlumno from "./Mis-clases-alumno";
 import MisClasesProfesor from './Mis-clases-profesor';
 import ContratarClase from './Contratar-clase';
+import ComentariosProfesor from './Comentarios-profesor';
 
 function InicioSesion() {
 
@@ -72,7 +73,7 @@ function InicioSesion() {
     else{
         return(
             <div>
-            <MisClasesAlumno/>
+            <ComentariosProfesor/>
             </div>
         )
     }

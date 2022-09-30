@@ -1,5 +1,6 @@
 import React from "react";
-import '../Hojas-de-estilo/ComentariosProfesor';
+import '../Hojas-de-estilo/ComentariosProfesor.css';
+import ComentarioProfesor from '../Componentes/ComentarioProfesor';
 
 function ComentariosProfesor () {
     return(
@@ -8,7 +9,12 @@ function ComentariosProfesor () {
                 <h3>Comentarios</h3>
             </div>
             <div className="lista-comentarios">
-                
+                <ComentarioProfesor Nombre="Gustavo Gomez" Comentario="Excelente clase! Me gustó la manera de explicar del profesor, y su paciencia. Muy recomendado!"/>
+                <ComentarioProfesor Nombre="Gustavo Gomez" Comentario="Excelente clase! Me gustó la manera de explicar del profesor, y su paciencia. Muy recomendado!"/>
+                <ComentarioProfesor Nombre="Gustavo Gomez" Comentario="Excelente clase! Me gustó la manera de explicar del profesor, y su paciencia. Muy recomendado!"/>
+                <ComentarioProfesor Nombre="Gustavo Gomez" Comentario="Excelente clase! Me gustó la manera de explicar del profesor, y su paciencia. Muy recomendado!"/>
+                <ComentarioProfesor Nombre="Gustavo Gomez" Comentario="Excelente clase! Me gustó la manera de explicar del profesor, y su paciencia. Muy recomendado!"/>
+
             </div>
         </div>
         
