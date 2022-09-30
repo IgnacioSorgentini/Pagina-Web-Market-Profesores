@@ -26,7 +26,7 @@ function ClaseDisponible({Nombre, Descripcion, Profesor, Dia, Horario}) {
                 </div>
                 <div className="critica-clase">
                     <div className="calificacion-clase"><h6>Calif</h6></div>
-                    <div className="comentarios-clase-disp"><Link to="/Comentarios"><ion-icon name="chatbox-outline"></ion-icon></Link></div>
+                    <div className="comentarios-clase-disp"><Link to="/Comentarios-alumno"><ion-icon name="chatbox-outline"></ion-icon></Link></div>
                 </div>
             </div>
             <div className="caja-boton-contratar">
