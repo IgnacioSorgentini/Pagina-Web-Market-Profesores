@@ -5,7 +5,7 @@ import '../Hojas-de-estilo/PopupWindowNuevaClase.css';
 function PopupNuevaClase(props) {
     return (props.trigger) ? (
         <div className="popup">
-            <div className="popup-inner">
+            <div className="popup-inner nueva-clase">
                 <div className="caja-btn-popup">
                     <button className="close-btn" onClick={() => props.setTrigger(false)}><ion-icon name="close-outline"></ion-icon></button>
                 </div>

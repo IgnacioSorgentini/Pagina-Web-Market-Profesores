@@ -1,3 +1,11 @@
+.nueva-clase{
+    height: 60%;
+}
+
+.nueva-clase input{
+    margin-bottom: 10px;
+}
+
 .ventana-nueva-clase{
     width: 500px;
     height: 500px;
