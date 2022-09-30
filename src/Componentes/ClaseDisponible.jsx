@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import PopupWindow from '../Componentes/PopupWindow';
 import PopupContratar from "./PopupWindowContratar";
 import '../Hojas-de-estilo/ClaseGeneral.css';
@@ -22,17 +23,20 @@ function ClaseDisponible({Nombre, Descripcion, Materia, Profesor, Dia, Horario, 
             <div className="detalles-clase">
                 <div className="materia-clase"><ion-icon name="book-outline"></ion-icon><h6>{Materia}</h6></div>
                 <div className="profesor-clase"><ion-icon name="person-outline"></ion-icon><h6><a onClick={() => setButtonPopup(true)}>{Profesor}</a></h6></div>
-                <div className="horario-clase-disp"><ion-icon name="time-outline"></ion-icon><h6>{Horario}</h6></div>
-                <div className="tipo-clase"><ion-icon name="people-outline"></ion-icon><h6>{Tipo}</h6></div>
-                <div className="frecuencia-clase"><ion-icon name="barbell-outline"></ion-icon><h6>{Frecuencia}</h6></div>
-                <div className="calificacion-clase"><ion-icon name="star-outline"></ion-icon><h6>{Calificacion}</h6></div>
+                <div className="fecha-clase">
+                    <div className="dia-clase"><ion-icon name="calendar-outline"></ion-icon><h6>{Dia}</h6></div>
+                    <div className="horario-clase-disp"><ion-icon name="time-outline"></ion-icon><h6>{Horario}</h6></div>
+                </div>
+                <div className="critica-clase">
+                    <div className="calificacion-clase"><h6>Calif</h6></div>
+                </div>
             </div>
             <div className="footer-clase-disp">
                     <div className="caja-btn-contratar">
                         <button className="btn-contratar" onClick={() => setButtonPopupContratar(true)}>CONTRATAR</button>
                     </div>
                     <div className="caja-icono-comentarios">
-                        <div className="comentarios-clase-disp"><ion-icon name="chatbox-outline"></ion-icon></div>
+                    <div className="comentarios-clase-disp"><Link to="/Comentarios-alumno"><ion-icon name="chatbox-outline"></ion-icon></Link></div>
                     </div>
             </div>
             <PopupWindow trigger={buttonPopup} setTrigger={setButtonPopup}>
