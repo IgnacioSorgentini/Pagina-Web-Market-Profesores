@@ -33,7 +33,7 @@ function ClaseDisponible({Nombre, Descripcion, Profesor, Dia, Horario}) {
             </div>
             <PopupWindow trigger={buttonPopup} setTrigger={setButtonPopup}>
                 <div className="titulo-popup">
-                    <h3>Titulo</h3>
+                    <h3>{Profesor}</h3>
                 </div>
                 <hr />
                 <div className="contenido-popup">
