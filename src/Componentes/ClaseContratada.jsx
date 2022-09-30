@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import PopupWindowComment from '../Componentes/PopupWindowComment';
+import PopupWindowValorar from "./PopupWindowValorar";
 import '../Hojas-de-estilo/ClaseGeneral.css';
 import '../Hojas-de-estilo/ClaseContratada.css';
 import {Link} from 'react-router-dom';
@@ -8,6 +9,7 @@ import {Link} from 'react-router-dom';
 function ClaseContratada({Nombre, Descripcion, Materia, Profesor, Horario, Tipo, Frecuencia, Calificacion}) {
 
     const [buttonPopupComment, setButtonPopupComment] = useState(false);
+    const [buttonPopupValorar, setButtonPopupValorar] = useState(false);
 
     return(
         <div className="contenedor-clase">
@@ -28,12 +30,13 @@ function ClaseContratada({Nombre, Descripcion, Materia, Profesor, Horario, Tipo,
             <div className="caja-comentarios-clase">
                 <div className="caja-boton-comentar">
                     <button className="btn-comentar" onClick={() => setButtonPopupComment(true)}>COMENTAR</button>
-                    <button className="btn-valorar">VALORAR</button>
+                    <button className="btn-valorar" onClick={() => setButtonPopupValorar(true)}>VALORAR</button>
                 </div>
                 <div className="comentarios-clase-cont"><ion-icon name="chatbox-outline"></ion-icon></div>
             </div>
             <PopupWindowComment trigger={buttonPopupComment} setTrigger={setButtonPopupComment}>
             </PopupWindowComment>
+            <PopupWindowValorar trigger={buttonPopupValorar} setTrigger={setButtonPopupValorar} />
         </div>
     )
 }

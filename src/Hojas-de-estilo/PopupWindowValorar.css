@@ -1,0 +1,57 @@
+.valorar{
+    height: 390px;
+}
+
+.titulo-ventana-valorar{
+    margin-top: 30px;
+    margin-left: 15px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 30px;
+    color: #000000;
+}
+
+.texto-valorar-clase{
+    margin-left: 15px;
+    font-family: 'Poppins';
+    margin-bottom: 30px;
+}
+
+.menu-desplegable-valorar-clase{
+    display: flex;
+    justify-content: center;
+}
+
+.menu-desplegable-valorar-clase .desplegable{
+    background: #3649F9
+}
+
+
+.contenedor-btn-ventana-valorar{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.contenedor-btn-ventana-valorar button{
+    width: 122px;
+    height: 40px;
+    background: #3649F9;
+    border-radius: 5px;
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 14px;
+    color: #FFFFFF;
+    border-style: none;
+    margin-top: 40px;
+}
+
+.estrellas li button{
+    color: yellowgreen;
+}
