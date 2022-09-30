@@ -58,3 +58,21 @@
     color: #FFFFFF;
     border-style: none;
 }
+
+.contratar{
+    height: 50%;
+}
+
+.contratar input{
+    margin-bottom: 10px;
+    
+}
+
+input:focus{
+    outline: none;
+}
+
+.popup input{
+    background-color: #F1F5F9;
+    border-radius: 3px;
+}
