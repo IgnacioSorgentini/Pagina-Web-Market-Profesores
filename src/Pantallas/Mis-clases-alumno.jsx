@@ -9,15 +9,11 @@ function MisClasesAlumno () {
                 <h3>Mis clases</h3>
             </div>
             <div className="lista-clases">
-                <ClaseContratada Nombre='Matematica' Descripcion='Clases de matematica nivel avanzado' Profesor='Jose Lopez' Dia='Jueves' Horario='7:45hs a 11:45hs'/>
-                <ClaseContratada Nombre='Matematica' Descripcion='Clases de matematica nivel avanzado' Profesor='Jose Lopez' Dia='Jueves' Horario='7:45hs a 11:45hs'/>
-                <ClaseContratada Nombre='Matematica' Descripcion='Clases de matematica nivel avanzado' Profesor='Jose Lopez' Dia='Jueves' Horario='7:45hs a 11:45hs'/>
-                <ClaseContratada Nombre='Matematica' Descripcion='Clases de matematica nivel avanzado' Profesor='Jose Lopez' Dia='Jueves' Horario='7:45hs a 11:45hs'/>
-                <ClaseContratada Nombre='Matematica' Descripcion='Clases de matematica nivel avanzado' Profesor='Jose Lopez' Dia='Jueves' Horario='7:45hs a 11:45hs'/>
-                <ClaseContratada Nombre='Matematica' Descripcion='Clases de matematica nivel avanzado' Profesor='Jose Lopez' Dia='Jueves' Horario='7:45hs a 11:45hs'/>
-                <ClaseContratada Nombre='Matematica' Descripcion='Clases de matematica nivel avanzado' Profesor='Jose Lopez' Dia='Jueves' Horario='7:45hs a 11:45hs'/>
-
-
+                <ClaseContratada Nombre='Logaritmos' Descripcion='Introduccion a los logaritmos' Materia="Matematica" Profesor='Jose Lopez' Horario='1 hora' Tipo="Grupal" Frecuencia="Semanal" Calificacion="4"/>
+                <ClaseContratada Nombre='Logaritmos' Descripcion='Introduccion a los logaritmos' Materia="Matematica" Profesor='Jose Lopez' Horario='1 hora' Tipo="Grupal" Frecuencia="Semanal" Calificacion="4"/>
+                <ClaseContratada Nombre='Logaritmos' Descripcion='Introduccion a los logaritmos' Materia="Matematica" Profesor='Jose Lopez' Horario='1 hora' Tipo="Grupal" Frecuencia="Semanal" Calificacion="4"/>
+                <ClaseContratada Nombre='Logaritmos' Descripcion='Introduccion a los logaritmos' Materia="Matematica" Profesor='Jose Lopez' Horario='1 hora' Tipo="Grupal" Frecuencia="Semanal" Calificacion="4"/>
+                <ClaseContratada Nombre='Logaritmos' Descripcion='Introduccion a los logaritmos' Materia="Matematica" Profesor='Jose Lopez' Horario='1 hora' Tipo="Grupal" Frecuencia="Semanal" Calificacion="4"/>
             </div>
         </div>
     )
