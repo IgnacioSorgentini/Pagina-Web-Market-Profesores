@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import '../Hojas-de-estilo/Inicio-sesion.css';
 import {Link} from "react-router-dom";
-import ComentariosAlumno from "./Comentarios-Alumno";
+import ComentariosAlumno from "./Comentarios-alumno";
 import MisClasesAlumno from "./Mis-clases-alumno";
 import MisClasesProfesor from './Mis-clases-profesor';
 import ContratarClase from './Contratar-clase';
-import Contrataciones from './Contrataciones'
+import ComentariosProfesor from './Comentarios-profesor';
 
 function InicioSesion() {
 
@@ -73,7 +73,7 @@ function InicioSesion() {
     else{
         return(
             <div>
-            <MisClasesAlumno/>
+            <ComentariosProfesor/>
             </div>
         )
     }
