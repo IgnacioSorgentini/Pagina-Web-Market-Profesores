@@ -1,4 +1,4 @@
-.ventana-comentario{
+.ventana-publicar{
     width: 500px;
     height: 500px;
     border-radius: 5%;
@@ -7,7 +7,7 @@
     padding-top: 10px;
 }
 
-.titulo-ventana-comentario{
+.titulo-ventana-publicar{
     width: 100%px;
     margin-top: 30px;
     margin-left: 15px;
@@ -33,14 +33,14 @@
 }
 
 
-.contenedor-btn-ventana-comentario{
+.contenedor-btn-ventana-publicar{
     margin-left: 15px;
     margin-top: 15px;
     display: flex;
     justify-content: center;
 }
 
-.contenedor-btn-ventana-comentario button{
+.contenedor-btn-ventana-publicar button{
     width: 122px;
     height: 40px;
     background: #3649F9;

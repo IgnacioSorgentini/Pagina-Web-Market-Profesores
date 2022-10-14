@@ -1,0 +1,36 @@
+.contenedor-comentario-profesor{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+
+.lado-izquierdo-comentario{
+    width: 70%;
+    background-color: rgb(220, 220, 253);
+    border-radius: 5px;
+}
+
+.lado-derecho-comentario{
+    width: 20%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    justify-content: center;
+}
+
+.btn-bloquear{
+    margin-bottom: 10px;
+}
+
+.lado-derecho-comentario button{
+    background-color: #5B4FA6;
+    width: 45%;
+    margin-left: 27%;
+    color: #ffffff;
+    border-style: hidden;
+}
+

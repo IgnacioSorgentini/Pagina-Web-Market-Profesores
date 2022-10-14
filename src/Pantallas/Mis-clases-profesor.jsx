@@ -19,7 +19,7 @@ function MisClasesProfesor () {
                 </div>
             </div>
             <div className="lista-clases">
-                <ClaseCreada Nombre="Matematica A" Descripcion="Clase de matematica nivel avanzado" Materia="Matematica" Dia="Miercoles" Horario="6am a 8am" Frecuencia="Semanal" />
+                <ClaseCreada Nombre="Matematica A" Descripcion="Clase de matematica nivel avanzado" Materia="Matematica" Duracion="1 hora" Tipo="Individual" Frecuencia="Semanal" Precio="1230,00" />
             </div>
             <PopupNuevaClase trigger={buttonPopup} setTrigger={setButtonPopup}>
             </PopupNuevaClase>

@@ -6,6 +6,7 @@
 
 .boton-crear-clase{
     margin-right: 60px;
+
 }
 
 .boton-crear-clase button{
@@ -16,4 +17,5 @@
 
 .boton-crear-clase button:hover{
     background-color: #3649F9;
+
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import '../Hojas-de-estilo/Comentario.css';
+import '../Hojas-de-estilo/ComentarioAlumno.css';
 
 function Comentario({Nombre, Comentario}) {
     return(

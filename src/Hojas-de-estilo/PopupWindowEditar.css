@@ -1,4 +1,12 @@
-.ventana-comentario{
+.nueva-clase{
+    height: 60%;
+}
+
+.nueva-clase input{
+    margin-bottom: 10px;
+}
+
+.ventana-nueva-clase{
     width: 500px;
     height: 500px;
     border-radius: 5%;
@@ -7,8 +15,8 @@
     padding-top: 10px;
 }
 
-.titulo-ventana-comentario{
-    width: 100%px;
+.contenedor-titulo-ventana-nueva-clase{
+    width: 90%;
     margin-top: 30px;
     margin-left: 15px;
     margin-top: 15px;
@@ -19,6 +27,11 @@
     font-size: 25px;
     line-height: 30px;
     color: #000000;
+}
+
+.titulo-ventana-nueva-clase{
+    width: 100%;
+    border-style: hidden;
 }
 
 .contenedor-texto-ventana{
@@ -33,14 +46,14 @@
 }
 
 
-.contenedor-btn-ventana-comentario{
+.contenedor-btn-ventana-nueva-clase{
     margin-left: 15px;
     margin-top: 15px;
     display: flex;
     justify-content: center;
 }
 
-.contenedor-btn-ventana-comentario button{
+.contenedor-btn-ventana-nueva-clase button{
     width: 122px;
     height: 40px;
     background: #3649F9;
@@ -52,5 +65,5 @@
     line-height: 14px;
     color: #FFFFFF;
     border-style: none;
-    margin-top: 40px;
+    margin-right: 10px;
 }
