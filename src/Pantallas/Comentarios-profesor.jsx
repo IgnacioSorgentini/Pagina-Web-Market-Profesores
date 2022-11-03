@@ -1,9 +1,12 @@
 import React from "react";
 import '../Hojas-de-estilo/ComentariosProfesor.css';
 import ComentarioProfesor from '../Componentes/ComentarioProfesor';
+import MenuProfesor from "../Componentes/Menu/MenuProfesor";
 
 function ComentariosProfesor () {
     return(
+       <div className="ComentariosProfesor">
+        <MenuProfesor />
         <div className="contenedor-comentarios">
             <div className="titulo-pantalla">
                 <h3>Comentarios</h3>
@@ -17,6 +20,7 @@ function ComentariosProfesor () {
 
             </div>
         </div>
+       </div>
         
     )
 }

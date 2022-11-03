@@ -13,9 +13,12 @@ import MisClasesAlumno from './Pantallas/Mis-clases-alumno';
 import Registro from './Pantallas/Registro';
 import Cambiocontraseña from './Pantallas/Cambio-contraseña';
 import ComentariosAlumno from './Pantallas/Comentarios-alumno';
-import Menu from './Componentes/Menu';
 import ContratarCLase from './Pantallas/Contratar-clase';
 import MisClasesProfesor from './Pantallas/Mis-clases-profesor';
+import MenuAlumno from './Componentes/Menu/MenuAlumno';
+import MenuProfesor from './Componentes/Menu/MenuProfesor';
+import Contrataciones from './Pantallas/Contrataciones';
+import ComentariosProfesor from './Pantallas/Comentarios-profesor';
 
 
 function App() {
@@ -26,15 +29,15 @@ function App() {
     <div className="App">
       <Router>
         <div className="contenedor-rutas">
-         <Menu />
          <Routes>
           <Route path="/" exact element={<InicioSesion/>}/>
           <Route path="/comentariosAlumno" element={<ComentariosAlumno/>}/>
-          <Route path="/mis-clases-alumno" element={<MisClasesAlumno/>}/>
-          <Route path="/contratar-clase" element={<ContratarCLase/>}/>
-          <Route path="/Cambio-contraseña" element={<Cambiocontraseña/>}/>
-          <Route path="/Registro" element={<Registro/>}/>
-          <Route path="/Clases-profesor" element={<MisClasesProfesor/>}/>
+          <Route path="/misClasesAlumno" element={<MisClasesAlumno/>}/>
+          <Route path="/contratarClase" element={<ContratarCLase/>}/>
+          <Route path="/cambioContraseña" element={<Cambiocontraseña/>}/>
+          <Route path="/registro" element={<Registro/>}/>
+          <Route path="/misClasesProfesor" element={<MisClasesProfesor/>}/>
+          <Route path="/contratacionesProfesor" element={<Contrataciones />}/>
          </Routes>
         </div>
       </Router>

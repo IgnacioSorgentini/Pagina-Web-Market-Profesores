@@ -4,11 +4,14 @@ import ClaseCreada from "../Componentes/ClaseCreada";
 import '../Hojas-de-estilo/Mis-clases-profesor.css';
 import { useState } from "react";
 import PopupNuevaClase from "../Componentes/PopupWindowNuevaClase";
+import MenuProfesor from "../Componentes/Menu/MenuProfesor";
 
 function MisClasesProfesor () {
     const [buttonPopup, setButtonPopup] = useState(false);
 
     return(
+       <div className="MisClasesProfesor">
+        <MenuProfesor />
         <div className="contenedor-mis-clases">
             <div className="cabecera-pantalla-profesor">
                 <div className="titulo-pantalla">
@@ -24,6 +27,7 @@ function MisClasesProfesor () {
             <PopupNuevaClase trigger={buttonPopup} setTrigger={setButtonPopup}>
             </PopupNuevaClase>
         </div>
+       </div>
     )
 }
 

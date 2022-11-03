@@ -3,11 +3,14 @@ import PopupWindow from '../Componentes/PopupWindow';
 import { useState } from "react";
 import '../Hojas-de-estilo/Contratar-clase.css';
 import ClaseDisponible from '../Componentes/ClaseDisponible';
+import MenuAlumno from "../Componentes/Menu/MenuAlumno";
 
 function ContratarCLase () {
 
     return(
-        <div className="contenedor-mis-clases">
+        <div className="ContratarClase">
+            <MenuAlumno />
+            <div className="contenedor-mis-clases">
             <div className="cabecera-pantalla">
                 <div className="titulo-pantalla">
                     <h3>Clases disponibles</h3>
@@ -71,6 +74,7 @@ function ContratarCLase () {
                 <ClaseDisponible Nombre='Past Simple' Descripcion='Clases del tiempo Past Simple. Inicial.' Materia="Ingles" Profesor='Ana de Armas' Horario='2 horas' Tipo="Individual" Frecuencia="Unica" Calificacion="5" Costo="$2500,00"/>
 
             </div>
+        </div>
         </div>
     )
 }
