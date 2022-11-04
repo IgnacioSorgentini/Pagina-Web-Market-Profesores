@@ -21,12 +21,15 @@
     border-radius: 10px;
 }
 
-.clase-contratada, .detalles-contratacion, .mensaje-contratador{
+.detalles-contratacion, .mensaje-contratador{
     margin-left: 10px;
 }
 
 .clase-contratada{
-    margin-top: 10px;
+    background-color: #3649F9;
+    border-radius: 10px 10px 0px 0px;
+    padding: 10px;
+    color: white;
 }
 
 .detalles-contratacion{
