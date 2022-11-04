@@ -1,8 +1,35 @@
 import React from "react";
 import Avatar from '@mui/material/Avatar';
 import '../Hojas-de-estilo/ComentarioProfesor.css';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Button from '@mui/material/Button';
 
 function ComentarioProfesor ({Nombre, Comentario}) {
+
+    const [openBloquear, setOpenBloquear] = React.useState(false);
+    const [openAceptar, setOpenAceptar] = React.useState(false);
+
+    const handleClickOpenBloquear = () => {
+        setOpenBloquear(true);
+    };
+
+    const handleCloseBloquear = () => {
+        setOpenBloquear(false);
+    };
+
+    const handleClickOpenAceptar = () => {
+        setOpenAceptar(true);
+    };
+
+    const handleCloseAceptar = () => {
+        setOpenAceptar(false);
+    };
+
+
     
     function stringToColor(string) {
         let hash = 0;
@@ -49,8 +76,54 @@ function ComentarioProfesor ({Nombre, Comentario}) {
                 </div>
             </div>
             <div className="lado-derecho-comentario">
-                <button type="button" className="btn btn-bloquear btn-sm btn-primary"><ion-icon name="close-circle-outline"></ion-icon>BLOQUEAR</button>
-                <button type="button" className="btn btn-sm btn-primary"><ion-icon name="checkmark-circle-outline"></ion-icon>ACEPTAR</button>
+                <button type="button" className="btn btn-bloquear btn-sm btn-primary" onClick={handleClickOpenBloquear}><ion-icon name="close-circle-outline"></ion-icon>BLOQUEAR</button>
+                <Dialog
+                    open={openBloquear}
+                    onClose={handleCloseBloquear}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                >
+                    <DialogTitle id="alert-dialog-title">
+                        {"Bloquear Comentario"}
+                    </DialogTitle>
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                            Usted está a punto de bloquear un comentario escrito por el usuario {Nombre}. ¿Está seguro que desea hacerlo?
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={handleCloseBloquear}>
+                            Confirmar
+                        </Button>
+                        <Button onClick={handleCloseBloquear} autoFocus>
+                            Cancelar
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+                <button type="button" className="btn btn-sm btn-primary" onClick={handleClickOpenAceptar}><ion-icon name="checkmark-circle-outline"></ion-icon>ACEPTAR</button>
+                <Dialog
+                    open={openAceptar}
+                    onClose={handleCloseAceptar}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                >
+                    <DialogTitle id="alert-dialog-title">
+                        {"Aceptar comentario"}
+                    </DialogTitle>
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                            Usted está a punto de aceptar un comentario escrito por el usuario {Nombre}. Dicho comentario será visible para todos los usuarios. ¿Está seguro que desea hacerlo?
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={handleCloseAceptar}>
+                            Confirmar
+                        </Button>
+                        <Button onClick={handleCloseAceptar} autoFocus>
+                            Cancelar
+                        </Button>
+                    </DialogActions>
+                </Dialog>
             </div>
         </div>
     )
