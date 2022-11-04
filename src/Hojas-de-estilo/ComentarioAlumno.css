@@ -1,5 +1,7 @@
 .contenedor-comentario{
     width: 80%;
+    min-height: 20%;
+    box-sizing: border-box;
     background-color: rgb(220, 220, 253);
     display: flex;
     flex-direction: column;
@@ -9,16 +11,21 @@
 }
 
 .nombre-comentador{
+    display: flex;
     padding-left: 20px;
-    padding-bottom: 0px;
-    margin-top: 10px;
-    border-bottom:grey solid thin;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #3649F9;
+    border-radius: 10px 10px 0px 0px;
 }
 
 .nombre-comentador h4{
     font-size: large;
 }
 
+.avatar-comentador{
+    margin-right: 10px;
+}
 .texto-comentario{
     margin-top: 10px;
     padding-left: 20px;
