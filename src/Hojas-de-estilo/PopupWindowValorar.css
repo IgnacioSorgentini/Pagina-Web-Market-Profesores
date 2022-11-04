@@ -16,18 +16,19 @@
 }
 
 .texto-valorar-clase{
-    margin-left: 15px;
-    font-family: 'Poppins';
-    margin-bottom: 30px;
-}
-
-.menu-desplegable-valorar-clase{
     display: flex;
+    min-width: 100%;
+    box-sizing: border-box;
     justify-content: center;
+    margin-top: 50px;
+    font-family: 'Poppins';
 }
 
-.menu-desplegable-valorar-clase .desplegable{
-    background: #3649F9
+.estrellas-valorar{
+    display: flex;
+    min-width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
 }
 
 
@@ -49,9 +50,5 @@
     line-height: 14px;
     color: #FFFFFF;
     border-style: none;
-    margin-top: 40px;
 }
 
-.estrellas li button{
-    color: yellowgreen;
-}

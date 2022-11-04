@@ -1,7 +1,11 @@
 import React from "react";
 import '../Hojas-de-estilo/PopupWindowValorar.css'
+import Rating from '@mui/material/Rating';
 
 function PopupWindowValorar(props) {
+
+    const [value, setValue] = React.useState(2);
+
     return (props.trigger) ? (
         <div className="popup">
             <div className="popup-inner valorar">
@@ -10,22 +14,17 @@ function PopupWindowValorar(props) {
                 </div>
                 <div className="titulo-ventana-valorar">Valorar clase</div>
                 <div className="texto-valorar-clase">
-                    <h5>Seleccione una valoración del siguiente menu desplegable</h5>
+                    <h5>Seleccione una valoración</h5>
                 </div>
-                <div className="menu-desplegable-valorar-clase">
-                    <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle desplegable" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Cantidad de estrellas
-                        </button>
-                        <ul class="dropdown-menu estrellas">
-                            <li><button class="dropdown-item" type="button"><ion-icon name="star"></ion-icon></button></li>
-                            <li><button class="dropdown-item" type="button"><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon></button></li>
-                            <li><button class="dropdown-item" type="button"><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon></button></li>
-                            <li><button class="dropdown-item" type="button"><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon></button></li>
-                            <li><button class="dropdown-item" type="button"><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon><ion-icon name="star"></ion-icon></button></li>
-                            
-                        </ul>
-                    </div>
+                <div className="estrellas-valorar">
+                <Rating
+                    name="simple-controlled"
+                    value={value}
+                    onChange={(event, newValue) => {
+                    setValue(newValue);
+                    }}
+                    size="large"
+                />
                 </div>
                 <div className="contenedor-btn-ventana-valorar">
                     <button onClick={() => props.setTrigger(false)}>VALORAR</button>

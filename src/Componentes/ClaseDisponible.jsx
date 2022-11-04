@@ -33,7 +33,7 @@ function ClaseDisponible({Nombre, Descripcion, Materia, Profesor, Dia, Horario, 
                         <button className="btn-contratar" onClick={() => setButtonPopupContratar(true)}>CONTRATAR</button>
                     </div>
                     <div className="caja-icono-comentarios">
-                    <div className="comentarios-clase-disp"><Link to="/comentariosAlumno"><ion-icon name="chatbox-outline"></ion-icon></Link></div>
+                    <div className="comentarios-clase-disp"><Link to="/comentariosAlumno" style={{color:"black"}}><ion-icon name="chatbox-outline"></ion-icon></Link></div>
                     </div>
             </div>
             <PopupWindow trigger={buttonPopup} setTrigger={setButtonPopup}>
