@@ -1,0 +1,13 @@
+.PantallaPrincipal{
+    min-width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    background-image: url('../Imagenes/imagenPantallaPrincipal.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.fondoGradiente{
+    background-image: linear-gradient(90deg, rgba(255, 255, 255, .6) 70%, transparent 95%);
+}

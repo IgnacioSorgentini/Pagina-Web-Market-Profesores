@@ -19,6 +19,7 @@ import MenuAlumno from './Componentes/Menu/MenuAlumno';
 import MenuProfesor from './Componentes/Menu/MenuProfesor';
 import Contrataciones from './Pantallas/Contrataciones';
 import ComentariosProfesor from './Pantallas/Comentarios-profesor';
+import PantallaPrincipal from './Pantallas/Pantalla-principal';
 
 
 function App() {
@@ -30,7 +31,7 @@ function App() {
       <Router>
         <div className="contenedor-rutas">
          <Routes>
-          <Route path="/" exact element={<InicioSesion/>}/>
+          <Route path="/" exact element={<PantallaPrincipal/>}/>
           <Route path="/comentariosAlumno" element={<ComentariosAlumno/>}/>
           <Route path="/misClasesAlumno" element={<MisClasesAlumno/>}/>
           <Route path="/contratarClase" element={<ContratarCLase/>}/>
