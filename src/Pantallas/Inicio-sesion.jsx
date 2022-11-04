@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from "react";
 import '../Hojas-de-estilo/Inicio-sesion.css';
 import {Link} from "react-router-dom";
-import ComentariosAlumno from "./Comentarios-alumno";
-import MisClasesAlumno from "./Mis-clases-alumno";
-import MisClasesProfesor from './Mis-clases-profesor';
-import ContratarClase from './Contratar-clase';
-import ComentariosProfesor from './Comentarios-profesor';
 
 function InicioSesion() {
 
@@ -15,8 +10,11 @@ function InicioSesion() {
     const [error,setError] = useState(1)
 
 
-    const userValido='pedroseveri@gmail.com'
+    const userValido='alumno@gmail.com'
     const pwValida= '123'
+
+    const profeValido='profesor@gmail.com'
+    const pwValida2= '123'
     
     const handleUserChange = (e) => {
     	setUser(e.target.value);
@@ -27,7 +25,7 @@ function InicioSesion() {
   	};
 
     function comprobarUsuario () {
-        if (userValido === user && pwValida === password ){
+        if ((userValido === user && pwValida === password) || (profeValido === user && pwValida2 === password) ){
             setValidar(0)
         }
         else{
@@ -58,7 +56,7 @@ function InicioSesion() {
             <text className="texto">Ingrese su contraseña:</text>
             <br/>
             <input className="input" type ="password" placeholder="Contraseña" onChange={handlePasswordChange} onKeyDown={comprobarUsuarioConEnter}/>
-            <a  className="vinculos" href="#"><Link to={"/Cambio-contraseña"} className="nav-link">¿Olvidaste tu contraseña? </Link></a> 
+            <a  className="vinculos" href="#"><Link to={"/Cambiocontraseña"} className="nav-link">¿Olvidaste tu contraseña? </Link></a> 
             <br/>
             {error == 0 && <div className="contenedorError"><text className="error">Los datos ingresados no son correctos</text></div>}
             <br/>
@@ -71,11 +69,15 @@ function InicioSesion() {
         )
     }
     else{
-        return(
-            <div>
-            <MisClasesProfesor/>
-            </div>
-        )
+        if (user === userValido){
+            window.location.replace('/misClasesAlumno')
+            
+        }
+        else{
+            window.location.replace('/MisClasesProfesor')
+        }
+            
+        
     }
     
 }
