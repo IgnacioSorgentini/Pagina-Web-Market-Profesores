@@ -3,6 +3,7 @@ import '../Hojas-de-estilo/Contratacion.css'
 import Chip from '@mui/material/Chip';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
+
 function Contratacion ({Clase, Alumno, Telefono, Mail, HorarioRef, Mensaje}) {
     return(
         <div className="contenedor-contratacion">
