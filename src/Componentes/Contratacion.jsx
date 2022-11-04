@@ -1,12 +1,15 @@
 import React from "react";
 import '../Hojas-de-estilo/Contratacion.css'
+import Chip from '@mui/material/Chip';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 function Contratacion ({Clase, Alumno, Telefono, Mail, HorarioRef, Mensaje}) {
     return(
         <div className="contenedor-contratacion">
             <div className="datos-contratacion">
                 <div className="clase-contratada">
-                    <h4>{Clase}</h4>
+                    <div className="nombre-clase-contratada"><h4>{Clase}</h4></div>
+                    <div className="estado-clase-contratada" style={{display:"flex", alignItems:"center"}}> <Chip color="warning" size="small" icon={<AccessTimeIcon />} label="Pendiente" /></div>
                 </div>
                 <div className="detalles-contratacion">
                     <div className="alumno-contratador">
@@ -23,15 +26,12 @@ function Contratacion ({Clase, Alumno, Telefono, Mail, HorarioRef, Mensaje}) {
                     </div>
                 </div>
                 <div className="mensaje-contratador">
-                    <h5>Mensaje</h5>
+                    <h5 style={{paddingLeft:"10px"}}>Mensaje</h5>
                     <hr/>
-                    <h6>{Mensaje}</h6>
+                    <h6 style={{paddingLeft:"10px"}}>{Mensaje}</h6>
                 </div>
             </div>
             <div className="acciones-contratacion">
-                <div className="estado-contratacion">
-                    <h6>Estado: Solicitada</h6>
-                </div>
                 <div className="boton-cambiar-estado-contratacion">
                     <button type="button" class="btn btn-outline-primary btn-sm">CAMBIAR ESTADO</button>
                 </div>

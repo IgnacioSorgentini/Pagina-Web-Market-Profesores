@@ -14,18 +14,24 @@
 }
 
 .acciones-contratacion{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    box-sizing: border-box;
     min-width: 20%;
-    max-height: 11em;
+    max-height: 8em;
     background-color: #FFFFFF;
     padding-top: 10px;
     border-radius: 10px;
 }
 
-.detalles-contratacion, .mensaje-contratador{
+.detalles-contratacion{
     margin-left: 10px;
 }
 
 .clase-contratada{
+    display: flex;
+    justify-content: space-between;
     background-color: #3649F9;
     border-radius: 10px 10px 0px 0px;
     padding: 10px;
@@ -52,8 +58,9 @@ h6 {
 }
 
 .boton-cambiar-estado-contratacion, .boton-eliminar-contratacion{
-    margin-top: 10px;
-    margin-left: 25%;
+    min-width: 100%;
+    box-sizing: border-box;
+    padding-left: 25%;
 }
 
 .btn{
