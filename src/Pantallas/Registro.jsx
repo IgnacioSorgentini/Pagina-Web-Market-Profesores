@@ -164,7 +164,12 @@ function Registro() {
                 <button className="botonRegistro" onClick={verificaciones} >
                     CONFIRMAR
                 </button>
-                <a  className="iniciar" href="#"><Link to={"/"} className="nav-link">¿Ya tenés cuenta? ¡Iniciá sesión! </Link></a>
+                <Link to="/" style={{textDecoration:"none"}}>
+                    <button className="botonRegistro" >
+                        CANCELAR
+                    </button>
+                </Link>
+                <a  className="iniciar" href="#"><Link to={"/inicioSesion"} className="nav-link">¿Ya tenés cuenta? ¡Iniciá sesión! </Link></a>
                 </div>
                 </div>
             

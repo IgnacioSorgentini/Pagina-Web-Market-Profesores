@@ -39,6 +39,7 @@ function App() {
           <Route path="/registro" element={<Registro/>}/>
           <Route path="/misClasesProfesor" element={<MisClasesProfesor/>}/>
           <Route path="/contratacionesProfesor" element={<Contrataciones />}/>
+          <Route path="/inicioSesion" element={<InicioSesion/>} />
          </Routes>
         </div>
       </Router>

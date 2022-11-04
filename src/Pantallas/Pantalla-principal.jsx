@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import '../Hojas-de-estilo/PantallaPrincipal.css';
 import Button from '@mui/material/Button';
 
@@ -12,10 +13,10 @@ function PantallaPrincipal() {
                     </div>
                     <div style={{minHeight:"80%", minWidth:"100%", boxSizing:"border-box", display:"flex", flexDirection:"column", justifyContent:"end", alignItems:"center"}}>
                         <div style={{minWidth:"60%", boxSizing:"border-box", display:"flex", justifyContent:"center"}}>
-                            <Button variant="outlined" size="large" style={{margin:"20px", color:"black", borderColor:"black"}} disableElevation>Iniciar sesion</Button>
+                            <Link to="/inicioSesion" style={{textDecoration:"none"}}><Button variant="outlined" size="large" style={{margin:"20px", color:"black", borderColor:"black"}} disableElevation>Iniciar sesion</Button></Link>
                         </div>
                         <div style={{minWidth:"60%", boxSizing:"border-box", display:"flex", justifyContent:"center"}}>
-                            <Button variant="outlined" size="large" style={{margin:"20px", color:"black", borderColor:"black"}}>Registrarse</Button>
+                            <Link to="/registro" style={{textDecoration:"none"}}><Button variant="outlined" size="large" style={{margin:"20px", color:"black", borderColor:"black"}}>Registrarse</Button></Link>
                         </div>
                     </div>
                 </div>

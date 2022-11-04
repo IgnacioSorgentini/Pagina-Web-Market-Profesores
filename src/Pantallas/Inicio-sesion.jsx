@@ -63,7 +63,12 @@ function InicioSesion() {
             <button className="boton" onClick={comprobarUsuario}>
                 INGRESAR
             </button>
-            <a  className="registro" href="#"><Link to={"/Registro"} className="nav-link">¿No tenés cuenta? ¡Registrate! </Link></a>
+            <Link to="/" style={{textDecoration:"none"}}>
+                <button className="boton">
+                    CANCELAR
+                </button>
+            </Link>
+            <a  className="registro" href="#"><Link to={"/registro"} className="nav-link">¿No tenés cuenta? ¡Registrate! </Link></a>
             </div>
             </div>
         )
