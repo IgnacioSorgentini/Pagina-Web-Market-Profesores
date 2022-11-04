@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import PopupEditarClase from '../Componentes/PopupWindowEditar';
 import '../Hojas-de-estilo/ClaseGeneral.css';
 import '../Hojas-de-estilo/ClaseCreada.css';
@@ -39,7 +40,7 @@ function ClaseCreada({Nombre, Descripcion, Materia, Duracion, Tipo, Frecuencia, 
                     <button onClick={() => setButtonPopupDespublicar(true)}><ion-icon name="arrow-down-circle-outline"></ion-icon></button>
                 </div>
                 <div className="comentarios-clase-creada">
-                    <button><ion-icon name="chatbubble-outline"></ion-icon></button>
+                    <Link to="/comentariosProfesor"><button><ion-icon name="chatbubble-outline"></ion-icon></button></Link>
                 </div>
             </div>
             <PopupWindowPublicar trigger={buttonPopupPublicar} setTrigger={setButtonPopupPublicar}>
