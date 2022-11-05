@@ -5,6 +5,7 @@ import PopupWindow from '../Componentes/PopupWindow';
 import PopupContratar from "./PopupWindowContratar";
 import '../Hojas-de-estilo/ClaseGeneral.css';
 import '../Hojas-de-estilo/ClaseDisponible.css';
+import Rating from '@mui/material/Rating';
 
 function ClaseDisponible({Nombre, Descripcion, Materia, Profesor, Dia, Horario, Tipo, Frecuencia, Calificacion, Costo}) {
 
@@ -26,7 +27,7 @@ function ClaseDisponible({Nombre, Descripcion, Materia, Profesor, Dia, Horario, 
                 <div className="horario-clase-disp"><ion-icon name="time-outline"></ion-icon><h6>{Horario}</h6></div>
                 <div className="tipo-clase"><ion-icon name="people-outline"></ion-icon><h6>{Tipo}</h6></div>
                 <div className="frecuencia-clase"><ion-icon name="barbell-outline"></ion-icon><h6>{Frecuencia}</h6></div>
-                <div className="calificacion-clase"><ion-icon name="star-outline"></ion-icon><h6>{Calificacion}</h6></div>
+                <div className="calificacion-clase"><Rating name="read-only" value={Calificacion} readOnly size="small" style={{color:"black"}} /></div>
             </div>
             <div className="footer-clase-disp">
                     <div className="caja-btn-contratar">
