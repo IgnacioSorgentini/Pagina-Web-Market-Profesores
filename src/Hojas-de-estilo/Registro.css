@@ -7,7 +7,7 @@
     left: 50%;
     top: 50%;
     background:  rgba(255, 255, 255, 0.9);
-    border-top: 20px solid #3649F9;
+    border-top: 20px solid #3D56B2;
     transform: translate(-50%, -50%);
     border-radius: 14px;
     overflow: auto;
@@ -22,7 +22,7 @@
     font-weight: bold;
     font-size: 32px;
     line-height: 30px;
-    color:#3649F9
+    color:#3D56B2;
 }
 
 .drop{
@@ -33,7 +33,7 @@
 
 .toggle{
     background-color: white;
-    border-color: #3649F9;
+    border-color: #3D56B2;
     width: 80%;
     color:black;
     text-align: left;
@@ -72,7 +72,7 @@
     position: relative;
     left: 33%;
     top: 25%;
-    color:#3649F9;
+    color:#3D56B2;
     transform: translate(-50%, -50%);
 }
 

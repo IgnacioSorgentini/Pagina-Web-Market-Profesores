@@ -44,7 +44,7 @@ function ContratarCLase () {
             <div className="contenedor-mis-clases">
             <div className="cabecera-pantalla">
                 <div className="titulo-pantalla">
-                    <h3>Clases disponibles</h3>
+                    <h3 style={{color:"#334756"}}>Clases disponibles</h3>
                 </div>
                 <div className="filtro-clases">
                     <FormControl sx={{ m: 1, minWidth: 120 }} size="small" style={{backgroundColor:"#5B4FA6", borderRadius:"5px"}}>

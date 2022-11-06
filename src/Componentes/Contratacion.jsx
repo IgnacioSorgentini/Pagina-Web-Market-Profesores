@@ -131,7 +131,7 @@ function Contratacion ({Clase, Alumno, Telefono, Mail, HorarioRef, Mensaje}) {
         <div className="contenedor-contratacion">
             <div className="datos-contratacion">
                 <div className="clase-contratada">
-                    <div className="nombre-clase-contratada"><h4>{Clase}</h4></div>
+                    <div className="nombre-clase-contratada"><h4 style={{color:"#E6E6E6"}}>{Clase}</h4></div>
                     <div className="estado-clase-contratada" style={{display:"flex", alignItems:"center"}}> <Chip color="warning" size="small" icon={<AccessTimeIcon />} label="Pendiente" /></div>
                 </div>
                 <div className="detalles-contratacion">
@@ -157,7 +157,7 @@ function Contratacion ({Clase, Alumno, Telefono, Mail, HorarioRef, Mensaje}) {
             <div className="acciones-contratacion">
                 <div className="boton-cambiar-estado-contratacion">
                     <button type="button" class="btn btn-outline-primary btn-sm" onClick={handleClickListItem}>CAMBIAR ESTADO</button>
-                    <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+                    <Box sx={{ width: '100%', maxWidth: 360, bgcolor: '#14279B' }}>
                         <List component="div" role="group">
                             <ConfirmationDialogRaw
                                 id="estadosClase-menu"

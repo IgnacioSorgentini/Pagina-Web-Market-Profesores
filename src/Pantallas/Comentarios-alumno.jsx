@@ -9,7 +9,7 @@ function ComentariosAlumno () {
             <MenuAlumno />
             <div className="contenedor-comentarios">
             <div className="titulo-pantalla">
-                <h3>Comentarios</h3>
+                <h3 style={{color:"#334756"}}>Comentarios</h3>
             </div>
             <div className="lista-comentarios">
                 <ComentarioAlumno Nombre='Ignacio Sorgentini' Comentario= 'f you are still targeting browsers like IE11 and lower .. well, my heart goes out to you. The below solution I came up with 5 years ago will still work for you. Also, email me if you want a job that doesn' />

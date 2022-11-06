@@ -20,7 +20,7 @@
     box-sizing: border-box;
     min-width: 20%;
     max-height: 8em;
-    background-color: #FFFFFF;
+    background-color: #14279B;
     padding-top: 10px;
     border-radius: 10px;
 }
@@ -32,7 +32,7 @@
 .clase-contratada{
     display: flex;
     justify-content: space-between;
-    background-color: #3649F9;
+    background-color: #3D56B2;
     border-radius: 10px 10px 0px 0px;
     padding: 10px;
     color: white;

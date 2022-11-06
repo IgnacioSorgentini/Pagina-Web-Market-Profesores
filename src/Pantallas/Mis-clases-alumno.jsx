@@ -9,7 +9,7 @@ function MisClasesAlumno () {
             <MenuAlumno />
             <div className="contenedor-mis-clases">
             <div className="titulo-pantalla">
-                <h3>Mis clases</h3>
+                <h3 style={{color:"#334756"}}>Mis clases</h3>
             </div>
             <div className="lista-clases">
                 <ClaseContratada Nombre='Logaritmos' Descripcion='Introduccion a los logaritmos' Materia="Matematica" Profesor='Jose Lopez' Horario='1 hora' Tipo="Grupal" Frecuencia="Semanal" Calificacion="4"/>

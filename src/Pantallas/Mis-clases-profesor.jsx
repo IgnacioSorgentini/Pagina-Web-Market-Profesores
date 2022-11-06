@@ -103,10 +103,10 @@ function MisClasesProfesor () {
         <div className="contenedor-mis-clases">
             <div className="cabecera-pantalla-profesor">
                 <div className="titulo-pantalla">
-                    <h3>Mis clases</h3>
+                    <h3 style={{color:"#334756"}}>Mis clases</h3>
                 </div>
                 <div className="boton-crear-clase">
-                    <button type="button" className="btn btn-primary" onClick={handleClickOpenCrear}>CREAR CLASE</button>
+                    <button type="button" className="btn btn-primary" onClick={handleClickOpenCrear} style={{color:"#E6E6E6"}}>CREAR CLASE</button>
                     <Dialog
                         fullScreen
                         open={openCrear}

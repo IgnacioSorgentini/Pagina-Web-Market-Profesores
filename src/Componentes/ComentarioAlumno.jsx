@@ -42,7 +42,7 @@ function Comentario({Nombre, Comentario}) {
                 <Avatar {...stringAvatar(`${Nombre}`)} sx={{ width: 34, height: 34 }} />
                 </div>
                 <div style={{display:"flex", alignItems:"center", paddingTop:"5px"}}>
-                    <h4 style={{color:"white"}}>{Nombre}</h4>
+                    <h4 style={{color:"#E6E6E6"}}>{Nombre}</h4>
                 </div>
             </div>
             <div className="texto-comentario">

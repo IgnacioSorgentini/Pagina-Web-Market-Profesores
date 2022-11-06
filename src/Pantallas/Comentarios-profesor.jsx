@@ -9,7 +9,7 @@ function ComentariosProfesor () {
         <MenuProfesor />
         <div className="contenedor-comentarios">
             <div className="titulo-pantalla">
-                <h3>Comentarios</h3>
+                <h3 style={{color:"#334756"}}>Comentarios</h3>
             </div>
             <div className="lista-comentarios">
                 <ComentarioProfesor Nombre="Gustavo Gomez" Comentario="Excelente clase! Me gustó la manera de explicar del profesor, y su paciencia. Muy recomendado!"/>

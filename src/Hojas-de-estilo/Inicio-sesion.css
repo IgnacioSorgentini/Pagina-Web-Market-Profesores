@@ -7,7 +7,7 @@
     left: 50%;
     top: 50%;
     background:  rgba(255, 255, 255, 0.9);
-    border-top: 20px solid #3649F9;
+    border-top: 20px solid #3D56B2;
     transform: translate(-50%, -50%);
     border-radius: 14px;
 }
@@ -31,7 +31,7 @@
     font-weight: bold;
     font-size: 32px;
     line-height: 30px;
-    color:#3649F9
+    color:#3D56B2;
 }
 
 .texto{
@@ -40,7 +40,7 @@
     left:8%;
     font-family: 'Poppins';
     font-style: normal;
-    color: #3649F9;
+    color: #3D56B2;
 }
 
 .input{
@@ -81,7 +81,7 @@
 .vinculos{
     position: relative;
     top: 8%;
-    color:#3649F9;
+    color:#3D56B2;
     left: 58%
 }
 
@@ -89,7 +89,7 @@
     position: relative;
     left: 33%;
     top: 20%;
-    color:#3649F9;
+    color:#3D56B2;
     transform: translate(-50%, -50%);
 }
 
