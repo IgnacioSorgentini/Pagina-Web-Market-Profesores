@@ -40,6 +40,15 @@ function ClaseContratada({Nombre, Descripcion, Materia, Profesor, Horario, Tipo,
     };
 
 
+    const [openEstado, setOpenEstado] = React.useState(false);
+    const handleClickOpenEstado = () => {
+        setOpenEstado(true);
+    };
+    const handleCloseEstado = () => {
+        setOpenEstado(false);
+    };
+
+
 
     const [openDescripcion, setOpenDescripcion] = React.useState(false);
     const [scroll, setScroll] = React.useState('paper');
