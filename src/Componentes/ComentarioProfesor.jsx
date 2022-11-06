@@ -7,11 +7,13 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
 function ComentarioProfesor ({Nombre, Comentario}) {
 
     const [openBloquear, setOpenBloquear] = React.useState(false);
     const [openAceptar, setOpenAceptar] = React.useState(false);
+    const [openDescargo, setOpenDescargo] = React.useState(false);
 
     const handleClickOpenBloquear = () => {
         setOpenBloquear(true);
@@ -27,6 +29,15 @@ function ComentarioProfesor ({Nombre, Comentario}) {
 
     const handleCloseAceptar = () => {
         setOpenAceptar(false);
+    };
+
+    const handleClickOpenDescargo = () => {
+        setOpenDescargo(true);
+        setOpenBloquear(false);
+    };
+
+    const handleCloseDescargo = () => {
+        setOpenDescargo(false);
     };
 
 
@@ -92,10 +103,42 @@ function ComentarioProfesor ({Nombre, Comentario}) {
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={handleCloseBloquear}>
+                        <Button onClick={handleClickOpenDescargo}>
                             Confirmar
                         </Button>
                         <Button onClick={handleCloseBloquear} autoFocus>
+                            Cancelar
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+                <Dialog
+                    open={openDescargo}
+                    onClose={handleCloseDescargo}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                >
+                    <DialogTitle id="alert-dialog-title">
+                        {"Descargo"}
+                    </DialogTitle>
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                            Antes de bloquear el comentario, escriba debajo el descargo explicando la razon del bloqueo.
+                        </DialogContentText>
+                        <TextField
+                        autoFocus
+                        margin="dense"
+                        id="descargo"
+                        label="Descargo"
+                        type="email"
+                        fullWidth
+                        variant="standard"
+                    />
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={handleCloseDescargo}>
+                            Bloquear comentario
+                        </Button>
+                        <Button onClick={handleCloseDescargo} autoFocus>
                             Cancelar
                         </Button>
                     </DialogActions>
