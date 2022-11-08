@@ -13,19 +13,28 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Tooltip from '@mui/material/Tooltip';
+import TextField from '@mui/material/TextField';
 
 function ClaseCreada({Nombre, Descripcion, Materia, Duracion, Tipo, Frecuencia, Precio}) {
     
     
-    const [open, setOpen] = React.useState(false);
-
-    const handleClickOpen = () => {
-        setOpen(true);
+    const [openEliminar, setOpenEliminar] = React.useState(false);
+    const handleClickOpenEliminar = () => {
+        setOpenEliminar(true);
+    };
+    const handleCloseEliminar = () => {
+        setOpenEliminar(false);
     };
 
-    const handleClose = () => {
-        setOpen(false);
+
+    const [openEditar, setOpenEditar] = React.useState(false);
+    const handleClickOpenEditar = () => {
+        setOpenEditar(true);
     };
+    const handleCloseEditar = () => {
+        setOpenEditar(false);
+    };
+
 
     
     const [buttonPopupEditar, setButtonPopupEditar] = useState(false);
@@ -53,10 +62,10 @@ function ClaseCreada({Nombre, Descripcion, Materia, Duracion, Tipo, Frecuencia, 
             </div>
             <div className="pie-de-clase">
                 <div className="botones-clase-creada">
-                    <Tooltip title="Eliminar"><button><ion-icon name="trash-outline" onClick={handleClickOpen}></ion-icon></button></Tooltip>
+                    <Tooltip title="Eliminar"><button><ion-icon name="trash-outline" onClick={handleClickOpenEliminar}></ion-icon></button></Tooltip>
                     <Dialog
-                        open={open}
-                        onClose={handleClose}
+                        open={openEliminar}
+                        onClose={handleCloseEliminar}
                         aria-labelledby="alert-dialog-title"
                         aria-describedby="alert-dialog-description"
                     >
@@ -69,15 +78,27 @@ function ClaseCreada({Nombre, Descripcion, Materia, Duracion, Tipo, Frecuencia, 
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions>
-                            <Button onClick={handleClose}>
+                            <Button onClick={handleCloseEliminar}>
                                 Confirmar
                             </Button>
-                            <Button onClick={handleClose} autoFocus>
+                            <Button onClick={handleCloseEliminar} autoFocus>
                                 Cancelar
                             </Button>
                         </DialogActions>
                     </Dialog>
-                    <Tooltip title="Editar"><button onClick={() => setButtonPopupEditar(true)}><ion-icon name="build-outline"></ion-icon></button></Tooltip>
+                    <Tooltip title="Editar"><button onClick={handleClickOpenEditar}><ion-icon name="build-outline"></ion-icon></button></Tooltip>
+                        <Dialog open={openEditar} onClose={handleCloseEditar} maxWidth={"lg"} fullWidth>
+                            <DialogTitle>Editar clase</DialogTitle>
+                            <DialogContent>
+                                <DialogContentText>
+                                    Cambie aquí debajo las caracteristicas de la clase {Nombre} que desee.
+                                </DialogContentText>
+                            </DialogContent>
+                            <DialogActions>
+                                <Button onClick={handleCloseEditar}>Guardar cambios</Button>
+                                <Button onClick={handleCloseEditar}>Cancelar cambios</Button>
+                            </DialogActions>
+                        </Dialog>
                     <button onClick={() => setButtonPopupPublicar(true)}><ion-icon name="arrow-up-circle-outline"></ion-icon></button>
                     <button onClick={() => setButtonPopupDespublicar(true)}><ion-icon name="arrow-down-circle-outline"></ion-icon></button>
                 </div>
