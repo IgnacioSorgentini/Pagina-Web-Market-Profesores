@@ -26,37 +26,12 @@ import FormControl from '@mui/material/FormControl';
 import { useTheme } from '@mui/material/styles';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import FormHelperText from '@mui/material/FormHelperText';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-    PaperProps: {
-      style: {
-        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-        width: 250,
-      },
-    },
-};
-const materias = [
-    'Matematica',
-    'Geografia',
-    'Quimica',
-    'Politica',
-  ];
-  function getStyles(name, materiaName, theme) {
-    return {
-      fontWeight:
-        materiaName.indexOf(name) === -1
-          ? theme.typography.fontWeightRegular
-          : theme.typography.fontWeightMedium,
-    };
-  }
-  
 
 function MisClasesProfesor () {
     const [buttonPopup, setButtonPopup] = useState(false);
@@ -79,20 +54,31 @@ function MisClasesProfesor () {
     const handleChangePrecio = (prop) => (event) => {
     setValuesPrecio({ ...valuesPrecio, [prop]: event.target.value });
     };
-    
+
+    const [valuesHora, setValuesHora] = React.useState({
+        hora: '',
+      });
+    const handleChangeHora = (prop) => (event) => {
+    setValuesHora({ ...valuesHora, [prop]: event.target.value });
+    };
     
 
-    const theme = useTheme();
-    const [materiaName, setMateriaName] = React.useState([]);
 
+    const [materia, setMateria] = React.useState('');
     const handleChangeMateria = (event) => {
-        const {
-        target: { value },
-        } = event;
-        setMateriaName(
-        // On autofill we get a stringified value.
-        typeof value === 'string' ? value.split(',') : value,
-        );
+        setMateria(event.target.value);
+    };
+
+
+    const [frecuencia, setFrecuencia] = React.useState('');
+    const handleChangeFrecuencia = (event) => {
+        setFrecuencia(event.target.value);
+    };
+
+    
+    const [clase, setClase] = React.useState('');
+    const handleChangeClase = (event) => {
+        setClase(event.target.value);
     };
 
 
@@ -135,11 +121,9 @@ function MisClasesProfesor () {
                             <ListItem>
                             <TextField id="filled-basic" label="Titulo de la clase" variant="filled" fullWidth/>
                             </ListItem>
-                            <Divider />
                             <ListItem>
                                 <TextField id="filled-basic" label="Descripcion de la clase" variant="filled" fullWidth/>
                             </ListItem>
-                            <Divider />
                             <ListItem>
                                 <FormControl fullWidth sx={{ m: 1 }} variant="filled">
                                     <InputLabel htmlFor="filled-adornment-amount">Amount</InputLabel>
@@ -152,28 +136,66 @@ function MisClasesProfesor () {
                                 </FormControl>
                             </ListItem>
                             <ListItem>
-                            <FormControl sx={{ m: 1, width: 300 }}>
-                                <InputLabel id="demo-multiple-name-label">Materia</InputLabel>
-                                <Select
-                                    labelId="demo-multiple-name-label"
-                                    id="demo-multiple-name"
-                                    multiple
-                                    value={materiaName}
-                                    onChange={handleChangeMateria}
-                                    input={<OutlinedInput label="Name" />}
-                                    MenuProps={MenuProps}
+                                <FormControl fullWidth>
+                                    <InputLabel id="demo-simple-select-label">Materia</InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={materia}
+                                        label="Materia"
+                                        onChange={handleChangeMateria}
                                     >
-                                        {materias.map((name) => (
-                                            <MenuItem
-                                                key={name}
-                                                value={name}
-                                                style={getStyles(name, materiaName, theme)}
-                                            >
-                                                {name}
-                                            </MenuItem>
-                                        ))}
-                                </Select>
-                            </FormControl>
+                                        <MenuItem value={10}>Matematica</MenuItem>
+                                        <MenuItem value={20}>Biologia</MenuItem>
+                                        <MenuItem value={30}>Geografia</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </ListItem>
+                            <ListItem>
+                                <FormControl fullWidth>
+                                    <InputLabel id="demo-simple-select-label">Frecuencia</InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={frecuencia}
+                                        label="Frecuencia"
+                                        onChange={handleChangeFrecuencia}
+                                    >
+                                        <MenuItem value={10}>Una vez</MenuItem>
+                                        <MenuItem value={20}>Semanal</MenuItem>
+                                        <MenuItem value={30}>Menual</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </ListItem>
+                            <ListItem>
+                                <FormControl fullWidth>
+                                    <InputLabel id="demo-simple-select-label">Tipo de clase</InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={clase}
+                                        label="Tipo de clase"
+                                        onChange={handleChangeClase}
+                                    >
+                                        <MenuItem value={10}>Individual</MenuItem>
+                                        <MenuItem value={20}>Grupal</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </ListItem>
+                            <ListItem>
+                                <FormControl fullWidth sx={{ m: 1}} variant="outlined">
+                                    <OutlinedInput
+                                        id="outlined-adornment-weight"
+                                        value={valuesHora.weight}
+                                        onChange={handleChangeHora('hora')}
+                                        endAdornment={<InputAdornment position="end">Hora/s</InputAdornment>}
+                                        aria-describedby="outlined-weight-helper-text"
+                                        inputProps={{
+                                            'aria-label': 'weight',
+                                        }}
+                                    />
+                                        <FormHelperText id="outlined-weight-helper-text">Tiempo</FormHelperText>
+                                    </FormControl>
                             </ListItem>
                         </List>
                     </Dialog>
