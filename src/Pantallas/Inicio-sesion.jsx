@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from "react";
 import '../Hojas-de-estilo/Inicio-sesion.css';
 import {Link} from "react-router-dom";
+import MisClasesAlumno from "./Mis-clases-alumno";
+import MisClasesProfesor from "./Mis-clases-profesor";
 
 function InicioSesion() {
 
     const [validar, setValidar] = useState(-1);
     const [user, setUser] = useState('');   
     const [password,setPassword] = useState('')
-    const [error,setError] = useState(1)
+    const [error,setError] = useState(0)
+    const [rol,setRol] = useState('')
+    const [id, setId] = useState(''); 
 
-
-    const userValido='alumno@gmail.com'
-    const pwValida= '123'
-
-    const profeValido='profesor@gmail.com'
-    const pwValida2= '123'
     
     const handleUserChange = (e) => {
     	setUser(e.target.value);
@@ -25,12 +23,33 @@ function InicioSesion() {
   	};
 
     function comprobarUsuario () {
-        if ((userValido === user && pwValida === password) || (profeValido === user && pwValida2 === password) ){
-            setValidar(0)
-        }
-        else{
-            setError(0)
-        }
+        const data = { mail: user,
+                       password: password};
+
+        fetch('http://localhost:3001/users/login', {
+        method: 'POST', 
+        headers: {
+        'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+        })
+
+        .then((response) => response.json())
+        .then((data) => {
+            
+            if (data.id == "-1"){
+                setError(-1)
+            }
+            else{
+                setId(data.id)
+                setRol(data.rol)
+                setValidar(0)
+            }
+           
+            
+         })
+         ;
+
     }
 
     const comprobarUsuarioConEnter = (e) => {
@@ -58,7 +77,7 @@ function InicioSesion() {
             <input className="input" type ="password" placeholder="Contraseña" onChange={handlePasswordChange} onKeyDown={comprobarUsuarioConEnter}/>
             <a  className="vinculos" href="#"><Link to={"/Cambiocontraseña"} className="nav-link">¿Olvidaste tu contraseña? </Link></a> 
             <br/>
-            {error == 0 && <div className="contenedorError"><text className="error">Los datos ingresados no son correctos</text></div>}
+            {error == -1 && <div className="contenedorError"><text className="error">Los datos ingresados no son correctos</text></div>}
             <br/>
             <button className="boton" onClick={comprobarUsuario}>
                 INGRESAR
@@ -74,14 +93,16 @@ function InicioSesion() {
         )
     }
     else{
-        if (user === userValido){
-            window.location.replace('/misClasesAlumno')
+            if (rol == 'alumno'){
+               return  <MisClasesAlumno id={id}/>
             
+                
         }
-        else{
-            window.location.replace('/MisClasesProfesor')
-        }
-            
+        
+            if (rol == 'profesor'){
+                return  <MisClasesProfesor id={id}/>
+            }
+          
         
     }
     

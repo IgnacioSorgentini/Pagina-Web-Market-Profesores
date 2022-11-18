@@ -33,7 +33,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 
-function MisClasesProfesor () {
+function MisClasesProfesor ({id}) {
+    console.log(id)
     const [buttonPopup, setButtonPopup] = useState(false);
 
     
