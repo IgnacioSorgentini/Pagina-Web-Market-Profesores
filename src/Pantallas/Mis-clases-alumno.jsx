@@ -3,7 +3,8 @@ import '../Hojas-de-estilo/Mis-clases.css';
 import ClaseContratada from "../Componentes/ClaseContratada";
 import MenuAlumno from '../Componentes/Menu/MenuAlumno';
 
-function MisClasesAlumno () {
+function MisClasesAlumno ({id}) {
+    console.log(id)
     return(
         <div className="misClasesAlumno">
             <MenuAlumno />
