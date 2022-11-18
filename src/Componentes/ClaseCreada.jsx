@@ -14,6 +14,20 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Tooltip from '@mui/material/Tooltip';
 import TextField from '@mui/material/TextField';
+import FormLabel from '@mui/material/FormLabel';
+import FormControl from '@mui/material/FormControl';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormHelperText from '@mui/material/FormHelperText';
+import Switch from '@mui/material/Switch';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import InputLabel from '@mui/material/InputLabel';
+import InputAdornment from '@mui/material/InputAdornment';
+import FilledInput from '@mui/material/FilledInput';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import { OutlinedInput } from "@mui/material";
 
 function ClaseCreada({Nombre, Descripcion, Materia, Duracion, Tipo, Frecuencia, Precio}) {
     
@@ -40,6 +54,52 @@ function ClaseCreada({Nombre, Descripcion, Materia, Duracion, Tipo, Frecuencia, 
     const [buttonPopupEditar, setButtonPopupEditar] = useState(false);
     const [buttonPopupPublicar, setButtonPopupPublicar] = useState(false);
     const [buttonPopupDespublicar, setButtonPopupDespublicar] = useState(false);
+
+
+    const [stateCambiar, setStateCambiar] = React.useState(false)
+    const handleChangeCambiar = (event) => {
+        setStateCambiar({
+          ...stateCambiar,
+          [event.target.name]: event.target.checked,
+        });
+    };
+
+
+
+
+
+    const [valuesPrecio, setValuesPrecio] = React.useState({
+        amount: `${Precio}`,
+      });
+    const handleChangePrecio = (prop) => (event) => {
+    setValuesPrecio({ ...valuesPrecio, [prop]: event.target.value });
+    };
+    const [valuesHora, setValuesHora] = React.useState({
+        hora: '',
+      });
+    const handleChangeHora = (prop) => (event) => {
+    setValuesHora({ ...valuesHora, [prop]: event.target.value });
+    };
+    const [materia, setMateria] = React.useState('');
+    const handleChangeMateria = (event) => {
+        setMateria(event.target.value);
+    };
+    const [frecuencia, setFrecuencia] = React.useState('');
+    const handleChangeFrecuencia = (event) => {
+        setFrecuencia(event.target.value);
+    };
+
+    const [clase, setClase] = React.useState('');
+    const handleChangeClase = (event) => {
+        setClase(event.target.value);
+    };
+
+
+
+
+
+
+
 
     return(
         <div className="contenedor-clase">
@@ -93,6 +153,87 @@ function ClaseCreada({Nombre, Descripcion, Materia, Duracion, Tipo, Frecuencia, 
                                 <DialogContentText>
                                     Cambie aquí debajo las caracteristicas de la clase {Nombre} que desee.
                                 </DialogContentText>
+                                <List>
+                            <ListItem>
+                            <TextField id="filled-basic" label="Titulo de la clase" variant="filled" fullWidth defaultValue={Nombre}/>
+                            </ListItem>
+                            <ListItem>
+                                <TextField id="filled-basic" label="Descripcion de la clase" variant="filled" fullWidth defaultValue={Descripcion}/>
+                            </ListItem>
+                            <ListItem>
+                                <FormControl fullWidth sx={{ m: 1 }} variant="filled">
+                                    <InputLabel htmlFor="filled-adornment-amount">Amount</InputLabel>
+                                        <FilledInput
+                                            id="filled-adornment-amount"
+                                            value={valuesPrecio.amount}
+                                            onChange={handleChangePrecio('amount')}
+                                            startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                                        />
+                                </FormControl>
+                            </ListItem>
+                            <ListItem>
+                                <FormControl fullWidth>
+                                    <InputLabel id="demo-simple-select-label">Materia</InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={materia}
+                                        label="Materia"
+                                        onChange={handleChangeMateria}
+                                    >
+                                        <MenuItem value={10}>Matematica</MenuItem>
+                                        <MenuItem value={20}>Biologia</MenuItem>
+                                        <MenuItem value={30}>Geografia</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </ListItem>
+                            <ListItem>
+                                <FormControl fullWidth>
+                                    <InputLabel id="demo-simple-select-label">Frecuencia</InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={frecuencia}
+                                        label="Frecuencia"
+                                        onChange={handleChangeFrecuencia}
+                                    >
+                                        <MenuItem value={10}>Una vez</MenuItem>
+                                        <MenuItem value={20}>Semanal</MenuItem>
+                                        <MenuItem value={30}>Mensual</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </ListItem>
+                            <ListItem>
+                                <FormControl fullWidth>
+                                    <InputLabel id="demo-simple-select-label">Tipo de clase</InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={clase}
+                                        label="Tipo de clase"
+                                        onChange={handleChangeClase}
+                                    >
+                                        <MenuItem value={10}>Individual</MenuItem>
+                                        <MenuItem value={20}>Grupal</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </ListItem>
+                            <ListItem>
+                                <FormControl fullWidth sx={{ m: 1}} variant="outlined">
+                                    <OutlinedInput
+                                        id="outlined-adornment-weight"
+                                        value={valuesHora.weight}
+                                        onChange={handleChangeHora('hora')}
+                                        endAdornment={<InputAdornment position="end">Hora/s</InputAdornment>}
+                                        aria-describedby="outlined-weight-helper-text"
+                                        inputProps={{
+                                            'aria-label': 'weight',
+                                        }}
+                                    />
+                                        <FormHelperText id="outlined-weight-helper-text">Tiempo</FormHelperText>
+                                    </FormControl>
+                            </ListItem>
+                        </List>
                             </DialogContent>
                             <DialogActions>
                                 <Button onClick={handleCloseEditar}>Guardar cambios</Button>
@@ -101,6 +242,12 @@ function ClaseCreada({Nombre, Descripcion, Materia, Duracion, Tipo, Frecuencia, 
                         </Dialog>
                     <button onClick={() => setButtonPopupPublicar(true)}><ion-icon name="arrow-up-circle-outline"></ion-icon></button>
                     <button onClick={() => setButtonPopupDespublicar(true)}><ion-icon name="arrow-down-circle-outline"></ion-icon></button>
+                    <FormControlLabel style={{marginLeft:"3px", paddingBottom:"6px"}}
+                        control={
+                            <Switch checked={stateCambiar.publicar} onChange={handleChangeCambiar} name="gilad" size="small" color="default" />
+                        }
+                        label="Publicar"
+                    />
                 </div>
                 <div className="comentarios-clase-creada">
                     <Tooltip title="Comentarios"><Link to="/comentariosProfesor"><button><ion-icon name="chatbubble-outline"></ion-icon></button></Link></Tooltip>

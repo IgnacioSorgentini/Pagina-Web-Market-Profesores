@@ -32,7 +32,7 @@ function MenuAlumno(){
     return(
         <div className="menu">
             <div className="titulo-menu">
-                <h1 style={{color:"#E6E6E6"}}>Cursos Online</h1>
+                <Link to="/misClasesAlumno" style={{textDecoration:"none"}}><h1 style={{color:"#E6E6E6"}}>Cursos Online</h1></Link>
             </div>
             <div className="botones-menu">
                 <Link to="/contratarClase" style={{textDecoration:"none"}}>

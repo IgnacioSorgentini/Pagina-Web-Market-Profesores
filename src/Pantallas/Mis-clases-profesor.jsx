@@ -163,7 +163,7 @@ function MisClasesProfesor () {
                                     >
                                         <MenuItem value={10}>Una vez</MenuItem>
                                         <MenuItem value={20}>Semanal</MenuItem>
-                                        <MenuItem value={30}>Menual</MenuItem>
+                                        <MenuItem value={30}>Mensual</MenuItem>
                                     </Select>
                                 </FormControl>
                             </ListItem>
