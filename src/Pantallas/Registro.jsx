@@ -6,23 +6,19 @@ import {Link} from "react-router-dom";
 
 function Registro() {
 
-    const [validar, setValidar] = useState(-1);
-    const [reingresopass, setReingresoPass] = useState('');   
+    const [validar, setValidar] = useState(-1); 
     const [mail,setMail] = useState('')
+    const [telefono,setTelefono] = useState('')
+    const [nombre,setNombre] = useState('')
     const [password,setPassword] = useState(' ')
     const [error,setError] = useState(1)
-    const[rol,setRol] = useState(-1)  //1 para alumno y 0 para profesor
-    const [pregunta, setPregunta] = useState('');   
+    const[rol,setRol] = useState(-1)  //1 para alumno y 0 para profesor 
     const [respuestaPregunta,setRespuestaPregunta] = useState('')
-
-
     const [texto,setTexto] = useState('Perfil')
     const [texto2,setTexto2] = useState('Pregunta')
-    const usuarios =['pedroseveri@gmail.com','ignacio@gmail.com','mirko@gmail.com']
+    const [texto3,setTexto3] = useState('Estudios')
+
     
-    const handleReingresoChange = (e) => {
-    	setReingresoPass(e.target.value);
-  	};
   
 	const handlePasswordChange = (e) => {
     	setPassword(e.target.value);
@@ -32,14 +28,37 @@ function Registro() {
     	setMail(e.target.value);
   	};
 
-    const handlePreguntaChange = (e) =>{
-        setPregunta(e)
-    }
-    
+      const handleTelefonoChange = (e) => {
+    	setTelefono(e.target.value);
+  	};
+
+      const handleNombreChange = (e) => {
+    	setNombre(e.target.value);
+  	};
+
     const handleRespuestaPreguntaChange = (e) =>{
         setRespuestaPregunta(e.target.value)
     }
 
+    function setEstudio() {
+        setTexto3('Primario')
+
+    }
+    function setEstudio2() {
+        setTexto3('Secundario')
+
+    }
+    function setEstudio3() {
+        setTexto3('Terciario')
+
+    }
+    function setEstudio4() {
+        setTexto3('Universitario')
+
+    }
+    function setPregunta(){
+        setTexto2("¿Como se llama la calle donde viviste por primera vez?")
+    }
     function setAlumno() {
         setRol(1)
         setTexto('Alumno')
@@ -48,39 +67,51 @@ function Registro() {
         setRol(0)
         setTexto('Profesor')
     };
-    function setPregunta1(){
-        setTexto2('¿Como se llamaba/llama su primer mascota?')
-        handlePreguntaChange('¿Como se llamaba/llama su primer mascota?')
-    }
-    function setPregunta2(){
-        setTexto2('¿Como se llama la calle donde viviste por primera vez?')
-        handlePreguntaChange('¿Como se llama la calle donde viviste por primera vez?')
-    }
-    
-    function verificaciones (){
-        comprobarPassword()
-        comprobarMail()
-    }
 
-    function comprobarPassword () {
-        if (password === ' ' || reingresopass === ' '){
-            setError(4)
-        }
-        else if (reingresopass === password){
-            setValidar(0)
-        }
-        else{
-            setError(0)
-        }
-    }
-    function comprobarMail () {
-            if (usuarios.indexOf(mail) != -1 ){
-                setError(2)
-            }
-            else if (mail === ' ' || mail.includes('@') === false){
+ 
+    function registrarse(){
+        const data = { 
+                    nombre: nombre,
+                    mail: mail,
+                    password: password,
+                    rol:texto,
+                    respuesta:respuestaPregunta,
+                    telefono:telefono }
+        
+        fetch('http://localhost:3001/users/create', {
+                method: 'POST', 
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+                })
+        .then((response) => response.json())
+        .then((data) => {
+            
+            console.log(data)
+            if (data == "-3"){
                 setError(3)
             }
+            else if(data== "-1"){
+                setError(2)
+            }
+            else if(data == "-2"){
+                setError(4)
+            }
+            else if(data == "-4"){
+                setError(5)
+            }
+            else{
+                
+                setValidar(0);
+            }
+           
+            
+         })
+         ;        
     }
+
+    
 
         if (validar==-1){
             return(
@@ -90,7 +121,7 @@ function Registro() {
                 <br/>
                 <text className="texto"> Ingrese su nombre: </text>
                 <br/>
-                <input className="input" type ="text" placeholder="Nombre"/>
+                <input className="input" type ="text" placeholder="Nombre" onChange={handleNombreChange}/>
                 <br/>
                 <text className="texto"> Ingrese su apellido: </text>
                 <br/>
@@ -105,16 +136,14 @@ function Registro() {
                 <br/>
                 <text className="texto"> Ingrese su telefono: </text>
                 <br/>
-                <input className="input" type ="text" placeholder="Telefono"/>
+                {error == 5 && <div className="contenedorErrorRegistro"><text className="errorRegistro">Ingrese un numero de telefono valido</text></div>}
+                <input className="input" type ="text" placeholder="Telefono" onChange={handleTelefonoChange}/>
                 <br/>
                 <text className="texto">Ingrese su contraseña:</text>
                 <br/>
                 <input className="input" type ="password" placeholder="Contraseña" onChange={handlePasswordChange}/>
                 <br/>
-                <text className="texto">Confirme su contraseña:</text>
-                <input className="input" type ="password" placeholder="Contraseña" onChange={handleReingresoChange}/>
-                {error == 0 && <div className="contenedorErrorRegistro"><text className="errorRegistro">Las contraseñas no coinciden</text></div>}
-                {error == 4 && <div className="contenedorErrorRegistro"><text className="errorRegistro">La contraseña esta vacia</text></div>}
+                {error == 4 && <div className="contenedorErrorRegistro"><text className="errorRegistro">La contraseña debe incluir 3 o mas caracteres</text></div>}
                 <br/>
                 <text className="texto">Seleccioná tu perfil:</text>
                 <Dropdown className="drop">
@@ -123,8 +152,8 @@ function Registro() {
                  </Dropdown.Toggle>
 
                  <Dropdown.Menu className="item">
-                 <Dropdown.Item href="#/profesor" onClick={setProfesor}>Profesor</Dropdown.Item>
-                 <Dropdown.Item href="#/alumno" onClick={setAlumno}>Alumno</Dropdown.Item>
+                 <Dropdown.Item  onClick={setProfesor}>Profesor</Dropdown.Item>
+                 <Dropdown.Item  onClick={setAlumno}>Alumno</Dropdown.Item>
                  </Dropdown.Menu>
                  </Dropdown>
                  <br/>
@@ -138,30 +167,29 @@ function Registro() {
                   <text className="texto"> Indique estudios cursado o en curso: </text>
                   <Dropdown className="drop">
                   <Dropdown.Toggle className="toggle" id="dropdown-basic" >
-                  Estudios
+                  {texto3}
                   </Dropdown.Toggle>
                   <Dropdown.Menu className="item">
-                  <Dropdown.Item href="#/action-1" >Primario</Dropdown.Item>
-                  <Dropdown.Item href="#/action-2">Secundario</Dropdown.Item>
-                  <Dropdown.Item href="#/action-3" >Terciario</Dropdown.Item>
-                  <Dropdown.Item href="#/action-4" >Universitario</Dropdown.Item>
+                  <Dropdown.Item onClick={setEstudio} >Primario</Dropdown.Item>
+                  <Dropdown.Item onClick={setEstudio2}>Secundario</Dropdown.Item>
+                  <Dropdown.Item onClick={setEstudio3}>Terciario</Dropdown.Item>
+                  <Dropdown.Item onClick={setEstudio4}>Universitario</Dropdown.Item>
                   </Dropdown.Menu>
                   </Dropdown>
                   </div>}
-                  <text className="texto"> Indique la pregunta secreta y su respuesta: </text>
+                  <text className="texto"> Indique la respuesta a la pregunta secreta: </text>
                   <Dropdown className="drop">
                   <Dropdown.Toggle className="toggle" id="dropdown-basic" >
                   {texto2}
                   </Dropdown.Toggle>
                   <Dropdown.Menu className="item">
-                  <Dropdown.Item href="#/action-1" onClick={setPregunta1} onChange={handlePreguntaChange} >¿Como se llamaba/llama su primer mascota?</Dropdown.Item>
-                  <Dropdown.Item href="#/action-2" onClick={setPregunta2} onChange={handlePreguntaChange}>¿Como se llama la calle donde viviste por primera vez?</Dropdown.Item>
+                  <Dropdown.Item  onClick={setPregunta}>¿Como se llama la calle donde viviste por primera vez?</Dropdown.Item>
                   </Dropdown.Menu>
                   </Dropdown>
                   <br/>
                   <input className="input" type ="text" placeholder="Respuesta" onChange={handleRespuestaPreguntaChange} /> <br/>
                  
-                <button className="botonRegistro" onClick={verificaciones} >
+                <button className="botonRegistro" onClick={registrarse} >
                     CONFIRMAR
                 </button>
                 <Link to="/" style={{textDecoration:"none"}}>
@@ -176,6 +204,7 @@ function Registro() {
             )
 
         }
+
         else{
             window.location.replace('/');
         }

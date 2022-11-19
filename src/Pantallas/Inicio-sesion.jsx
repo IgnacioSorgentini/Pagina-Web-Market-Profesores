@@ -33,10 +33,11 @@ function InicioSesion() {
         },
         body: JSON.stringify(data),
         })
-
+        
+        
         .then((response) => response.json())
         .then((data) => {
-            
+
             if (data.id == "-1"){
                 setError(-1)
             }
@@ -93,13 +94,13 @@ function InicioSesion() {
         )
     }
     else{
-            if (rol == 'alumno'){
+            if (rol == 'Alumno'){
                return  <MisClasesAlumno id={id}/>
             
                 
         }
         
-            if (rol == 'profesor'){
+            if (rol == 'Profesor'){
                 return  <MisClasesProfesor id={id}/>
             }
           
