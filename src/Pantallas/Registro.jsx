@@ -11,6 +11,7 @@ function Registro() {
     const [telefono,setTelefono] = useState('')
     const [nombre,setNombre] = useState('')
     const [password,setPassword] = useState(' ')
+    const [repassword,setRepassword] = useState(' ')
     const [error,setError] = useState(1)
     const[rol,setRol] = useState(-1)  //1 para alumno y 0 para profesor 
     const [respuestaPregunta,setRespuestaPregunta] = useState('')
@@ -21,6 +22,10 @@ function Registro() {
     
   
 	const handlePasswordChange = (e) => {
+    	setRepassword(e.target.value);
+  	};
+
+      const handleRepasswordChange = (e) => {
     	setPassword(e.target.value);
   	};
     
@@ -70,6 +75,12 @@ function Registro() {
 
  
     function registrarse(){
+        if (password!= repassword){
+            setError(6)
+        }
+        else{
+
+      
         const data = { 
                     nombre: nombre,
                     mail: mail,
@@ -108,7 +119,8 @@ function Registro() {
            
             
          })
-         ;        
+         ; 
+        }       
     }
 
     
@@ -133,7 +145,6 @@ function Registro() {
                 <br/>
                 {error == 2 && <div className="contenedorErrorRegistro"><text className="errorRegistro">El mail indicado ya se encuentra regsitrado</text></div>}
                 {error == 3 && <div className="contenedorErrorRegistro"><text className="errorRegistro">El mail indicado no esta en el formato correcto o  <br/> se encuentra vacio</text></div>}
-                <br/>
                 <text className="texto"> Ingrese su telefono: </text>
                 <br/>
                 {error == 5 && <div className="contenedorErrorRegistro"><text className="errorRegistro">Ingrese un numero de telefono valido</text></div>}
@@ -143,7 +154,12 @@ function Registro() {
                 <br/>
                 <input className="input" type ="password" placeholder="Contraseña" onChange={handlePasswordChange}/>
                 <br/>
+                <text className="texto">Reingrese su contraseña:</text>
+                <br/>
+                <input className="input" type ="password" placeholder="Contraseña" onChange={handleRepasswordChange}/>
+                <br/>
                 {error == 4 && <div className="contenedorErrorRegistro"><text className="errorRegistro">La contraseña debe incluir 3 o mas caracteres</text></div>}
+                {error == 6 && <div className="contenedorErrorRegistro"><text className="errorRegistro">La contraseña deben coincidir</text></div>}
                 <br/>
                 <text className="texto">Seleccioná tu perfil:</text>
                 <Dropdown className="drop">
