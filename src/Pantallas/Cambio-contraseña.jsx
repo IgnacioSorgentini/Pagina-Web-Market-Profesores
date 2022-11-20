@@ -3,7 +3,7 @@ import '../Hojas-de-estilo/Cambio-contraseña.css';
 
 function Cambiocontraseña(){
     const [validar, setValidar] = useState(-1);
-    const [respuestaPregunta,setRespuestaPregunta] = useState('')
+    const [Mail,setMail] = useState('')
     const [validarPregunta, setValidarPregunta] = useState(-1);
     const [reingresopass, setReingresoPass] = useState('');   
     const [password,setPassword] = useState(' ')
@@ -20,17 +20,17 @@ function Cambiocontraseña(){
     	setPassword(e.target.value);
   	};
 
-    const handleRespuestaPreguntaChange = (e) =>{
-        setRespuestaPregunta(e.target.value)
+    const handleMail = (e) =>{
+        setMail(e.target.value)
     }
 
     function verificaciones (){
-        validarPreguntaSecreta()
+        validarMail()
         comprobarPassword()
     }
 
-    function  validarPreguntaSecreta(){
-        if (respuestaPregunta.toLocaleLowerCase() == respuesta){
+    function  validarMail(){
+        if (Mail.toLocaleLowerCase() == respuesta){
             setValidarPregunta(0)
         }
         else{
@@ -58,11 +58,11 @@ function Cambiocontraseña(){
                 <br/>
                 <br/>
                 <br/>
-                <h4 className="texto" > Responde la pregunta secreta para poder generar una nueva contraseña: </h4>
+                <h4 className="texto" > Ingrese su mail para verificar que sea una cuenta ya creada: </h4>
                 <br/>
-                <h5 className="texto" > ¿Como se llama la calle donde viviste por primera vez? </h5>
-                <input className="input" type ="text" placeholder="Respuesta" onChange={handleRespuestaPreguntaChange}/>
-                {validarPregunta == 1 && <div className="contenedorErrorRegistro"><text className="errorRegistro">La respuesta no es correcta</text></div>}
+                <h5 className="texto"  > Ingresa tu mail </h5>
+                <input className="input" type ="text" placeholder="Mail" onChange={handleMail}/>
+                {validarPregunta == 1 && <div className="contenedorErrorRegistro"><text className="errorRegistro">El mail no se encuentra registrado</text></div>}
                 <button className="botonCambioPass" onClick={verificaciones}>
                     CONFIRMAR
                 </button>
