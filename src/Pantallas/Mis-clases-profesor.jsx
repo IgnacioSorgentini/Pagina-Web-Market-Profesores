@@ -80,7 +80,79 @@ function MisClasesProfesor ({id}) {
     const [clase, setClase] = React.useState('');
     const handleChangeClase = (event) => {
         setClase(event.target.value);
+        if (clase === "Individual"){
+            handleChangeIsGrupal(false);
+        }
+        else{
+            handleChangeIsGrupal(true);
+        }
     };
+
+
+
+
+    const [profesor, setProfesor] = React.useState('');
+    const [nombre, setNombre] = React.useState('');
+    const [descripcion, setDescripcion] = React.useState('');
+    const [asignatura, setAsignatura] = React.useState('');
+    const [duracion, setDuracion] = React.useState('');
+    const [frequency, setFrequency] = React.useState('');
+    const [costo, setcosto] = React.useState(0);
+    const [valoracion, setValoracion] = React.useState(0);
+    const [comentarios, setComentarios] = React.useState([{comentario: '', isVisible: false}]);
+    const [calificaciones, setCalificaciones] = React.useState([{valor: 0}]);
+    const [isPublicada, setIsPublicada] = React.useState(false);
+    const [isGrupal, setIsGrupal] = React.useState(false);
+
+
+    function handleChangeNombre(e){
+        setNombre(e.tarjet.value);
+    }
+    function handleChangeDescripcion(e){
+        setDescripcion(e.target.value);
+    }
+    function handleChangeAsignatura(e){
+        setAsignatura(e.target.value);
+    }
+    function handleChangeDuracion(e){
+        setDuracion(e.target.value);
+    }
+    function handleChangeFrequency(e){
+        setFrequency(e.target.value);
+    }
+    function handleChangeCosto(e){
+        setcosto(e.target.value);
+    }
+    function handleChangeIsGrupal(e){
+        setIsGrupal(e.target.value);
+    }
+
+    function crearClase(){
+        const data ={
+            profesor: profesor,
+            nombre: nombre,
+            materia: materia,
+            duracion: duracion,
+            frecuencia: frecuencia,
+            costo: valuesPrecio.amount,
+            valoracion: valoracion,
+            comentarios: comentarios,
+            calificaciones: calificaciones,
+            publica: isPublicada,
+            grupal: isGrupal
+        }
+
+        fetch('http://localhost:3001/clases/create', {
+            method: 'POST', 
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+            })
+        .then((response) => response.json())
+    }
+
+
 
 
 
@@ -120,10 +192,10 @@ function MisClasesProfesor ({id}) {
                         </AppBar>
                         <List>
                             <ListItem>
-                            <TextField id="filled-basic" label="Titulo de la clase" variant="filled" fullWidth/>
+                            <TextField id="filled-basic" label="Titulo de la clase" variant="filled" fullWidth onChange={handleChangeNombre}/>
                             </ListItem>
                             <ListItem>
-                                <TextField id="filled-basic" label="Descripcion de la clase" variant="filled" fullWidth/>
+                                <TextField id="filled-basic" label="Descripcion de la clase" variant="filled" fullWidth onChange={handleChangeDescripcion}/>
                             </ListItem>
                             <ListItem>
                                 <FormControl fullWidth sx={{ m: 1 }} variant="filled">
