@@ -37,6 +37,7 @@ function MisClasesProfesor ({id}) {
     console.log(id)
     const [buttonPopup, setButtonPopup] = useState(false);
 
+
     
     const [openCrear, setOpenCrear] = React.useState(false);
     const handleClickOpenCrear = () => {
@@ -56,6 +57,7 @@ function MisClasesProfesor ({id}) {
     setValuesPrecio({ ...valuesPrecio, [prop]: event.target.value });
     };
 
+
     const [valuesHora, setValuesHora] = React.useState({
         hora: '',
       });
@@ -63,7 +65,6 @@ function MisClasesProfesor ({id}) {
     setValuesHora({ ...valuesHora, [prop]: event.target.value });
     };
     
-
 
     const [materia, setMateria] = React.useState('');
     const handleChangeMateria = (event) => {

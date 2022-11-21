@@ -56,12 +56,9 @@ function ClaseCreada({Nombre, Descripcion, Materia, Duracion, Tipo, Frecuencia, 
     const [buttonPopupDespublicar, setButtonPopupDespublicar] = useState(false);
 
 
-    const [stateCambiar, setStateCambiar] = React.useState(false)
-    const handleChangeCambiar = (event) => {
-        setStateCambiar({
-          ...stateCambiar,
-          [event.target.name]: event.target.checked,
-        });
+    const [publicar, setCheckedPublicar] = React.useState(false);
+    const handleChangeCheckedPublicar = (event) => {
+        setCheckedPublicar(event.target.checked);
     };
 
 
@@ -242,11 +239,12 @@ function ClaseCreada({Nombre, Descripcion, Materia, Duracion, Tipo, Frecuencia, 
                         </Dialog>
                     <button onClick={() => setButtonPopupPublicar(true)}><ion-icon name="arrow-up-circle-outline"></ion-icon></button>
                     <button onClick={() => setButtonPopupDespublicar(true)}><ion-icon name="arrow-down-circle-outline"></ion-icon></button>
-                    <FormControlLabel style={{marginLeft:"3px", paddingBottom:"6px"}}
-                        control={
-                            <Switch checked={stateCambiar.publicar} onChange={handleChangeCambiar} name="gilad" size="small" color="default" />
-                        }
-                        label="Publicar"
+                    <Switch
+                        checked={publicar}
+                        onChange={handleChangeCheckedPublicar}
+                        inputProps={{ 'aria-label': 'controlled' }}
+                        size="small"
+                        color="default"
                     />
                 </div>
                 <div className="comentarios-clase-creada">
