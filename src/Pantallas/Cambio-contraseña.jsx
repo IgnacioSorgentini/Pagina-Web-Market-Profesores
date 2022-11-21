@@ -3,13 +3,16 @@ import '../Hojas-de-estilo/Cambio-contraseña.css';
 
 function Cambiocontraseña(){
     const [validar, setValidar] = useState(-1);
-    const [Mail,setMail] = useState('')
+    const [mail,setMail] = useState('')
+    const [respuesta,setRespuesta] = useState('')
     const [validarPregunta, setValidarPregunta] = useState(-1);
     const [reingresopass, setReingresoPass] = useState('');   
-    const [password,setPassword] = useState(' ')
+    const [password,setPassword] = useState('')
     const [error,setError] = useState(-1)
+    const [id,setId] = useState(-1)
+    const [respuestaUsuario,setRespuestaUsuario] = useState(-1)
 
-    const respuesta = 'colombres'
+  
 
 
     const handleReingresoChange = (e) => {
@@ -24,22 +27,65 @@ function Cambiocontraseña(){
         setMail(e.target.value)
     }
 
+    const handleRespuesta = (e) =>{
+        setRespuesta(e.target.value)
+    }
+
     function verificaciones (){
-        validarMail()
-        comprobarPassword()
+        if (validarPregunta!=0 && validarPregunta!=2){
+            validarMail()
+        }
+        else if (validarPregunta == 2){
+            if (respuestaUsuario == respuesta){ 
+                setValidarPregunta(0)
+            }
+            else{
+                setValidarPregunta(3)
+            }
+        }
+        else{
+            comprobarPassword()
+        }
+        
     }
 
     function  validarMail(){
-        if (Mail.toLocaleLowerCase() == respuesta){
-            setValidarPregunta(0)
-        }
-        else{
+      
+
+        fetch(`http://localhost:3001/users/mail/${mail}`)
+
+        
+        .then((response) => response.json())
+        .then((data) => {
+
+
+        if (data._id == -1){
             setValidarPregunta(1)
         }
+        else{
+            setId (data._id)
+            setRespuestaUsuario( data.respuesta)
+            setValidarPregunta(2)
+        }
+        
+
+ 
+})
+;
     }
     function comprobarPassword () {
         
         if (reingresopass === password){
+            const data = {password: password};
+
+            fetch(`http://localhost:3001/users/${id}`, {
+             method: 'PATCH', 
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+            })
+        ;
             setValidar(0)
         }
         else{
@@ -63,11 +109,16 @@ function Cambiocontraseña(){
                 <h5 className="texto"  > Ingresa tu mail </h5>
                 <input className="input" type ="text" placeholder="Mail" onChange={handleMail}/>
                 {validarPregunta == 1 && <div className="contenedorErrorRegistro"><text className="errorRegistro">El mail no se encuentra registrado</text></div>}
-                <button className="botonCambioPass" onClick={verificaciones}>
+                 <button className="botonCambioPass" onClick={verificaciones}>
                     CONFIRMAR
                 </button>
-                {validarPregunta === 0 &&  <div><text className="texto">Ingrese su contraseña:</text> <br/>
-                                           <input className="input" type ="password" placeholder="Contraseña"  onChange={handlePasswordChange}/> 
+                {validarPregunta == 2  &&  <div><text className="texto">Ingrese la respuesta a la pregunta de seguridad:</text> <br/> 
+                                           <text className="texto"> <br/>¿Como se llama la calle donde viviste por primera vez?:</text>
+                                           <input className="input" type ="text" placeholder="Respuesta a la pregunta" onChange={handleRespuesta}/>
+                                           </div>}
+                {validarPregunta == 3 && <div className="contenedorErrorRegistro"><text className="errorRegistro">La respuesta no coincide</text></div>}
+                {validarPregunta == 0  &&  <div><text className="texto">Ingrese su contraseña:</text> <br/>
+                                            <input className="input" type ="password" placeholder="Contraseña"  onChange={handlePasswordChange}/> 
                                            <text className="texto"> <br/>Confirme su contraseña:</text>
                                            <input className="input" type ="password" placeholder="Contraseña" onChange={handleReingresoChange}/>
                                            </div>}
