@@ -45,7 +45,15 @@ function MisClasesProfesor ({id}) {
         setOpenCrear(true);
     };
     const handleCloseCrear = () => {
+        setOpenCrear(false);
+    };
+
+    const handleCloseCrearConfimar = () => {
         crearClase()
+        setOpenCrear(false);
+    };
+
+    const handleCloseCrearCancelar = () => {
         setOpenCrear(false);
     };
 
@@ -242,7 +250,7 @@ function MisClasesProfesor ({id}) {
                                 <IconButton
                                     edge="start"
                                     color="inherit"
-                                    onClick={handleCloseCrear}
+                                    onClick={handleCloseCrearCancelar}
                                     aria-label="close"
                                 >
                                     <CloseIcon />
@@ -250,7 +258,7 @@ function MisClasesProfesor ({id}) {
                                 <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
                                     Crear clase
                                 </Typography>
-                                <Button autoFocus color="inherit" onClick={handleCloseCrear}>
+                                <Button autoFocus color="inherit" onClick={handleCloseCrearConfimar}>
                                     Guardar
                                 </Button>
                             </Toolbar>
@@ -335,6 +343,7 @@ function MisClasesProfesor ({id}) {
                                         <FormHelperText id="outlined-weight-helper-text">Tiempo</FormHelperText>
                                     </FormControl>
                             </ListItem>
+
                         </List>
                     </Dialog>
                 </div>
