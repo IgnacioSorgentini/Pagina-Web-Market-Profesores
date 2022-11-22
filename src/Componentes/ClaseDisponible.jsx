@@ -12,7 +12,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-function ClaseDisponible({Nombre, Materia, Profesor, Dia, Horario, Tipo, Frecuencia, Calificacion, Costo}) {
+function ClaseDisponible({Nombre, Descripcion, Materia, Profesor, Dia, Horario, Tipo, Frecuencia, Calificacion, Costo}) {
 
     
     const [openContratar, setOpenContratar] = React.useState(false);
@@ -50,6 +50,9 @@ function ClaseDisponible({Nombre, Materia, Profesor, Dia, Horario, Tipo, Frecuen
             <div className="cabecera-clase">
                 <div className="titulo-clase"><h3>{Nombre}</h3></div>
                 <div className="costo-clase"><ion-icon name="pricetag-outline"></ion-icon><h6>{Costo}</h6></div>
+            </div>
+            <div className="descripcion-clase">
+                <h6>{Descripcion}</h6>
             </div>
             <div className="detalles-clase">
                 <div className="materia-clase"><ion-icon name="book-outline"></ion-icon><h6>{Materia}</h6></div>
