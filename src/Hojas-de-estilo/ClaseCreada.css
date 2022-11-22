@@ -9,11 +9,16 @@
     box-sizing: border-box;
     border-style: hidden;
     background-color: #FFFFFF;
-    margin-top: 70px;
+    margin-top: 50px;
 }
 
 .botones-clase-creada{
     padding-left: 10px;
+}
+
+.publicada {
+    color: red;
+    font-weight: bold ;
 }
 
 

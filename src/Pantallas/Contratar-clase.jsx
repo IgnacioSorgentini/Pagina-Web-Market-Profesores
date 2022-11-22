@@ -45,7 +45,7 @@ function ContratarCLase () {
      
 
         useEffect(()=>{
-         fetch(`http://localhost:3001/clases`)
+         fetch(`http://localhost:3001/clases/all`)
 
         
         .then((response) => response.json())

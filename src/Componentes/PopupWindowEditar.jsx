@@ -2,6 +2,31 @@ import React from "react";
 import '../Hojas-de-estilo/PopupWindowEditar.css';
 
 function PopupEditarClase(props) {
+
+    function editar(){
+        console.log("holaaaaaaaaaaaaaaaaaaaa")
+        const data2 ={
+            nombre: props.Nombre,
+            descripcion: props.Descripcion,
+            materia: props.Materia,
+            duracion: props.Duracion,
+            frecuencia: props.Frecuencia,
+            costo: props.Precio,
+        }
+
+        fetch(`http://localhost:3001/clases/actualizar/${props.id}`, {
+            method: 'PATCH', 
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data2),
+            })
+        .then((response) => response.json())
+        .then((data)=> console.log(data))
+        props.setTrigger(false)
+        props.setRecarga(40)
+
+}
     return (props.trigger) ? (
         <div className="popup">
             <div className="popup-inner nueva-clase">
@@ -12,7 +37,7 @@ function PopupEditarClase(props) {
                     <input type="text" className="titulo-ventana-nueva-clase" placeholder="Titulo de la clase..." />
                 </div>
                 <div className="contenedor-texto-ventana">
-                    <input type="text" className="texto-ventana" defaultvalue={props.Descripcion} maxLength={100} />
+                    <input type="text" className="texto-ventana" defaultvalue={props.Descripcion} maxLength={100}/>
                 </div>
                 <div className="contenedor-texto-ventana">
                     <input type="text" className="texto-ventana" defaultvalue={props.Precio} maxLength={100} />
@@ -27,7 +52,7 @@ function PopupEditarClase(props) {
                     <input type="text" className="texto-ventana" defaultValue={props.Frecuencia} maxLength={100} />
                 </div>
                 <div className="contenedor-btn-ventana-nueva-clase">
-                    <button onClick={() => props.setTrigger(false)}>CONFIRMAR</button>
+                    <button onClick={editar}>CONFIRMAR</button>
                     <button onClick={() => props.setTrigger(false)}>CANCELAR</button>
 
                 </div>

@@ -34,12 +34,13 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 
 function MisClasesProfesor ({id}) {
-    const [recarga, setRecarga] = React.useState(0);
+    const [recarga, setRecarga] = React.useState(-20);
     const [buttonPopup, setButtonPopup] = useState(false);
 
     
     
     const [openCrear, setOpenCrear] = React.useState(false);
+    
     const handleClickOpenCrear = () => {
         setOpenCrear(true);
     };
@@ -109,23 +110,35 @@ function MisClasesProfesor ({id}) {
 
     React.useEffect(()=>{
         fetch(`http://localhost:3001/users/${id}`)
-
        
        .then((response) => response.json())
        .then((data) => {
            setProfesor(data.nombre)
        })
+    },[recarga]);
+       
+
+       React.useEffect(()=>{
        const data = {profesor: profesor}
        fetch(`http://localhost:3001/clases/by_profesor`, {
         method: 'POST', 
         headers: {
         'Content-Type': 'application/json',
         },
+
+
        body: JSON.stringify(data)})
        .then((response) => response.json())
         .then((response) => {
             var lista = []
             for (var i in response){
+                var publicada = ""
+                if (response[i].isPublicada==true){
+                    publicada = "Clase publicada"
+                }
+                else{
+                    publicada = "Clase sin publicar"
+                }
                     lista.push({
                         "_id": response[i]._id,
                         "profesor": response[i].profesor,
@@ -137,20 +150,21 @@ function MisClasesProfesor ({id}) {
                         "valoracion": response[i].valoracion,
                         "calificaciones": response[i].calificaciones.valor,
                         "tipo": response[i].isGrupal,
-                        "descripcion": response[i].descripcion
+                        "descripcion": response[i].descripcion,
+                        "isPublicada": publicada
                         }
                    
 
                 ) 
             }
-            console.log(lista)
             setListaClases(lista)
-            
+    
        })
+
        setRecarga(1)
     },[recarga]);
 
-       
+   
 
 
     function handleChangeNombre(e){
@@ -176,7 +190,7 @@ function MisClasesProfesor ({id}) {
     }
 
     function crearClase(){
-        console.log(profesor)
+        console.log("creando")
         const data2 ={
             profesor: profesor,
             nombre: nombre,
@@ -188,7 +202,7 @@ function MisClasesProfesor ({id}) {
             valoracion: valoracion,
             comentarios: comentarios,
             calificaciones: calificaciones,
-            publica: isPublicada,
+            publica: false,
             grupal: isGrupal
         }
 
@@ -200,6 +214,7 @@ function MisClasesProfesor ({id}) {
             body: JSON.stringify(data2),
             })
         .then((response) => response.json())
+        setRecarga(10)
     }
 
 
@@ -324,10 +339,11 @@ function MisClasesProfesor ({id}) {
                     </Dialog>
                 </div>
             </div>
+
             <div className="lista-clases">
             {
                     listaClases.map((clase) =>{
-                        return( <ClaseCreada Nombre={clase.nombre}  Descripcion={clase.descripcion} Materia={clase.materia} Duracion={clase.duracion} Tipo={clase.tipo} Frecuencia={clase.frecuencia} Precio={clase.costo}/>)
+                        return( <ClaseCreada Nombre={clase.nombre}  Descripcion={clase.descripcion} Materia={clase.materia} Duracion={clase.duracion} Tipo={clase.tipo} Frecuencia={clase.frecuencia} Precio={clase.costo} Publicada={clase.isPublicada} id={clase._id} recarga={recarga} setRecarga={setRecarga}/>)
                     })
                 }
 

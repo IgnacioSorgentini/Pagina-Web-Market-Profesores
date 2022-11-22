@@ -3,6 +3,23 @@ import '../Hojas-de-estilo/PopupWindow.css';
 import '../Hojas-de-estilo/PopupWindowPublicar.css';
 
 function PopupPublicar(props) {
+
+
+    function publicar(){
+        fetch(`http://localhost:3001/clases/publicar/${props.id}`, {
+            method: 'PATCH', 
+            headers: {
+            'Content-Type': 'application/json',
+            }})
+           .then((response) => response.json())
+           .then((data)=> console.log(data))
+                
+         
+
+        props.setTrigger(false)
+        props.setRecarga(20)
+
+}
     return (props.trigger) ? (
         <div className="popup">
             <div className="popup-inner">
@@ -13,7 +30,7 @@ function PopupPublicar(props) {
                 <div className="contenedor-texto-ventana">
                 </div>
                 <div className="contenedor-btn-ventana-publicar">
-                    <button onClick={() => props.setTrigger(false)}>PUBLICAR</button>
+                    <button onClick={publicar}>PUBLICAR</button>
                     <button onClick={() => props.setTrigger(false)}>DESCARTAR</button>
                 </div>
             </div>
