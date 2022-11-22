@@ -34,16 +34,17 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 
 function MisClasesProfesor ({id}) {
-    console.log(id)
+    const [recarga, setRecarga] = React.useState(0);
     const [buttonPopup, setButtonPopup] = useState(false);
 
-
+    
     
     const [openCrear, setOpenCrear] = React.useState(false);
     const handleClickOpenCrear = () => {
         setOpenCrear(true);
     };
     const handleCloseCrear = () => {
+        crearClase()
         setOpenCrear(false);
     };
 
@@ -104,10 +105,56 @@ function MisClasesProfesor ({id}) {
     const [calificaciones, setCalificaciones] = React.useState([{valor: 0}]);
     const [isPublicada, setIsPublicada] = React.useState(false);
     const [isGrupal, setIsGrupal] = React.useState(false);
+    const[listaClases, setListaClases] = React.useState([]);
+
+    React.useEffect(()=>{
+        fetch(`http://localhost:3001/users/${id}`)
+
+       
+       .then((response) => response.json())
+       .then((data) => {
+           setProfesor(data.nombre)
+       })
+       const data = {profesor: profesor}
+       fetch(`http://localhost:3001/clases/by_profesor`, {
+        method: 'POST', 
+        headers: {
+        'Content-Type': 'application/json',
+        },
+       body: JSON.stringify(data)})
+       .then((response) => response.json())
+        .then((response) => {
+            var lista = []
+            for (var i in response){
+                    lista.push({
+                        "_id": response[i]._id,
+                        "profesor": response[i].profesor,
+                        "nombre": response[i].nombre,
+                        "materia": response[i].materia,
+                        "duracion": response[i].duracion,
+                        "frecuencia": response[i].frecuencia,
+                        "costo": response[i].costo,
+                        "valoracion": response[i].valoracion,
+                        "calificaciones": response[i].calificaciones.valor,
+                        "tipo": response[i].isGrupal,
+                        "descripcion": response[i].descripcion
+                        }
+                   
+
+                ) 
+            }
+            console.log(lista)
+            setListaClases(lista)
+            
+       })
+       setRecarga(1)
+    },[recarga]);
+
+       
 
 
     function handleChangeNombre(e){
-        setNombre(e.tarjet.value);
+        setNombre(e.target.value);
     }
     function handleChangeDescripcion(e){
         setDescripcion(e.target.value);
@@ -129,9 +176,11 @@ function MisClasesProfesor ({id}) {
     }
 
     function crearClase(){
-        const data ={
+        console.log(profesor)
+        const data2 ={
             profesor: profesor,
             nombre: nombre,
+            descripcion: descripcion,
             materia: materia,
             duracion: duracion,
             frecuencia: frecuencia,
@@ -148,7 +197,7 @@ function MisClasesProfesor ({id}) {
             headers: {
             'Content-Type': 'application/json',
             },
-            body: JSON.stringify(data),
+            body: JSON.stringify(data2),
             })
         .then((response) => response.json())
     }
@@ -235,9 +284,9 @@ function MisClasesProfesor ({id}) {
                                         label="Frecuencia"
                                         onChange={handleChangeFrecuencia}
                                     >
-                                        <MenuItem value={10}>Una vez</MenuItem>
-                                        <MenuItem value={20}>Semanal</MenuItem>
-                                        <MenuItem value={30}>Mensual</MenuItem>
+                                        <MenuItem value={"Una vez"}>Una vez</MenuItem>
+                                        <MenuItem value={"Semanal"}>Semanal</MenuItem>
+                                        <MenuItem value={"Mensual"}>Mensual</MenuItem>
                                     </Select>
                                 </FormControl>
                             </ListItem>
@@ -251,8 +300,8 @@ function MisClasesProfesor ({id}) {
                                         label="Tipo de clase"
                                         onChange={handleChangeClase}
                                     >
-                                        <MenuItem value={10}>Individual</MenuItem>
-                                        <MenuItem value={20}>Grupal</MenuItem>
+                                        <MenuItem value={"Individual"}>Individual</MenuItem>
+                                        <MenuItem value={"Grupal"}>Grupal</MenuItem>
                                     </Select>
                                 </FormControl>
                             </ListItem>
@@ -261,7 +310,7 @@ function MisClasesProfesor ({id}) {
                                     <OutlinedInput
                                         id="outlined-adornment-weight"
                                         value={valuesHora.weight}
-                                        onChange={handleChangeHora('hora')}
+                                        onChange={handleChangeDuracion}
                                         endAdornment={<InputAdornment position="end">Hora/s</InputAdornment>}
                                         aria-describedby="outlined-weight-helper-text"
                                         inputProps={{
@@ -276,7 +325,12 @@ function MisClasesProfesor ({id}) {
                 </div>
             </div>
             <div className="lista-clases">
-                <ClaseCreada Nombre="Matematica A" Descripcion="Clase de matematica nivel avanzado" Materia="Matematica" Duracion="1 hora" Tipo="Individual" Frecuencia="Semanal" Precio="1230,00" />
+            {
+                    listaClases.map((clase) =>{
+                        return( <ClaseCreada Nombre={clase.nombre}  Descripcion={clase.descripcion} Materia={clase.materia} Duracion={clase.duracion} Tipo={clase.tipo} Frecuencia={clase.frecuencia} Precio={clase.costo}/>)
+                    })
+                }
+
             </div>
             <PopupNuevaClase trigger={buttonPopup} setTrigger={setButtonPopup}>
             </PopupNuevaClase>

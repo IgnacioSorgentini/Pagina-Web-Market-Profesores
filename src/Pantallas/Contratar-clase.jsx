@@ -52,8 +52,9 @@ function ContratarCLase () {
         .then((response) => {
             var lista = []
             for (var i in response){
-                
-                lista.push({
+
+                if (response[i].isPublicada==true){
+                    lista.push({
                         "_id": response[i]._id,
                         "profesor": response[i].profesor,
                         "nombre": response[i].nombre,
@@ -63,12 +64,12 @@ function ContratarCLase () {
                         "costo": response[i].costo,
                         "valoracion": response[i].valoracion,
                         "calificaciones": response[i].calificaciones.valor,
-                        "isPublicada": response[i].isPublicada,
                         "tipo": response[i].isGrupal,
                         "descripcion": response[i].descripcion
                         }
+                   
 
-                )
+                ) }
             }
             setListaClases(lista)
             setRecarga(1)

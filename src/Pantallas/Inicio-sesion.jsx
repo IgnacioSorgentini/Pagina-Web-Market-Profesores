@@ -38,6 +38,8 @@ function InicioSesion() {
         .then((response) => response.json())
         .then((data) => {
 
+            setId(data.id)
+
             if (data.id == "-1"){
                 setError(-1)
             }
