@@ -33,7 +33,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 
-function MisClasesProfesor ({id}) {
+function MisClasesProfesor (props) {
+    console.log(props)
     const [recarga, setRecarga] = React.useState(-20);
     const [buttonPopup, setButtonPopup] = useState(false);
 
@@ -102,7 +103,7 @@ function MisClasesProfesor ({id}) {
 
 
 
-    const [profesor, setProfesor] = React.useState('');
+    //const [profesor, setProfesor] = React.useState('');
     const [nombre, setNombre] = React.useState('');
     const [descripcion, setDescripcion] = React.useState('');
     const [asignatura, setAsignatura] = React.useState('');
@@ -115,29 +116,12 @@ function MisClasesProfesor ({id}) {
     const [isPublicada, setIsPublicada] = React.useState(false);
     const [isGrupal, setIsGrupal] = React.useState(false);
     const[listaClases, setListaClases] = React.useState([]);
-
+    
     React.useEffect(()=>{
-        fetch(`http://localhost:3001/users/${id}`)
-       
-       .then((response) => response.json())
-       .then((data) => {
-           setProfesor(data.nombre)
-       })
-    },[recarga]);
-       
-
-       React.useEffect(()=>{
-       const data = {profesor: profesor}
-       fetch(`http://localhost:3001/clases/by_profesor`, {
-        method: 'POST', 
-        headers: {
-        'Content-Type': 'application/json',
-        },
-
-
-       body: JSON.stringify(data)})
+       fetch(`http://localhost:3001/clases/by_profesor/${props.nombre}`)
        .then((response) => response.json())
         .then((response) => {
+            console.log(response)
             var lista = []
             for (var i in response){
                 var publicada = ""
@@ -171,7 +155,6 @@ function MisClasesProfesor ({id}) {
 
        setRecarga(1)
     },[recarga]);
-
    
 
 
@@ -200,7 +183,7 @@ function MisClasesProfesor ({id}) {
     function crearClase(){
         console.log("creando")
         const data2 ={
-            profesor: profesor,
+            profesor: props.nombre,
             nombre: nombre,
             descripcion: descripcion,
             materia: materia,
@@ -231,7 +214,7 @@ function MisClasesProfesor ({id}) {
 
     return(
        <div className="MisClasesProfesor">
-        <MenuProfesor />
+        <MenuProfesor id={props.id} nombre={props.nombre} />
         <div className="contenedor-mis-clases">
             <div className="cabecera-pantalla-profesor">
                 <div className="titulo-pantalla">

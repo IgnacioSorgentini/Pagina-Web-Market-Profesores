@@ -25,7 +25,6 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <div className="contenedor-rutas">
          <Routes>
           <Route path="/" exact element={<PantallaPrincipal/>} />
           <Route path="/comentariosAlumno" element={<ComentariosAlumno/>} />
@@ -33,12 +32,11 @@ function App() {
           <Route path="/contratarClase" element={<ContratarCLase/>} />
           <Route path="/cambioContraseña" element={<Cambiocontraseña/>} />
           <Route path="/registro" element={<Registro/>} />
-          <Route path="/misClasesProfesor" element={<MisClasesProfesor/>} />
+          <Route exact path="/misClasesProfesor" component={<MisClasesProfesor/>} />
           <Route path="/contratacionesProfesor" element={<Contrataciones />} />
           <Route path="/inicioSesion" element={<InicioSesion/>} />
           <Route path="/comentariosProfesor" element={<ComentariosProfesor />} />
          </Routes>
-        </div>
       </Router>
     </div>
   );
