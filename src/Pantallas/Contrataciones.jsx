@@ -4,6 +4,35 @@ import '../Hojas-de-estilo/Contrataciones.css'
 import MenuProfesor from "../Componentes/Menu/MenuProfesor";
 
 function Contrataciones() {
+
+    const[listaClases, setListaClases] = React.useState([]);
+    const[recarga, setRecarga] = React.useState(0);
+    const user = "profesor"
+    
+    React.useEffect(()=>{
+       fetch(`http://localhost:3001/clases/solicitudes/profesor/${user}`)
+       .then((response) => response.json())
+        .then((response) => {
+            var lista3 = []
+            for (var i in response){
+                    lista3.push({
+                        "clase": response[i].nombre,
+                        "alumno": response[i].idAlumno,
+                        "telefono": response[i].telefono,
+                        "mail": response[i].mail,
+                        "horario": response[i].horario,
+                        "mensaje": response[i].mensaje
+                        }
+                ) 
+            }
+            setListaClases(lista3)
+    
+       })
+
+       setRecarga(1)
+       console.log(listaClases)
+    },[recarga]);
+
     return(
         <div className="Contrataciones">
             <MenuProfesor />
@@ -12,10 +41,11 @@ function Contrataciones() {
                 <h3 style={{color:"#334756"}}>Contrataciones</h3>
             </div>
             <div className="lista-contrataciones">
-                <Contratacion Clase="Matematica Basica" Alumno="Juan Navarro" Telefono="339449384" Mail="juan@gmail.com" HorarioRef="17hs" Mensaje="Holaaa quiero inscribirme a esta clase porque me re interesa maannn, dale wachoo aceptame"/>
-                <Contratacion Clase="Matematica Basica" Alumno="Juan Navarro" Telefono="339449384" Mail="juan@gmail.com" HorarioRef="17hs" Mensaje="Holaaa quiero inscribirme a esta clase porque me re interesa maannn, dale wachoo aceptame"/>
-                <Contratacion Clase="Matematica Basica" Alumno="Juan Navarro" Telefono="339449384" Mail="juan@gmail.com" HorarioRef="17hs" Mensaje="Holaaa quiero inscribirme a esta clase porque me re interesa maannn, dale wachoo aceptame"/>
-                <Contratacion Clase="Matematica Basica" Alumno="Juan Navarro" Telefono="339449384" Mail="juan@gmail.com" HorarioRef="17hs" Mensaje="Holaaa quiero inscribirme a esta clase porque me re interesa maannn, dale wachoo aceptame"/>
+            {
+                    listaClases.map((clase) =>{
+                return <Contratacion Clase={clase.clase} Alumno={clase.alumno} Telefono={clase.telefono} Mail={clase.mail} HorarioRef={clase.horario} Mensaje={clase.mensaje}/>
+                    })
+                    }
             </div>
         </div>
         </div>

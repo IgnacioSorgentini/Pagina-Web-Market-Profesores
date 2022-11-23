@@ -195,8 +195,8 @@ function MisClasesProfesor (props) {
             valoracion: valoracion,
             comentarios: comentarios,
             calificaciones: calificaciones,
-            publica: false,
-            grupal: isGrupal,
+            isPublicada: false,
+            isGrupal: isGrupal,
             tipo: clase
         }
 
