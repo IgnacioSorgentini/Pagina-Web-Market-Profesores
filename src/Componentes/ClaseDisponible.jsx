@@ -12,14 +12,52 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-function ClaseDisponible({Nombre, Descripcion, Materia, Profesor, Dia, Horario, Tipo, Frecuencia, Calificacion, Costo}) {
+function ClaseDisponible({Nombre, Descripcion, Materia, Profesor, Dia, Horario, Tipo, Frecuencia, Calificacion, Costo, idClase}) {
 
     
     const [openContratar, setOpenContratar] = React.useState(false);
+    const id = "637825f755610aa44323d5f2"
+    const nombre = "alumno"
+    const [telefono,setTelefono] = React.useState('');
+    const [mensaje,setMensaje] = React.useState('');
+    const [horario,setHorario] = React.useState('');
+
+    function handleChangeTelefono(e){
+        setTelefono(e.target.value);
+    }
+    function handleChangeMensaje(e){
+        setMensaje(e.target.value);
+    }
+    function handleChangeHorario(e){
+        setHorario(e.target.value);
+    }
+
     const handleClickOpenContratar = () => {
         setOpenContratar(true);
     };
     const handleCloseContratar = () => {
+        setOpenContratar(false);
+    };
+    const handleCloseContratarConfirmar = () => {
+
+        const data2 ={
+            idAlumno: id,
+            idClase: idClase,
+            horario: horario ,
+            telefono: telefono,
+            mensaje: mensaje
+        }
+
+        fetch(`http://localhost:3001/clases/solicitar`, {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data2),
+            })
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+
         setOpenContratar(false);
     };
 
@@ -92,13 +130,13 @@ function ClaseDisponible({Nombre, Descripcion, Materia, Profesor, Dia, Horario, 
                             <DialogContentText>
                                 Inserte los siguientes datos para contratar la clase {Nombre}
                             </DialogContentText>
-                            <TextField autoFocus margin="dense" id="name" label="Telefono" type="telefono" fullWidth variant="standard"/>
+                            <TextField autoFocus margin="dense" id="name" label="Telefono" type="telefono" fullWidth variant="standard" onChange={handleChangeTelefono}/>
                             <TextField autoFocus margin="dense" id="name" label="Mail" type="mail" fullWidth variant="standard"/>
-                            <TextField autoFocus margin="dense" id="name" label="Horario de referencia para el contacto" type="horario" fullWidth variant="standard"/>
-                            <TextField autoFocus margin="dense" id="name" label="Mensaje al profesor" type="comentario" fullWidth variant="standard"/>
+                            <TextField autoFocus margin="dense" id="name" label="Horario de referencia para el contacto" type="horario" fullWidth variant="standard" onChange={handleChangeHorario}/>
+                            <TextField autoFocus margin="dense" id="name" label="Mensaje al profesor" type="comentario" fullWidth variant="standard" onChange={handleChangeMensaje}/>
                         </DialogContent>
                         <DialogActions>
-                            <Button onClick={handleCloseContratar}>Contratar</Button>
+                            <Button onClick={handleCloseContratarConfirmar}>Contratar</Button>
                             <Button onClick={handleCloseContratar}>Cancelar</Button>
                         </DialogActions>
                     </Dialog>

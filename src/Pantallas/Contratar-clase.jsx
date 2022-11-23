@@ -169,7 +169,7 @@ function ContratarCLase () {
             <div className="lista-clases">
             {
                     listaClases.map((clase) =>{
-                        return( <ClaseDisponible Nombre={clase.nombre}  Descripcion={clase.descripcion} Materia={clase.materia} Profesor= {clase.profesor} Horario={clase.duracion} Tipo={clase.tipo} Frecuencia={clase.frecuencia} Calificacion={clase.calificacion} Costo={clase.costo}/>)
+                        return( <ClaseDisponible Nombre={clase.nombre}  Descripcion={clase.descripcion} Materia={clase.materia} Profesor= {clase.profesor} Horario={clase.duracion} Tipo={clase.tipo} Frecuencia={clase.frecuencia} Calificacion={clase.calificacion} Costo={clase.costo} idClase={clase._id}/>)
                     })
                 }
 
