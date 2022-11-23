@@ -72,7 +72,7 @@ function ClaseCreada({Nombre, Descripcion, Materia, Duracion, Tipo, Frecuencia, 
             materia: materia,
             duracion: valuesHora,
             frecuencia: frecuencia,
-            costo: valuesPrecio,
+            costo: valuesPrecio.amount,
         }
 
         fetch(`http://localhost:3001/clases/actualizar/${id}`, {
@@ -106,7 +106,7 @@ function ClaseCreada({Nombre, Descripcion, Materia, Duracion, Tipo, Frecuencia, 
     };
 
 
-
+    const [costo, setCosto] = React.useState(0)
 
 
     const [valuesPrecio, setValuesPrecio] = React.useState({
@@ -114,33 +114,34 @@ function ClaseCreada({Nombre, Descripcion, Materia, Duracion, Tipo, Frecuencia, 
       });
     const handleChangePrecio = (prop) => (event) => {
     setValuesPrecio({ ...valuesPrecio, [prop]: event.target.value });
+    setCosto(event.target.value)
     };
-    const [valuesHora, setValuesHora] = React.useState({
-        hora: '',
-      });
-    const handleChangeHora = (prop) => (event) => {
-    setValuesHora({ ...valuesHora, [prop]: event.target.value });
+    
+    const [valuesHora, setValuesHora] = React.useState(Duracion);
+    const handleChangeHora  = (event) => {
+    setValuesHora(event.target.value);
     };
-    const [materia, setMateria] = React.useState('');
+    const [materia, setMateria] = React.useState(Materia);
     const handleChangeMateria = (event) => {
         setMateria(event.target.value);
     };
-    const [frecuencia, setFrecuencia] = React.useState('');
+    const [frecuencia, setFrecuencia] = React.useState(Frecuencia);
     const handleChangeFrecuencia = (event) => {
         setFrecuencia(event.target.value);
     };
 
-    const [clase, setClase] = React.useState('');
+    const [clase, setClase] = React.useState(Tipo);
+    
     const handleChangeClase = (event) => {
         setClase(event.target.value);
     };
 
-    const [nombre, setNombre] = React.useState('');
+    const [nombre, setNombre] = React.useState(Nombre);
     const handleChangeNombre = (event) => {
         setNombre(event.target.value);
     };
 
-    const [descripcion, setDescripcion] = React.useState('');
+    const [descripcion, setDescripcion] = React.useState(Descripcion);
     const handleChangeDescripcion = (event) => {
         setDescripcion(event.target.value);
     };
@@ -272,8 +273,8 @@ function ClaseCreada({Nombre, Descripcion, Materia, Duracion, Tipo, Frecuencia, 
                                 <FormControl fullWidth sx={{ m: 1}} variant="outlined">
                                     <OutlinedInput
                                         id="outlined-adornment-weight"
-                                        value={valuesHora.weight}
-                                        onChange={handleChangeHora('hora')}
+                                        value={valuesHora}
+                                        onChange={handleChangeHora}
                                         endAdornment={<InputAdornment position="end">Hora/s</InputAdornment>}
                                         aria-describedby="outlined-weight-helper-text"
                                         inputProps={{

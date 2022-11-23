@@ -38,6 +38,8 @@ function MisClasesProfesor (props) {
     const [recarga, setRecarga] = React.useState(-20);
     const [buttonPopup, setButtonPopup] = useState(false);
 
+    const user = "profesor"
+
     
     
     const [openCrear, setOpenCrear] = React.useState(false);
@@ -118,7 +120,7 @@ function MisClasesProfesor (props) {
     const[listaClases, setListaClases] = React.useState([]);
     
     React.useEffect(()=>{
-       fetch(`http://localhost:3001/clases/by_profesor/${props.nombre}`)
+       fetch(`http://localhost:3001/clases/by_profesor/${user}`)
        .then((response) => response.json())
         .then((response) => {
             console.log(response)
@@ -141,7 +143,7 @@ function MisClasesProfesor (props) {
                         "costo": response[i].costo,
                         "valoracion": response[i].valoracion,
                         "calificaciones": response[i].calificaciones.valor,
-                        "tipo": response[i].isGrupal,
+                        "tipo": response[i].tipo,
                         "descripcion": response[i].descripcion,
                         "isPublicada": publicada
                         }
@@ -194,7 +196,8 @@ function MisClasesProfesor (props) {
             comentarios: comentarios,
             calificaciones: calificaciones,
             publica: false,
-            grupal: isGrupal
+            grupal: isGrupal,
+            tipo: clase
         }
 
         fetch('http://localhost:3001/clases/create', {
@@ -274,9 +277,9 @@ function MisClasesProfesor (props) {
                                         label="Materia"
                                         onChange={handleChangeMateria}
                                     >
-                                        <MenuItem value={10}>Matematica</MenuItem>
-                                        <MenuItem value={20}>Biologia</MenuItem>
-                                        <MenuItem value={30}>Geografia</MenuItem>
+                                        <MenuItem value={"Matematica"}>Matematica</MenuItem>
+                                        <MenuItem value={"Biologia"}>Biologia</MenuItem>
+                                        <MenuItem value={"Geografia"}>Geografia</MenuItem>
                                     </Select>
                                 </FormControl>
                             </ListItem>

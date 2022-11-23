@@ -75,7 +75,7 @@ function ClaseContratada({Nombre, Descripcion, Materia, Profesor, Horario, Tipo,
         <div className="contenedor-clase">
             <div className="titulo-clase" style={{display:"flex", flexDirection:"row", justifyContent:"space-between", minWidth:"90%"}}>
                 <div><h3>{Nombre}</h3></div>
-                <div><Solicitada estado={Estado} /></div>
+                <div><Solicitada Estado={Estado} /></div>
             </div>
             <div className="descripcion-clase">
                 <h6>{Descripcion}</h6>

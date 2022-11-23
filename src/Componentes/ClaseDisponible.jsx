@@ -45,7 +45,15 @@ function ClaseDisponible({Nombre, Descripcion, Materia, Profesor, Dia, Horario, 
             idClase: idClase,
             horario: horario ,
             telefono: telefono,
-            mensaje: mensaje
+            mensaje: mensaje,
+            costo: Costo,
+            nombre: Nombre,
+            descripcion: Descripcion,
+            materia: Materia,
+            profesor: Profesor,
+            tipo: Tipo,
+            frecuencia: Frecuencia,
+            calificacion: Calificacion
         }
 
         fetch(`http://localhost:3001/clases/solicitar`, {

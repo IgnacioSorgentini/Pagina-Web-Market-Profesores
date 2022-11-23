@@ -2,9 +2,9 @@ import React from "react";
 import Chip from '@mui/material/Chip';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
-function Solicitada(estado) {
+function Solicitada({Estado}) {
     return(  
-        <Chip color="warning" icon={<AccessTimeIcon />} label={estado} size="small" />
+        <Chip color="warning" icon={<AccessTimeIcon />} label="Solicitada" value={Estado} size="small" />
     )
 }
 

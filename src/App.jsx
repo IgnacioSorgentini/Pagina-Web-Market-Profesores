@@ -32,7 +32,7 @@ function App() {
           <Route path="/contratarClase" element={<ContratarCLase/>} />
           <Route path="/cambioContraseña" element={<Cambiocontraseña/>} />
           <Route path="/registro" element={<Registro/>} />
-          <Route exact path="/misClasesProfesor" component={<MisClasesProfesor/>} />
+          <Route path="/misClasesProfesor" element={<MisClasesProfesor/>} />
           <Route path="/contratacionesProfesor" element={<Contrataciones />} />
           <Route path="/inicioSesion" element={<InicioSesion/>} />
           <Route path="/comentariosProfesor" element={<ComentariosProfesor />} />

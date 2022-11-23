@@ -5,66 +5,43 @@ import ClaseContratada from "../Componentes/ClaseContratada";
 import MenuAlumno from '../Componentes/Menu/MenuAlumno';
 
 function MisClasesAlumno ({id}) {
-    const[listaClases, setListaClases] = useState([]);
+
+    const user = "637825f755610aa44323d5f2"
     const [recarga, setRecarga] = React.useState(-20);
     const userid = "637825f755610aa44323d5f2"
-    const nombre = "alumno"
-    const [clases,setClases] = React.useState([]);
-
+    const[listaClases, setListaClases] = useState([]);
 
     React.useEffect(()=>{
-        var lista = []
-        fetch(`http://localhost:3001/clases/solicitudes/user/${userid}`)
+        fetch(`http://localhost:3001/clases/solicitudes/user/${user}`)
         .then((response) => response.json())
          .then((response) => {
+             var lista2 = []
              for (var i in response){
-                fetch(`http://localhost:3001/clases/by_profesor/${response[i].idClase}`)
-                .then((response2) => response2.json())
-                 .then((response2) => {
-                    var lista = []
-                     for (var j in response2){
-                        
-                     lista.push({
-                         "_id": response2[j]._id,
-                         "profesor": response2[j].profesor,
-                         "nombre": response2[j].nombre,
-                         "materia": response2[j].materia,
-                         "duracion": response2[j].duracion,
-                         "frecuencia": response2[j].frecuencia,
-                         "costo": response2[j].costo,
-                         "valoracion": response2[j].valoracion,
-                         "calificaciones": response2[j].calificaciones.valor,
-                         "tipo": response2[j].isGrupal,
-                         "descripcion": response2[j].descripcion
-                         })
-                        }      
-                        setListaClases(lista)
-                                 
-                    }
+                     lista2.push({
+                        "_id": response[i]._id,
+                         "profesor": response[i].profesor,
+                         "nombre": response[i].nombre,
+                         "materia": response[i].materia,
+                         "frecuencia": response[i].frecuencia,
+                         "costo": response[i].costo,
+                         "calificaciones": response[i].calificacion,
+                         "descripcion": response[i].descripcion,
+                         "tipo": response[i].tipo,
+                         "estado": response[i].estado
+                         }
                     
-                    
+ 
                  ) 
-                 
              }
-             
-
-      
+             setListaClases(lista2)
+     
         })
-        setListaClases(lista)
+ 
         setRecarga(1)
-        
         console.log(listaClases)
-        listaClases.map((clase) =>{
-            console.log(clase)
-        })
      },[recarga]);
 
-
-
-    
-    
-
-    return(
+     return(
         <div className="misClasesAlumno">
             <MenuAlumno />
             <div className="contenedor-mis-clases">
@@ -73,7 +50,7 @@ function MisClasesAlumno ({id}) {
             </div>
             <div className="lista-clases">
             {listaClases.map((clase) =>{
-                        return(<ClaseContratada Nombre={clase.nombre}  Descripcion={clase.descripcion} Materia={clase.materia} Profesor={clase.profesor} Horario={clase.duracion} Tipo={clase.tipo} Frecuencia={clase.frecuencia} Calificacion={clase.valoracion} Estado="Solicitada"/>)
+                return <ClaseContratada Nombre={clase.nombre} Descripcion={clase.descripcion} Materia={clase.materia} Profesor={clase.profesor} Dia="hola" Horario='1 hora' Tipo={clase.tipo} Frecuencia={clase.frecuencia} Calificacion="4" Costo={clase.costo} Estado={clase.estado}/>
                     })
             }
                
@@ -81,6 +58,8 @@ function MisClasesAlumno ({id}) {
         </div>
         </div>
     )
-}
 
+
+
+}
 export default MisClasesAlumno;
