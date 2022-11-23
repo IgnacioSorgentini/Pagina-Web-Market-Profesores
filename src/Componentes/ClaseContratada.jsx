@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import '../Hojas-de-estilo/ClaseGeneral.css';
 import '../Hojas-de-estilo/ClaseContratada.css';
+import RenderizadoCondicionalEstados from '../Componentes/EstadosClase/RenderizadoCondicionalEstados';
 import {Link} from 'react-router-dom';
 import Rating from '@mui/material/Rating';
 import FaceIcon from '@mui/icons-material/Face';
@@ -16,10 +17,16 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import Finalizada from "./EstadosClase/Finalizada";
 
 
-function ClaseContratada({Nombre, Descripcion, Materia, Profesor, Horario, Tipo, Frecuencia, Calificacion}) {
+function ClaseContratada({Nombre, Descripcion, Materia, Profesor, Horario, Tipo, Frecuencia, Calificacion, Estado}) {
 
+    
+    
+    
+    
+    
     const [value, setValue] = React.useState(0);
 
     const [openComentar, setOpenComentar] = React.useState(false);
@@ -75,7 +82,7 @@ function ClaseContratada({Nombre, Descripcion, Materia, Profesor, Horario, Tipo,
         <div className="contenedor-clase">
             <div className="titulo-clase" style={{display:"flex", flexDirection:"row", justifyContent:"space-between", minWidth:"90%"}}>
                 <div><h3>{Nombre}</h3></div>
-                <div><Solicitada /></div>
+                <div><RenderizadoCondicionalEstados estado={Estado} /></div>
             </div>
             <div className="descripcion-clase">
                 <h6>{Descripcion}</h6>
