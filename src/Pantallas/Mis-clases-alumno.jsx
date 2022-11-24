@@ -18,7 +18,7 @@ function MisClasesAlumno ({id}) {
              var lista2 = []
 
              for (var i in response){
-    
+
                      lista2.push({
                         "_id": response[i]._id,
                          "profesor": response[i].profesor,
@@ -28,22 +28,25 @@ function MisClasesAlumno ({id}) {
                          "costo": response[i].costo,
                          "valoracion": response[i].valoracion,
                          "descripcion": response[i].descripcion,
+                         "estado": response[i].estado,
                          "tipo": response[i].tipo,
-                         "estado": response[i].estado
+                         "duracion": response[i].duracion
                          }
-                        
- 
-                 ) 
-                 
-                 
+                 )  
+                  
                 
              }
+            
              setListaClases(lista2)
      
         })
  
         setRecarga(1)
      },[recarga]);
+
+
+
+ 
 
      return(
         <div className="misClasesAlumno">
@@ -54,7 +57,7 @@ function MisClasesAlumno ({id}) {
             </div>
             <div className="lista-clases">
             {listaClases.map((clase) =>{
-                return <ClaseContratada Nombre={clase.nombre} Descripcion={clase.descripcion} Materia={clase.materia} Profesor={clase.profesor} Dia="hola" Horario='1 hora' Tipo={clase.tipo} Frecuencia={clase.frecuencia} Calificacion= {clase.valoracion} Costo={clase.costo} Estado={clase.estado}/>
+                return <ClaseContratada Nombre={clase.nombre} Descripcion={clase.descripcion} Materia={clase.materia} Profesor={clase.profesor}  Horario={clase.duracion} Tipo={clase.tipo} Frecuencia={clase.frecuencia} Calificacion= {clase.valoracion} Costo={clase.costo} Estado={clase.estado} Id ={clase._id}/>
                     })
             }
                

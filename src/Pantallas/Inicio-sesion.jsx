@@ -41,7 +41,6 @@ function InicioSesion() {
         .then((data) => {
             setNombre(data.nombre)
             setId(data.id)
-            console.log(data)
             
 
             if (data.id == "-1"){

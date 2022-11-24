@@ -2,8 +2,13 @@ import React from "react";
 import '../Hojas-de-estilo/ComentariosAlumno.css';
 import ComentarioAlumno from '../Componentes/ComentarioAlumno';
 import MenuAlumno from "../Componentes/Menu/MenuAlumno";
+import { useLocation } from 'react-router-dom';
 
 function ComentariosAlumno () {
+    const location = useLocation()
+    const { from } = location.state
+
+    console.log(location.state.id)
     return(
         <div className="ComentariosAlumno">
             <MenuAlumno />

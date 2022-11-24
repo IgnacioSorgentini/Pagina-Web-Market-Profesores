@@ -18,7 +18,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 
-function ClaseContratada({Nombre, Descripcion, Materia, Profesor, Horario, Tipo, Frecuencia, Calificacion, Estado}) {
+function ClaseContratada({Nombre, Descripcion, Materia, Profesor, Horario, Tipo, Frecuencia, Calificacion, Estado, Id}) {
 
     const [value, setValue] = React.useState(0);
 
@@ -70,6 +70,10 @@ function ClaseContratada({Nombre, Descripcion, Materia, Profesor, Horario, Tipo,
     }, [openDescripcion]);
 
 
+    
+    
+    console.log(Id)
+
 
     return(
         <div className="contenedor-clase">
@@ -104,7 +108,7 @@ function ClaseContratada({Nombre, Descripcion, Materia, Profesor, Horario, Tipo,
                         <Button onClick={handleCloseDescripcion}>Entendido</Button>
                     </DialogActions>
                 </Dialog>
-                <div className="horario-clase-cont"><ion-icon name="time-outline"></ion-icon><h6>{Horario}</h6></div>
+                <div className="horario-clase-cont"><ion-icon name="time-outline"></ion-icon><h6>{Horario + " hs"}</h6></div>
                 <div className="tipo-clase"><ion-icon name="people-outline"></ion-icon><h6>{Tipo}</h6></div>
                 <div className="frecuencia-clase"><ion-icon name="barbell-outline"></ion-icon><h6>{Frecuencia}</h6></div>
                 <div className="calificacion-clase"><Rating name="read-only" value={Calificacion} size="small" readOnly style={{color:"black"}} /></div>
@@ -158,7 +162,7 @@ function ClaseContratada({Nombre, Descripcion, Materia, Profesor, Horario, Tipo,
                         </DialogActions>
                     </Dialog>
                 </div>
-                <div className="comentarios-clase-cont"><Link to="/comentariosAlumno" style={{color:"black"}}><ion-icon name="chatbox-outline"></ion-icon></Link></div>
+                <div className="comentarios-clase-cont"><Link to="/comentariosAlumno" style={{color:"black"}} state={{id:Id}}><ion-icon name="chatbox-outline"></ion-icon></Link></div>
             </div>
         </div>
     )

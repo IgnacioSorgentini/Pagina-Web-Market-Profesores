@@ -4,7 +4,7 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 function Solicitada({Estado}) {
     return(  
-        <Chip color="warning" icon={<AccessTimeIcon />} label="Solicitada" value={Estado} size="small" />
+        <Chip color="warning" icon={<AccessTimeIcon />} label= {Estado}  size="small" />
     )
 }
 
