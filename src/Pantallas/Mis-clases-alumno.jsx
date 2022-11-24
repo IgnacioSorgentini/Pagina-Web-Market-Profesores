@@ -6,13 +6,21 @@ import MenuAlumno from '../Componentes/Menu/MenuAlumno';
 
 function MisClasesAlumno ({id}) {
 
+
+    console.log(id)
     const user = "637825f755610aa44323d5f2"
     const [recarga, setRecarga] = React.useState(-20);
-    const userid = "637825f755610aa44323d5f2"
     const[listaClases, setListaClases] = useState([]);
 
     React.useEffect(()=>{
-        fetch(`http://localhost:3001/clases/solicitudes/user/${user}`)
+        let userid
+        if (id==undefined){
+            userid = user
+        }
+        else{
+            userid = id
+        }
+        fetch(`http://localhost:3001/clases/solicitudes/user/${userid}`)
         .then((response) => response.json())
          .then((response) => {
              var lista2 = []
