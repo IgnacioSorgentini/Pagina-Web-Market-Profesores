@@ -42,6 +42,7 @@ function ContratarCLase () {
       
         const handleChangeCalificacion = (event) => {
           setCalificacion(event.target.value);
+          getClasesByValoracion(event.target.value)
         };
 
 
@@ -227,6 +228,43 @@ function ContratarCLase () {
     }
     }
   
+    function getClasesByValoracion(valoracion){
+        if (valoracion == ""){
+            setRecarga(45)
+        }
+        else{
+        fetch(`http://localhost:3001/clases/by_valoracion/${valoracion}`)
+
+        
+        .then((response1) => response1.json())
+        .then((response1) => {
+            
+            var lista10 = []
+            for (var i in response1){
+
+                if (response1[i].isPublicada==true){
+                    lista10.push({
+                        "_id": response1[i]._id,
+                        "profesor": response1[i].profesor,
+                        "nombre": response1[i].nombre,
+                        "materia": response1[i].materia,
+                        "duracion": response1[i].duracion,
+                        "frecuencia": response1[i].frecuencia,
+                        "costo": response1[i].costo,
+                        "valoracion": response1[i].valoracion,
+                        "calificaciones": response1[i].calificaciones.valor,
+                        "tipo": response1[i].isGrupal,
+                        "descripcion": response1[i].descripcion
+                        }
+                   
+
+                ) }
+            }
+            setListaClases(lista10)
+            
+        })
+    }
+    }
 
 
 
@@ -305,11 +343,11 @@ function ContratarCLase () {
                                 <MenuItem value="">
                                     <em>Todo</em>
                                 </MenuItem>
-                                <MenuItem value={10}><Rating name="read-only" value={1} readOnly /></MenuItem>
-                                <MenuItem value={20}><Rating name="read-only" value={2} readOnly /></MenuItem>
-                                <MenuItem value={30}><Rating name="read-only" value={3} readOnly /></MenuItem>
-                                <MenuItem value={40}><Rating name="read-only" value={4} readOnly /></MenuItem>
-                                <MenuItem value={50}><Rating name="read-only" value={5} readOnly /></MenuItem>
+                                <MenuItem value={1}><Rating name="read-only" value={1} readOnly /></MenuItem>
+                                <MenuItem value={2}><Rating name="read-only" value={2} readOnly /></MenuItem>
+                                <MenuItem value={3}><Rating name="read-only" value={3} readOnly /></MenuItem>
+                                <MenuItem value={4}><Rating name="read-only" value={4} readOnly /></MenuItem>
+                                <MenuItem value={5}><Rating name="read-only" value={5} readOnly /></MenuItem>
                             </Select>
                     </FormControl>
                 </div>

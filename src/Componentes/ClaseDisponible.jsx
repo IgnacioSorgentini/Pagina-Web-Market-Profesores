@@ -21,12 +21,16 @@ function ClaseDisponible({Nombre, Descripcion, Materia, Profesor, Dia, Horario, 
     const [telefono,setTelefono] = React.useState('');
     const [mensaje,setMensaje] = React.useState('');
     const [horario,setHorario] = React.useState('');
+    const [mail, setMail] = React.useState('');
 
     function handleChangeTelefono(e){
         setTelefono(e.target.value);
     }
     function handleChangeMensaje(e){
         setMensaje(e.target.value);
+    }
+    function handleChangeMail(e){
+        setMail(e.target.value);
     }
     function handleChangeHorario(e){
         setHorario(e.target.value);
@@ -53,7 +57,8 @@ function ClaseDisponible({Nombre, Descripcion, Materia, Profesor, Dia, Horario, 
             profesor: Profesor,
             tipo: Tipo,
             frecuencia: Frecuencia,
-            valoracion: Calificacion
+            valoracion: Calificacion,
+            mail: mail
         }
 
         fetch(`http://localhost:3001/clases/solicitar`, {
@@ -139,7 +144,7 @@ function ClaseDisponible({Nombre, Descripcion, Materia, Profesor, Dia, Horario, 
                                 Inserte los siguientes datos para contratar la clase {Nombre}
                             </DialogContentText>
                             <TextField autoFocus margin="dense" id="name" label="Telefono" type="telefono" fullWidth variant="standard" onChange={handleChangeTelefono}/>
-                            <TextField autoFocus margin="dense" id="name" label="Mail" type="mail" fullWidth variant="standard"/>
+                            <TextField autoFocus margin="dense" id="name" label="Mail" type="mail" fullWidth variant="standard" onChange={handleChangeMail}/>
                             <TextField autoFocus margin="dense" id="name" label="Horario de referencia para el contacto" type="horario" fullWidth variant="standard" onChange={handleChangeHorario}/>
                             <TextField autoFocus margin="dense" id="name" label="Mensaje al profesor" type="comentario" fullWidth variant="standard" onChange={handleChangeMensaje}/>
                         </DialogContent>
