@@ -21,18 +21,21 @@ function ContratarCLase () {
       
         const handleChangeMateria = (event) => {
           setMateria(event.target.value);
+          getClasesByMateria(event.target.value)
         };
 
         const [clase, setClase] = React.useState('');
       
         const handleChangeClase = (event) => {
           setClase(event.target.value);
+          getClasesByTipo(event.target.value)
         };
 
         const [frecuencia, setFrecuencia] = React.useState('');
       
         const handleChangeFrecuencia = (event) => {
           setFrecuencia(event.target.value);
+          getClasesByFrecuencia(event.target.value)
         };
 
         const [calificacion, setCalificacion] = React.useState('');
@@ -64,7 +67,7 @@ function ContratarCLase () {
                         "costo": response[i].costo,
                         "valoracion": response[i].valoracion,
                         "calificaciones": response[i].calificaciones.valor,
-                        "tipo": response[i].isGrupal,
+                        "tipo": response[i].tipo,
                         "descripcion": response[i].descripcion
                         }
                    
@@ -77,8 +80,150 @@ function ContratarCLase () {
         })
     },[recarga]);
        
+    function getClasesByFrecuencia(freq){
+        if (freq == ""){
+            setRecarga(55)
+        }
+        else{
+        fetch(`http://localhost:3001/clases/by_frecuencia/${freq}`)
+
+        
+        .then((response1) => response1.json())
+        .then((response1) => {
+            
+            var lista10 = []
+            for (var i in response1){
+
+                if (response1[i].isPublicada==true){
+                    lista10.push({
+                        "_id": response1[i]._id,
+                        "profesor": response1[i].profesor,
+                        "nombre": response1[i].nombre,
+                        "materia": response1[i].materia,
+                        "duracion": response1[i].duracion,
+                        "frecuencia": response1[i].frecuencia,
+                        "costo": response1[i].costo,
+                        "valoracion": response1[i].valoracion,
+                        "calificaciones": response1[i].calificaciones.valor,
+                        "tipo": response1[i].isGrupal,
+                        "descripcion": response1[i].descripcion
+                        }
+                   
+
+                ) }
+            }
+            setListaClases(lista10)
+            
+        })
+    }
+    }
+
+    function getClasesByMateria(materia){
+        if (materia == ""){
+            setRecarga(45)
+        }
+        else{
+        fetch(`http://localhost:3001/clases/by_materia/${materia}`)
+
+        
+        .then((response1) => response1.json())
+        .then((response1) => {
+            
+            var lista10 = []
+            for (var i in response1){
+
+                if (response1[i].isPublicada==true){
+                    lista10.push({
+                        "_id": response1[i]._id,
+                        "profesor": response1[i].profesor,
+                        "nombre": response1[i].nombre,
+                        "materia": response1[i].materia,
+                        "duracion": response1[i].duracion,
+                        "frecuencia": response1[i].frecuencia,
+                        "costo": response1[i].costo,
+                        "valoracion": response1[i].valoracion,
+                        "calificaciones": response1[i].calificaciones.valor,
+                        "tipo": response1[i].isGrupal,
+                        "descripcion": response1[i].descripcion
+                        }
+                   
+
+                ) }
+            }
+            setListaClases(lista10)
+            
+        })
+    }
+    }
     
-    
+    function getClasesByTipo(clase){
+        if (clase == ""){
+            setRecarga(45)
+        }
+        else if (clase=="Individual"){
+        fetch(`http://localhost:3001/clases/individuales`)
+
+        
+        .then((response1) => response1.json())
+        .then((response1) => {
+            
+            var lista10 = []
+            for (var i in response1){
+
+                if (response1[i].isPublicada==true){
+                    lista10.push({
+                        "_id": response1[i]._id,
+                        "profesor": response1[i].profesor,
+                        "nombre": response1[i].nombre,
+                        "materia": response1[i].materia,
+                        "duracion": response1[i].duracion,
+                        "frecuencia": response1[i].frecuencia,
+                        "costo": response1[i].costo,
+                        "valoracion": response1[i].valoracion,
+                        "calificaciones": response1[i].calificaciones.valor,
+                        "tipo": response1[i].isGrupal,
+                        "descripcion": response1[i].descripcion
+                        }
+                   
+
+                ) }
+            }
+            setListaClases(lista10)
+            
+        })
+    }else if (clase=="Grupal"){
+        fetch(`http://localhost:3001/clases/grupales`)
+
+        
+        .then((response1) => response1.json())
+        .then((response1) => {
+            
+            var lista10 = []
+            for (var i in response1){
+
+                if (response1[i].isPublicada==true){
+                    lista10.push({
+                        "_id": response1[i]._id,
+                        "profesor": response1[i].profesor,
+                        "nombre": response1[i].nombre,
+                        "materia": response1[i].materia,
+                        "duracion": response1[i].duracion,
+                        "frecuencia": response1[i].frecuencia,
+                        "costo": response1[i].costo,
+                        "valoracion": response1[i].valoracion,
+                        "calificaciones": response1[i].calificaciones.valor,
+                        "tipo": response1[i].isGrupal,
+                        "descripcion": response1[i].descripcion
+                        }
+                   
+
+                ) }
+            }
+            setListaClases(lista10)
+            
+        })
+    }
+    }
   
 
 
@@ -107,9 +252,10 @@ function ContratarCLase () {
                                 <MenuItem value="">
                                     <em>Todo</em>
                                 </MenuItem>
-                                <MenuItem value={10}>Matematica</MenuItem>
-                                <MenuItem value={20}>Fisica</MenuItem>
-                                <MenuItem value={30}>Electronica</MenuItem>
+                                <MenuItem value={"Matematica"}>Matematica</MenuItem>
+                                <MenuItem value={"Geografia"}>Geografia</MenuItem>
+                                <MenuItem value={"Biologia"}>Biologia</MenuItem>
+                                <MenuItem value={"Futbol"}>Futbol</MenuItem>
                             </Select>
                     </FormControl>
                     <FormControl sx={{ m: 1, minWidth: 120 }} size="small" style={{backgroundColor:"#5B4FA6", borderRadius:"5px"}}>
@@ -124,8 +270,8 @@ function ContratarCLase () {
                                 <MenuItem value="">
                                     <em>Todo</em>
                                 </MenuItem>
-                                <MenuItem value={10}>Individual</MenuItem>
-                                <MenuItem value={20}>Grupal</MenuItem>
+                                <MenuItem value={"Individual"}>Individual</MenuItem>
+                                <MenuItem value={"Grupal"}>Grupal</MenuItem>
                             </Select>
                     </FormControl>
                     <FormControl sx={{ m: 1, minWidth: 120 }} size="small" style={{backgroundColor:"#5B4FA6", borderRadius:"5px"}}>
@@ -140,9 +286,9 @@ function ContratarCLase () {
                                 <MenuItem value="">
                                     <em>Todo</em>
                                 </MenuItem>
-                                <MenuItem value={10}>Unica vez</MenuItem>
-                                <MenuItem value={20}>Mensual</MenuItem>
-                                <MenuItem value={30}>Semanal</MenuItem>
+                                <MenuItem value={"Una vez"}>Una vez</MenuItem>
+                                <MenuItem value={"Mensual"}>Mensual</MenuItem>
+                                <MenuItem value={"Semanal"}>Semanal</MenuItem>
                             </Select>
                     </FormControl>
                     <FormControl sx={{ m: 1, minWidth: 120 }} size="small" style={{backgroundColor:"#5B4FA6", borderRadius:"5px"}}>
