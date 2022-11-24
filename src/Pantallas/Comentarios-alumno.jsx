@@ -3,7 +3,8 @@ import '../Hojas-de-estilo/ComentariosAlumno.css';
 import ComentarioAlumno from '../Componentes/ComentarioAlumno';
 import MenuAlumno from "../Componentes/Menu/MenuAlumno";
 
-function ComentariosAlumno () {
+function ComentariosAlumno (props) {
+    console.log(props)
     return(
         <div className="ComentariosAlumno">
             <MenuAlumno />

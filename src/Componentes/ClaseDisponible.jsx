@@ -155,7 +155,7 @@ function ClaseDisponible({Nombre, Descripcion, Materia, Profesor, Dia, Horario, 
                     </Dialog>
                     </div>
                     <div className="caja-icono-comentarios">
-                    <div className="comentarios-clase-disp"><Link to="/comentariosAlumno" style={{color:"black"}}><ion-icon name="chatbox-outline"></ion-icon></Link></div>
+                    <div className="comentarios-clase-disp"><Link to="/comentariosAlumno" params={{id:idClase}} style={{color:"black"}}><ion-icon name="chatbox-outline"></ion-icon></Link></div>
                     </div>
             </div>
         </div>
