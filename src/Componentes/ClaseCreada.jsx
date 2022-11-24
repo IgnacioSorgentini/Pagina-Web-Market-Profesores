@@ -29,10 +29,11 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { OutlinedInput } from "@mui/material";
 
-function ClaseCreada({Nombre, Descripcion, Materia, Duracion, Tipo, Frecuencia, Precio}) {
+function ClaseCreada({Nombre, Descripcion, Materia, Duracion, Tipo, Frecuencia, Precio, Publicada, id, recarga, setRecarga}) {
     
     
     const [openEliminar, setOpenEliminar] = React.useState(false);
+
     const handleClickOpenEliminar = () => {
         setOpenEliminar(true);
     };
@@ -40,14 +41,57 @@ function ClaseCreada({Nombre, Descripcion, Materia, Duracion, Tipo, Frecuencia, 
         setOpenEliminar(false);
     };
 
+    const handleCloseEliminarConfirmar = () => {
+
+        fetch(`http://localhost:3001/clases/delete/${id}`, {
+            method: 'DELETE', 
+            headers: {
+            'Content-Type': 'application/json',
+            }
+            })
+        .then((response) => response.json())
+        .then((data)=> console.log(data))
+
+        setRecarga(60);
+
+        setOpenEliminar(false);
+    };
+
+    const handleCloseEliminarCancelar = () => {
+        setOpenEliminar(false);
+    };
 
     const [openEditar, setOpenEditar] = React.useState(false);
     const handleClickOpenEditar = () => {
         setOpenEditar(true);
     };
-    const handleCloseEditar = () => {
+    const handleCloseEditarGuardar = () => {
+        const data2 ={
+            nombre: nombre,
+            descripcion: descripcion,
+            materia: materia,
+            duracion: valuesHora,
+            frecuencia: frecuencia,
+            costo: valuesPrecio.amount,
+        }
+
+        fetch(`http://localhost:3001/clases/actualizar/${id}`, {
+            method: 'PATCH', 
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data2),
+            })
+        .then((response) => response.json())
+        .then((data)=> console.log(data))
+
+        setRecarga(40);
         setOpenEditar(false);
     };
+
+    const handleCloseEditarCancelar = () => {
+        setOpenEditar(false);
+    }
 
 
     
@@ -62,7 +106,7 @@ function ClaseCreada({Nombre, Descripcion, Materia, Duracion, Tipo, Frecuencia, 
     };
 
 
-
+    const [costo, setCosto] = React.useState(0)
 
 
     const [valuesPrecio, setValuesPrecio] = React.useState({
@@ -70,28 +114,37 @@ function ClaseCreada({Nombre, Descripcion, Materia, Duracion, Tipo, Frecuencia, 
       });
     const handleChangePrecio = (prop) => (event) => {
     setValuesPrecio({ ...valuesPrecio, [prop]: event.target.value });
+    setCosto(event.target.value)
     };
-    const [valuesHora, setValuesHora] = React.useState({
-        hora: '',
-      });
-    const handleChangeHora = (prop) => (event) => {
-    setValuesHora({ ...valuesHora, [prop]: event.target.value });
+    
+    const [valuesHora, setValuesHora] = React.useState(Duracion);
+    const handleChangeHora  = (event) => {
+    setValuesHora(event.target.value);
     };
-    const [materia, setMateria] = React.useState('');
+    const [materia, setMateria] = React.useState(Materia);
     const handleChangeMateria = (event) => {
         setMateria(event.target.value);
     };
-    const [frecuencia, setFrecuencia] = React.useState('');
+    const [frecuencia, setFrecuencia] = React.useState(Frecuencia);
     const handleChangeFrecuencia = (event) => {
         setFrecuencia(event.target.value);
     };
 
-    const [clase, setClase] = React.useState('');
+    const [clase, setClase] = React.useState(Tipo);
+    
     const handleChangeClase = (event) => {
         setClase(event.target.value);
     };
 
+    const [nombre, setNombre] = React.useState(Nombre);
+    const handleChangeNombre = (event) => {
+        setNombre(event.target.value);
+    };
 
+    const [descripcion, setDescripcion] = React.useState(Descripcion);
+    const handleChangeDescripcion = (event) => {
+        setDescripcion(event.target.value);
+    };
 
 
 
@@ -116,6 +169,7 @@ function ClaseCreada({Nombre, Descripcion, Materia, Duracion, Tipo, Frecuencia, 
                 <div className="dia-clase"><ion-icon name="time-outline"></ion-icon><h6>{Duracion}</h6></div>
                 <div className="horario-clase-cont"><ion-icon name="people-outline"></ion-icon><h6>{Tipo}</h6></div>
                 <div className="frecuencia-clase"><ion-icon name="barbell-outline"></ion-icon><h6>{Frecuencia}</h6></div>
+                <div className="frecuencia-clase"><h6 className="publicada">{Publicada}</h6></div>
             </div>
             <div className="pie-de-clase">
                 <div className="botones-clase-creada">
@@ -135,16 +189,16 @@ function ClaseCreada({Nombre, Descripcion, Materia, Duracion, Tipo, Frecuencia, 
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions>
-                            <Button onClick={handleCloseEliminar}>
+                            <Button onClick={handleCloseEliminarConfirmar}>
                                 Confirmar
                             </Button>
-                            <Button onClick={handleCloseEliminar} autoFocus>
+                            <Button onClick={handleCloseEliminarCancelar} autoFocus>
                                 Cancelar
                             </Button>
                         </DialogActions>
                     </Dialog>
                     <Tooltip title="Editar"><button onClick={handleClickOpenEditar}><ion-icon name="build-outline"></ion-icon></button></Tooltip>
-                        <Dialog open={openEditar} onClose={handleCloseEditar} maxWidth={"lg"} fullWidth>
+                        <Dialog open={openEditar} onClose={handleCloseEditarCancelar} maxWidth={"lg"} fullWidth>
                             <DialogTitle>Editar clase</DialogTitle>
                             <DialogContent>
                                 <DialogContentText>
@@ -152,10 +206,10 @@ function ClaseCreada({Nombre, Descripcion, Materia, Duracion, Tipo, Frecuencia, 
                                 </DialogContentText>
                                 <List>
                             <ListItem>
-                            <TextField id="filled-basic" label="Titulo de la clase" variant="filled" fullWidth defaultValue={Nombre}/>
+                            <TextField id="filled-basic" label="Titulo de la clase" variant="filled" fullWidth defaultValue={Nombre}  onChange={handleChangeNombre} />
                             </ListItem>
                             <ListItem>
-                                <TextField id="filled-basic" label="Descripcion de la clase" variant="filled" fullWidth defaultValue={Descripcion}/>
+                                <TextField id="filled-basic" label="Descripcion de la clase" variant="filled" fullWidth defaultValue={Descripcion}  onChange={handleChangeDescripcion}/>
                             </ListItem>
                             <ListItem>
                                 <FormControl fullWidth sx={{ m: 1 }} variant="filled">
@@ -178,9 +232,9 @@ function ClaseCreada({Nombre, Descripcion, Materia, Duracion, Tipo, Frecuencia, 
                                         label="Materia"
                                         onChange={handleChangeMateria}
                                     >
-                                        <MenuItem value={10}>Matematica</MenuItem>
-                                        <MenuItem value={20}>Biologia</MenuItem>
-                                        <MenuItem value={30}>Geografia</MenuItem>
+                                        <MenuItem value={"Matematica"}>Matematica</MenuItem>
+                                        <MenuItem value={"Biologia"}>Biologia</MenuItem>
+                                        <MenuItem value={"Geografia"}>Geografia</MenuItem>
                                     </Select>
                                 </FormControl>
                             </ListItem>
@@ -194,9 +248,9 @@ function ClaseCreada({Nombre, Descripcion, Materia, Duracion, Tipo, Frecuencia, 
                                         label="Frecuencia"
                                         onChange={handleChangeFrecuencia}
                                     >
-                                        <MenuItem value={10}>Una vez</MenuItem>
-                                        <MenuItem value={20}>Semanal</MenuItem>
-                                        <MenuItem value={30}>Mensual</MenuItem>
+                                        <MenuItem value={"Una vez"}>Una vez</MenuItem>
+                                        <MenuItem value={"Semanal"}>Semanal</MenuItem>
+                                        <MenuItem value={"Mensual"}>Mensual</MenuItem>
                                     </Select>
                                 </FormControl>
                             </ListItem>
@@ -210,8 +264,8 @@ function ClaseCreada({Nombre, Descripcion, Materia, Duracion, Tipo, Frecuencia, 
                                         label="Tipo de clase"
                                         onChange={handleChangeClase}
                                     >
-                                        <MenuItem value={10}>Individual</MenuItem>
-                                        <MenuItem value={20}>Grupal</MenuItem>
+                                        <MenuItem value={"Individual"}>Individual</MenuItem>
+                                        <MenuItem value={"Grupal"}>Grupal</MenuItem>
                                     </Select>
                                 </FormControl>
                             </ListItem>
@@ -219,8 +273,8 @@ function ClaseCreada({Nombre, Descripcion, Materia, Duracion, Tipo, Frecuencia, 
                                 <FormControl fullWidth sx={{ m: 1}} variant="outlined">
                                     <OutlinedInput
                                         id="outlined-adornment-weight"
-                                        value={valuesHora.weight}
-                                        onChange={handleChangeHora('hora')}
+                                        value={valuesHora}
+                                        onChange={handleChangeHora}
                                         endAdornment={<InputAdornment position="end">Hora/s</InputAdornment>}
                                         aria-describedby="outlined-weight-helper-text"
                                         inputProps={{
@@ -233,8 +287,8 @@ function ClaseCreada({Nombre, Descripcion, Materia, Duracion, Tipo, Frecuencia, 
                         </List>
                             </DialogContent>
                             <DialogActions>
-                                <Button onClick={handleCloseEditar}>Guardar cambios</Button>
-                                <Button onClick={handleCloseEditar}>Cancelar cambios</Button>
+                                <Button onClick={handleCloseEditarGuardar}>Guardar cambios</Button>
+                                <Button onClick={handleCloseEditarCancelar}>Cancelar cambios</Button>
                             </DialogActions>
                         </Dialog>
                     <button onClick={() => setButtonPopupPublicar(true)}><ion-icon name="arrow-up-circle-outline"></ion-icon></button>
@@ -251,11 +305,11 @@ function ClaseCreada({Nombre, Descripcion, Materia, Duracion, Tipo, Frecuencia, 
                     <Tooltip title="Comentarios"><Link to="/comentariosProfesor"><button><ion-icon name="chatbubble-outline"></ion-icon></button></Link></Tooltip>
                 </div>
             </div>
-            <PopupWindowPublicar trigger={buttonPopupPublicar} setTrigger={setButtonPopupPublicar}>
+            <PopupWindowPublicar trigger={buttonPopupPublicar} setTrigger={setButtonPopupPublicar} id={id} recarga={recarga} setRecarga={setRecarga}>
             </PopupWindowPublicar>
-            <PopupWindowDespublicar trigger={buttonPopupDespublicar} setTrigger={setButtonPopupDespublicar}>
+            <PopupWindowDespublicar trigger={buttonPopupDespublicar} setTrigger={setButtonPopupDespublicar} id={id} recarga={recarga} setRecarga={setRecarga}>
             </PopupWindowDespublicar>
-            <PopupEditarClase trigger={buttonPopupEditar} setTrigger={setButtonPopupEditar} Descripcion={Descripcion} Precio={Precio} Materia={Materia} Duracion={Duracion} Frecuencia={Frecuencia}/>
+            <PopupEditarClase trigger={buttonPopupEditar} setTrigger={setButtonPopupEditar} Descripcion={Descripcion} Precio={Precio} Materia={Materia} Duracion={Duracion} Frecuencia={Frecuencia} Tipo={Tipo} id={id} recarga={recarga} setRecarga={setRecarga} Nombre={Nombre}/>
         </div>
     )
 }

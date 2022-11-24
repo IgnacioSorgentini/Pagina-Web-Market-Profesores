@@ -10,8 +10,10 @@ function InicioSesion() {
     const [user, setUser] = useState('');   
     const [password,setPassword] = useState('')
     const [error,setError] = useState(0)
+    const [nombre, setNombre] = useState('');
     const [rol,setRol] = useState('')
     const [id, setId] = useState(''); 
+    
 
     
     const handleUserChange = (e) => {
@@ -37,6 +39,10 @@ function InicioSesion() {
         
         .then((response) => response.json())
         .then((data) => {
+            setNombre(data.nombre)
+            setId(data.id)
+            console.log(data)
+            
 
             if (data.id == "-1"){
                 setError(-1)
@@ -101,7 +107,7 @@ function InicioSesion() {
         }
         
             if (rol == 'Profesor'){
-                return  <MisClasesProfesor id={id}/>
+                return  <MisClasesProfesor id={id} nombre={nombre}/>
             }
           
         

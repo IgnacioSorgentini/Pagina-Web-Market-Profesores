@@ -4,14 +4,15 @@ import './Menu.css';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 
-function MenuProfesor(){
+function MenuProfesor(props){
+    console.log(props)
     return(
         <div className="menu">
             <div className="titulo-menu">
-                <Link to="/misClasesProfesor" style={{textDecoration:"none"}}><h1 style={{color:"#E6E6E6"}}>Cursos Online</h1></Link>
+                <Link to="/misClasesProfesor" params={{ id: props.id, nombre: props.nombre}} style={{textDecoration:"none"}}><h1 style={{color:"#E6E6E6"}}>Cursos Online</h1></Link>
             </div>
             <div className="botones-menu">
-            <Link to="/misClasesProfesor" style={{textDecoration:"none"}}>
+            <Link to="/misClasesProfesor"   params={{ id: props.id, nombre: props.nombre}} style={{textDecoration:"none"}}>
                 <Button variant="outlined" style={{color:"#E6E6E6", borderColor:"#E6E6E6", marginLeft:"30px"}}>Mis clases</Button>
             </Link>
             <Link to="/contratacionesProfesor" style={{textDecoration:"none"}}>

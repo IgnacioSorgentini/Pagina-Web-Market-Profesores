@@ -33,17 +33,30 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 
-function MisClasesProfesor ({id}) {
-    console.log(id)
+function MisClasesProfesor (props) {
+    console.log(props)
+    const [recarga, setRecarga] = React.useState(-20);
     const [buttonPopup, setButtonPopup] = useState(false);
 
+    const user = "profesor"
 
     
+    
     const [openCrear, setOpenCrear] = React.useState(false);
+    
     const handleClickOpenCrear = () => {
         setOpenCrear(true);
     };
     const handleCloseCrear = () => {
+        setOpenCrear(false);
+    };
+
+    const handleCloseCrearConfimar = () => {
+        crearClase()
+        setOpenCrear(false);
+    };
+
+    const handleCloseCrearCancelar = () => {
         setOpenCrear(false);
     };
 
@@ -92,7 +105,7 @@ function MisClasesProfesor ({id}) {
 
 
 
-    const [profesor, setProfesor] = React.useState('');
+    //const [profesor, setProfesor] = React.useState('');
     const [nombre, setNombre] = React.useState('');
     const [descripcion, setDescripcion] = React.useState('');
     const [asignatura, setAsignatura] = React.useState('');
@@ -104,10 +117,51 @@ function MisClasesProfesor ({id}) {
     const [calificaciones, setCalificaciones] = React.useState([{valor: 0}]);
     const [isPublicada, setIsPublicada] = React.useState(false);
     const [isGrupal, setIsGrupal] = React.useState(false);
+    const[listaClases, setListaClases] = React.useState([]);
+    
+    React.useEffect(()=>{
+       fetch(`http://localhost:3001/clases/by_profesor/${user}`)
+       .then((response) => response.json())
+        .then((response) => {
+            console.log(response)
+            var lista = []
+            for (var i in response){
+                var publicada = ""
+                if (response[i].isPublicada==true){
+                    publicada = "Clase publicada"
+                }
+                else{
+                    publicada = "Clase sin publicar"
+                }
+                    lista.push({
+                        "_id": response[i]._id,
+                        "profesor": response[i].profesor,
+                        "nombre": response[i].nombre,
+                        "materia": response[i].materia,
+                        "duracion": response[i].duracion,
+                        "frecuencia": response[i].frecuencia,
+                        "costo": response[i].costo,
+                        "valoracion": response[i].valoracion,
+                        "calificaciones": response[i].calificaciones.valor,
+                        "tipo": response[i].tipo,
+                        "descripcion": response[i].descripcion,
+                        "isPublicada": publicada
+                        }
+                   
+
+                ) 
+            }
+            setListaClases(lista)
+    
+       })
+
+       setRecarga(1)
+    },[recarga]);
+   
 
 
     function handleChangeNombre(e){
-        setNombre(e.tarjet.value);
+        setNombre(e.target.value);
     }
     function handleChangeDescripcion(e){
         setDescripcion(e.target.value);
@@ -129,9 +183,11 @@ function MisClasesProfesor ({id}) {
     }
 
     function crearClase(){
-        const data ={
-            profesor: profesor,
+        console.log("creando")
+        const data2 ={
+            profesor: props.nombre,
             nombre: nombre,
+            descripcion: descripcion,
             materia: materia,
             duracion: duracion,
             frecuencia: frecuencia,
@@ -139,8 +195,9 @@ function MisClasesProfesor ({id}) {
             valoracion: valoracion,
             comentarios: comentarios,
             calificaciones: calificaciones,
-            publica: isPublicada,
-            grupal: isGrupal
+            isPublicada: false,
+            isGrupal: isGrupal,
+            tipo: clase
         }
 
         fetch('http://localhost:3001/clases/create', {
@@ -148,9 +205,10 @@ function MisClasesProfesor ({id}) {
             headers: {
             'Content-Type': 'application/json',
             },
-            body: JSON.stringify(data),
+            body: JSON.stringify(data2),
             })
         .then((response) => response.json())
+        setRecarga(10)
     }
 
 
@@ -159,7 +217,7 @@ function MisClasesProfesor ({id}) {
 
     return(
        <div className="MisClasesProfesor">
-        <MenuProfesor />
+        <MenuProfesor id={props.id} nombre={props.nombre} />
         <div className="contenedor-mis-clases">
             <div className="cabecera-pantalla-profesor">
                 <div className="titulo-pantalla">
@@ -178,7 +236,7 @@ function MisClasesProfesor ({id}) {
                                 <IconButton
                                     edge="start"
                                     color="inherit"
-                                    onClick={handleCloseCrear}
+                                    onClick={handleCloseCrearCancelar}
                                     aria-label="close"
                                 >
                                     <CloseIcon />
@@ -186,7 +244,7 @@ function MisClasesProfesor ({id}) {
                                 <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
                                     Crear clase
                                 </Typography>
-                                <Button autoFocus color="inherit" onClick={handleCloseCrear}>
+                                <Button autoFocus color="inherit" onClick={handleCloseCrearConfimar}>
                                     Guardar
                                 </Button>
                             </Toolbar>
@@ -219,9 +277,9 @@ function MisClasesProfesor ({id}) {
                                         label="Materia"
                                         onChange={handleChangeMateria}
                                     >
-                                        <MenuItem value={10}>Matematica</MenuItem>
-                                        <MenuItem value={20}>Biologia</MenuItem>
-                                        <MenuItem value={30}>Geografia</MenuItem>
+                                        <MenuItem value={"Matematica"}>Matematica</MenuItem>
+                                        <MenuItem value={"Biologia"}>Biologia</MenuItem>
+                                        <MenuItem value={"Geografia"}>Geografia</MenuItem>
                                     </Select>
                                 </FormControl>
                             </ListItem>
@@ -235,9 +293,9 @@ function MisClasesProfesor ({id}) {
                                         label="Frecuencia"
                                         onChange={handleChangeFrecuencia}
                                     >
-                                        <MenuItem value={10}>Una vez</MenuItem>
-                                        <MenuItem value={20}>Semanal</MenuItem>
-                                        <MenuItem value={30}>Mensual</MenuItem>
+                                        <MenuItem value={"Una vez"}>Una vez</MenuItem>
+                                        <MenuItem value={"Semanal"}>Semanal</MenuItem>
+                                        <MenuItem value={"Mensual"}>Mensual</MenuItem>
                                     </Select>
                                 </FormControl>
                             </ListItem>
@@ -251,8 +309,8 @@ function MisClasesProfesor ({id}) {
                                         label="Tipo de clase"
                                         onChange={handleChangeClase}
                                     >
-                                        <MenuItem value={10}>Individual</MenuItem>
-                                        <MenuItem value={20}>Grupal</MenuItem>
+                                        <MenuItem value={"Individual"}>Individual</MenuItem>
+                                        <MenuItem value={"Grupal"}>Grupal</MenuItem>
                                     </Select>
                                 </FormControl>
                             </ListItem>
@@ -261,7 +319,7 @@ function MisClasesProfesor ({id}) {
                                     <OutlinedInput
                                         id="outlined-adornment-weight"
                                         value={valuesHora.weight}
-                                        onChange={handleChangeHora('hora')}
+                                        onChange={handleChangeDuracion}
                                         endAdornment={<InputAdornment position="end">Hora/s</InputAdornment>}
                                         aria-describedby="outlined-weight-helper-text"
                                         inputProps={{
@@ -271,12 +329,19 @@ function MisClasesProfesor ({id}) {
                                         <FormHelperText id="outlined-weight-helper-text">Tiempo</FormHelperText>
                                     </FormControl>
                             </ListItem>
+
                         </List>
                     </Dialog>
                 </div>
             </div>
+
             <div className="lista-clases">
-                <ClaseCreada Nombre="Matematica A" Descripcion="Clase de matematica nivel avanzado" Materia="Matematica" Duracion="1 hora" Tipo="Individual" Frecuencia="Semanal" Precio="1230,00" />
+            {
+                    listaClases.map((clase) =>{
+                        return( <ClaseCreada Nombre={clase.nombre}  Descripcion={clase.descripcion} Materia={clase.materia} Duracion={clase.duracion} Tipo={clase.tipo} Frecuencia={clase.frecuencia} Precio={clase.costo} Publicada={clase.isPublicada} id={clase._id} recarga={recarga} setRecarga={setRecarga}/>)
+                    })
+                }
+
             </div>
             <PopupNuevaClase trigger={buttonPopup} setTrigger={setButtonPopup}>
             </PopupNuevaClase>
