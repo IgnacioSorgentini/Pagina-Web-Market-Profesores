@@ -53,7 +53,7 @@ function ClaseDisponible({Nombre, Descripcion, Materia, Profesor, Dia, Horario, 
             profesor: Profesor,
             tipo: Tipo,
             frecuencia: Frecuencia,
-            calificacion: Calificacion
+            valoracion: Calificacion
         }
 
         fetch(`http://localhost:3001/clases/solicitar`, {
