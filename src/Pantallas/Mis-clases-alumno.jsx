@@ -16,7 +16,9 @@ function MisClasesAlumno ({id}) {
         .then((response) => response.json())
          .then((response) => {
              var lista2 = []
+
              for (var i in response){
+    
                      lista2.push({
                         "_id": response[i]._id,
                          "profesor": response[i].profesor,
@@ -24,21 +26,23 @@ function MisClasesAlumno ({id}) {
                          "materia": response[i].materia,
                          "frecuencia": response[i].frecuencia,
                          "costo": response[i].costo,
-                         "calificaciones": response[i].calificacion,
+                         "valoracion": response[i].valoracion,
                          "descripcion": response[i].descripcion,
                          "tipo": response[i].tipo,
                          "estado": response[i].estado
                          }
-                    
+                        
  
                  ) 
+                 
+                 
+                
              }
              setListaClases(lista2)
      
         })
  
         setRecarga(1)
-        console.log(listaClases)
      },[recarga]);
 
      return(
@@ -50,7 +54,7 @@ function MisClasesAlumno ({id}) {
             </div>
             <div className="lista-clases">
             {listaClases.map((clase) =>{
-                return <ClaseContratada Nombre={clase.nombre} Descripcion={clase.descripcion} Materia={clase.materia} Profesor={clase.profesor} Dia="hola" Horario='1 hora' Tipo={clase.tipo} Frecuencia={clase.frecuencia} Calificacion="4" Costo={clase.costo} Estado={clase.estado}/>
+                return <ClaseContratada Nombre={clase.nombre} Descripcion={clase.descripcion} Materia={clase.materia} Profesor={clase.profesor} Dia="hola" Horario='1 hora' Tipo={clase.tipo} Frecuencia={clase.frecuencia} Calificacion= {clase.valoracion} Costo={clase.costo} Estado={clase.estado}/>
                     })
             }
                

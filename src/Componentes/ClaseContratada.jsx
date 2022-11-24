@@ -144,8 +144,10 @@ function ClaseContratada({Nombre, Descripcion, Materia, Profesor, Horario, Tipo,
                             <Rating
                                 name="simple-controlled"
                                 value={value}
-                                onChange={(event, newValue) => {
+                                onChange={(value, newValue) => {
                                 setValue(newValue);
+
+
                                 }}
                             />
                             </div>
