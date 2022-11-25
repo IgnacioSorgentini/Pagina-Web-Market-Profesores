@@ -3,7 +3,8 @@ import '../Hojas-de-estilo/ComentarioAlumno.css';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 
-function Comentario({Nombre, Comentario}) {
+function Comentario({Nombre, Comentario, Id}) {
+
     
     function stringToColor(string) {
         let hash = 0;

@@ -7,7 +7,6 @@ import MenuAlumno from '../Componentes/Menu/MenuAlumno';
 function MisClasesAlumno ({id}) {
 
 
-    console.log(id)
     const user = "637825f755610aa44323d5f2"
     const [recarga, setRecarga] = React.useState(-20);
     const[listaClases, setListaClases] = useState([]);
@@ -29,6 +28,7 @@ function MisClasesAlumno ({id}) {
 
                      lista2.push({
                         "_id": response[i]._id,
+                        "idClase": response[i].idClase,
                          "profesor": response[i].profesor,
                          "nombre": response[i].nombre,
                          "materia": response[i].materia,
@@ -38,7 +38,8 @@ function MisClasesAlumno ({id}) {
                          "descripcion": response[i].descripcion,
                          "estado": response[i].estado,
                          "tipo": response[i].tipo,
-                         "duracion": response[i].duracion
+                         "duracion": response[i].duracion,
+                         "idAlumno": response[i].idAlumno
                          }
                  )  
                   
@@ -65,7 +66,7 @@ function MisClasesAlumno ({id}) {
             </div>
             <div className="lista-clases">
             {listaClases.map((clase) =>{
-                return <ClaseContratada Nombre={clase.nombre} Descripcion={clase.descripcion} Materia={clase.materia} Profesor={clase.profesor}  Horario={clase.duracion} Tipo={clase.tipo} Frecuencia={clase.frecuencia} Calificacion= {clase.valoracion} Costo={clase.costo} Estado={clase.estado} Id ={clase._id}/>
+                return <ClaseContratada Nombre={clase.nombre} Descripcion={clase.descripcion} Materia={clase.materia} Profesor={clase.profesor}  Horario={clase.duracion} Tipo={clase.tipo} Frecuencia={clase.frecuencia} Calificacion= {clase.valoracion} Costo={clase.costo} Estado={clase.estado} Id ={clase._id} IdClase = {clase.idClase} IdAlumno={clase.idAlumno}/>
                     })
             }
                

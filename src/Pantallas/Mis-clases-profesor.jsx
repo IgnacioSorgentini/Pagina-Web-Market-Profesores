@@ -113,7 +113,7 @@ function MisClasesProfesor (props) {
     const [frequency, setFrequency] = React.useState('');
     const [costo, setcosto] = React.useState(0);
     const [valoracion, setValoracion] = React.useState(0);
-    const [comentarios, setComentarios] = React.useState([{comentario: '', isVisible: false}]);
+    const [comentarios, setComentarios] = React.useState([]);
     const [calificaciones, setCalificaciones] = React.useState([{valor: 0}]);
     const [isPublicada, setIsPublicada] = React.useState(false);
     const [isGrupal, setIsGrupal] = React.useState(false);
