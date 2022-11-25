@@ -124,7 +124,7 @@ function MisClasesProfesor () {
     const [isGrupal, setIsGrupal] = React.useState(false);
     const[listaClases, setListaClases] = React.useState([]);
 
-   
+
     React.useEffect(()=>{
        fetch(`http://localhost:3001/clases/by_profesor/${location.state.nombre}`)
        .then((response) => response.json())

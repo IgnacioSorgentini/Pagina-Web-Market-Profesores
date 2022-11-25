@@ -26,7 +26,9 @@ function Contrataciones() {
                         "telefono": response[i].telefono,
                         "mail": response[i].mail,
                         "horario": response[i].horario,
-                        "mensaje": response[i].mensaje
+                        "mensaje": response[i].mensaje,
+                        "idSolicitud": response[i]._id,
+                        "estado": response[i].estado
                         }
                 ) 
             }
@@ -48,7 +50,7 @@ function Contrataciones() {
             <div className="lista-contrataciones">
             {
                     listaClases.map((clase) =>{
-                return <Contratacion Clase={clase.clase} Alumno={clase.alumno} Telefono={clase.telefono} Mail={clase.mail} HorarioRef={clase.horario} Mensaje={clase.mensaje}/>
+                return <Contratacion Clase={clase.clase} Alumno={clase.alumno} Telefono={clase.telefono} Mail={clase.mail} HorarioRef={clase.horario} Mensaje={clase.mensaje} IdSolicitud={clase.idSolicitud} Estado={clase.estado} setRecarga={setRecarga}/>
                     })
                     }
             </div>

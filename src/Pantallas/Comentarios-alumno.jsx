@@ -4,15 +4,16 @@ import ComentarioAlumno from '../Componentes/ComentarioAlumno';
 import MenuAlumno from "../Componentes/Menu/MenuAlumno";
 import { useLocation } from 'react-router-dom';
 
-function ComentariosAlumno () {
+function ComentariosAlumno (props) {
     const location = useLocation()
     const { from } = location.state
     const [recarga, setRecarga] = React.useState(-20);
     const[listaClases, setListaClases] = React.useState([]);
 
     
+    
     React.useEffect(()=>{
-        fetch(`http://localhost:3001/clases/comentarios/${location.state.id}`)
+        fetch(`http://localhost:3001/clases/comentarios/${location.state.idclase}`)
 
        
        .then((response) => response.json())
@@ -29,7 +30,7 @@ function ComentariosAlumno () {
                        }
                )} }
            }
-           console.log(lista30)
+           
            setListaClases(lista30)
            setRecarga(1)
            

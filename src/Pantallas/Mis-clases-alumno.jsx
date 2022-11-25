@@ -14,7 +14,7 @@ function MisClasesAlumno () {
     
     const [recarga, setRecarga] = React.useState(-20);
     const[listaClases, setListaClases] = useState([]);
-
+    console.log(typeof(location.state))
     React.useEffect(()=>{
         
         fetch(`http://localhost:3001/clases/solicitudes/user/${location.state}`)
@@ -57,14 +57,14 @@ function MisClasesAlumno () {
 
      return(
         <div className="misClasesAlumno">
-            <MenuAlumno  state = {location.state} />
+            <MenuAlumno   state={location.state} />
             <div className="contenedor-mis-clases">
             <div className="titulo-pantalla">
                 <h3 style={{color:"#334756"}}>Mis clases</h3>
             </div>
             <div className="lista-clases">
             {listaClases.map((clase) =>{
-                return <ClaseContratada  Nombre={clase.nombre} Descripcion={clase.descripcion} Materia={clase.materia} Profesor={clase.profesor}  duracion={clase.duracion} Tipo={clase.tipo} Frecuencia={clase.frecuencia} Calificacion= {clase.valoracion} Costo={clase.costo} Estado={clase.estado} Id ={clase._id}/>
+                return <ClaseContratada  Nombre={clase.nombre} Descripcion={clase.descripcion} Materia={clase.materia} Profesor={clase.profesor}  duracion={clase.duracion} Tipo={clase.tipo} Frecuencia={clase.frecuencia} Calificacion= {clase.valoracion} Costo={clase.costo} Estado={clase.estado} Id ={clase._id} idClase={clase.idClase}/>
                     })
             }
                

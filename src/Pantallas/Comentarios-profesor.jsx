@@ -13,7 +13,7 @@ function ComentariosProfesor () {
     console.log(location.state.id)
 
     React.useEffect(()=>{
-        fetch(`http://localhost:3001/clases/comentarios/${location.state.id}`)
+        fetch(`http://localhost:3001/clases/comentarios/${location.state.idclase}`)
 
        
        .then((response) => response.json())
@@ -30,11 +30,11 @@ function ComentariosProfesor () {
                )
                 }
            }
-           console.log(lista30)
            setListaClases(lista30)
            setRecarga(1)
            
        })
+       console.log(listaClases)
    },[recarga]);
 
     return(

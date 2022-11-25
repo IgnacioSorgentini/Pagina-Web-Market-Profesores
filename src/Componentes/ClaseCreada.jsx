@@ -28,9 +28,12 @@ import FilledInput from '@mui/material/FilledInput';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { OutlinedInput } from "@mui/material";
+import { useLocation } from 'react-router-dom';
 
 function ClaseCreada({Nombre, Descripcion, Materia, Duracion, Tipo, Frecuencia, Precio, Publicada, id, recarga, setRecarga}) {
     
+    const location = useLocation()
+    const { from } = location.state
     
     const [openEliminar, setOpenEliminar] = React.useState(false);
 
@@ -301,8 +304,8 @@ function ClaseCreada({Nombre, Descripcion, Materia, Duracion, Tipo, Frecuencia, 
                         color="default"
                     />
                 </div>
-                <div className="comentarios-clase-creada">
-                    <Tooltip title="Comentarios"><Link to="/comentariosProfesor" state={{id}}><button><ion-icon name="chatbubble-outline"></ion-icon></button></Link></Tooltip>
+                <div className="comentarios-clase-creada">     
+                    <Tooltip title="Comentarios"><Link to="/comentariosProfesor" state={{id:location.state.id, nombre:location.state.nombre,idclase:id}} ><button><ion-icon name="chatbubble-outline"></ion-icon></button></Link></Tooltip>
                 </div>
             </div>
             <PopupWindowPublicar trigger={buttonPopupPublicar} setTrigger={setButtonPopupPublicar} id={id} recarga={recarga} setRecarga={setRecarga}>
