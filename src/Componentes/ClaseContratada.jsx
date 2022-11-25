@@ -19,7 +19,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { useLocation } from 'react-router-dom';
 
 
-function ClaseContratada({ Nombre, Descripcion, Materia, Profesor, duracion, Tipo, Frecuencia, Calificacion, Estado, Id}) {
+function ClaseContratada({ Nombre, Descripcion, Materia, Profesor, duracion, Tipo, Frecuencia, Calificacion, Estado, Id, idClase}) {
 
 
     const location = useLocation()
@@ -33,10 +33,9 @@ function ClaseContratada({ Nombre, Descripcion, Materia, Profesor, duracion, Tip
     const [recarga, setRecarga] = React.useState(-200);
 
     React.useEffect(()=>{
-        fetch(`http://localhost:3001/users/${IdAlumno}`)
+        fetch(`http://localhost:3001/users/${location.state}`)
         .then((response) => response.json())
         .then((data) => {
-            console.log(data)
             setNombreUsuario(data.nombre)
         })
         
@@ -50,13 +49,14 @@ function ClaseContratada({ Nombre, Descripcion, Materia, Profesor, duracion, Tip
         setOpenComentar(false);
     };
     const handleCloseComentarEnviar = () => {
+        console.log(Id)
         console.log(nombreUsuario)
         const data2 ={
             "usuario": nombreUsuario,
             "comentario": comentario
         }
 
-        fetch(`http://localhost:3001/clases/comentar/${IdClase}`, {
+        fetch(`http://localhost:3001/clases/comentar/${idClase}`, {
             method: 'PATCH', 
             headers: {
             'Content-Type': 'application/json',
@@ -85,7 +85,7 @@ function ClaseContratada({ Nombre, Descripcion, Materia, Profesor, duracion, Tip
             "comentario": comentario
         }
 
-        fetch(`http://localhost:3001/clases/actualizar_valoracion/${IdClase}/${value}`, {
+        fetch(`http://localhost:3001/clases/actualizar_valoracion/${Id}/${value}`, {
             method: 'PATCH', 
             headers: {
             'Content-Type': 'application/json',
@@ -222,7 +222,7 @@ function ClaseContratada({ Nombre, Descripcion, Materia, Profesor, duracion, Tip
                         </DialogActions>
                     </Dialog>
                 </div>
-                <div className="comentarios-clase-cont"><Link to="/comentariosAlumno" state={location.state} style={{color:"black"}}><ion-icon name="chatbox-outline"></ion-icon></Link></div>
+                <div className="comentarios-clase-cont"><Link to="/comentariosAlumno/" state={{id:location.state,idclase:idClase}} style={{color:"black"}}><ion-icon name="chatbox-outline"></ion-icon></Link></div>
             </div>
         </div>
     )

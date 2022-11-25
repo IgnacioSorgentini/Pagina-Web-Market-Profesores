@@ -30,18 +30,26 @@ function MenuAlumno(){
     const handleBadgeVisibility = () => {
         setInvisible(!invisible);
     };
-   
+   console.log(location.state)
+
+   let iduser = 0
+   if (typeof(location.state) == "object"){
+        iduser = location.state.id
+   }
+   else{
+    iduser = location.state
+   }
 
     return(
         <div className="menu">
             <div className="titulo-menu">
-                <Link to="/misClasesAlumno" style={{textDecoration:"none"}} state ={location.state} ><h1 style={{color:"#E6E6E6"}}>Cursos Online</h1></Link>
+                <Link to="/misClasesAlumno" style={{textDecoration:"none"}}  state={iduser} ><h1 style={{color:"#E6E6E6"}}>Cursos Online</h1></Link>
             </div>
             <div className="botones-menu">
-                <Link to="/contratarClase" style={{textDecoration:"none"}} state = {location.state}  >
+                <Link to="/contratarClase" style={{textDecoration:"none"}}  state={iduser}  >
                     <Button variant="outlined" style={{color:"#E6E6E6", borderColor:"#E6E6E6", marginLeft:"30px"}}>Contratar clase</Button>
                 </Link>
-                <Link to="/misClasesAlumno" style={{textDecoration:"none"}} state ={location.state}>
+                <Link to="/misClasesAlumno" style={{textDecoration:"none"}}  state={iduser}>
                     <Button variant="outlined" style={{color:"#E6E6E6", borderColor:"#E6E6E6", marginLeft:"30px"}}>Mis clases</Button>
                 </Link>
                 <Link to="/" style={{textDecoration:"none"}}>

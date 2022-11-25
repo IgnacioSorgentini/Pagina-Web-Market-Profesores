@@ -275,7 +275,7 @@ function ContratarCLase () {
 
 
             
-
+    
 
     return(
         <div className="ContratarClase">

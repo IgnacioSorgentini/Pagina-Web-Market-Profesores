@@ -10,6 +10,7 @@ function Registro() {
     const [mail,setMail] = useState('')
     const [telefono,setTelefono] = useState('')
     const [nombre,setNombre] = useState('')
+    const [apellido,setApellido] = useState('')
     const [password,setPassword] = useState(' ')
     const [repassword,setRepassword] = useState(' ')
     const [error,setError] = useState(1)
@@ -40,7 +41,9 @@ function Registro() {
       const handleNombreChange = (e) => {
     	setNombre(e.target.value);
   	};
-
+      const handleApellidoChange = (e) => {
+    	setApellido(e.target.value);
+  	};
     const handleRespuestaPreguntaChange = (e) =>{
         setRespuestaPregunta(e.target.value)
     }
@@ -82,7 +85,7 @@ function Registro() {
 
       
         const data = { 
-                    nombre: nombre,
+                    nombre: nombre + " " + apellido,
                     mail: mail,
                     password: password,
                     rol:texto,
@@ -137,7 +140,7 @@ function Registro() {
                 <br/>
                 <text className="texto"> Ingrese su apellido: </text>
                 <br/>
-                <input className="input" type ="text" placeholder="Apellido"/>
+                <input className="input" type ="text" placeholder="Apellido" onChange={handleNombreChange}/>
                 <br/>
                 <text className="texto"> Ingrese su mail: </text>
                 <br/>
