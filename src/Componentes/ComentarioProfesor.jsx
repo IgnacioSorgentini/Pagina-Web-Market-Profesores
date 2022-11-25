@@ -9,7 +9,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
-function ComentarioProfesor ({Nombre, Comentario}) {
+function ComentarioProfesor ({Nombre, Comentario, Id, setRecarga}) {
 
     const [openBloquear, setOpenBloquear] = React.useState(false);
     const [openAceptar, setOpenAceptar] = React.useState(false);
@@ -23,12 +23,32 @@ function ComentarioProfesor ({Nombre, Comentario}) {
         setOpenBloquear(false);
     };
 
+    const handleCloseAceptarConfirmar = () => {
+        fetch(`http://localhost:3001/clases/aceptarComentario/${Id}/`, {
+            method: 'PATCH'
+            })
+        .then((response) => response.json())
+        .then((response) => console.log(response))
+        setRecarga(102)
+        setOpenAceptar(false);
+    };
+
     const handleClickOpenAceptar = () => {
         setOpenAceptar(true);
     };
 
     const handleCloseAceptar = () => {
         setOpenAceptar(false);
+    };
+
+    const handleCloseDescargoConfirmar = () => {
+        fetch(`http://localhost:3001/clases/rechazarComentario/${Id}/`, {
+            method: 'PATCH'
+            })
+        .then((response) => response.json())
+        .then((response) => console.log(response))
+        setRecarga(101)
+        setOpenDescargo(false);
     };
 
     const handleClickOpenDescargo = () => {
@@ -135,7 +155,7 @@ function ComentarioProfesor ({Nombre, Comentario}) {
                     />
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={handleCloseDescargo}>
+                        <Button onClick={handleCloseDescargoConfirmar}>
                             Bloquear comentario
                         </Button>
                         <Button onClick={handleCloseDescargo} autoFocus>
@@ -159,7 +179,7 @@ function ComentarioProfesor ({Nombre, Comentario}) {
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={handleCloseAceptar}>
+                        <Button onClick={handleCloseAceptarConfirmar}>
                             Confirmar
                         </Button>
                         <Button onClick={handleCloseAceptar} autoFocus>

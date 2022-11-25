@@ -27,14 +27,19 @@ import { useTheme } from '@mui/material/styles';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import FormHelperText from '@mui/material/FormHelperText';
+import { useLocation } from 'react-router-dom';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
 
-function MisClasesProfesor (props) {
-    console.log(props)
+function MisClasesProfesor () {
+    
+    const location = useLocation()
+    const { from } = location.state
+    
+
     const [recarga, setRecarga] = React.useState(-20);
     const [buttonPopup, setButtonPopup] = useState(false);
 
@@ -105,7 +110,7 @@ function MisClasesProfesor (props) {
 
 
 
-    //const [profesor, setProfesor] = React.useState('');
+    const [profesor, setProfesor] = React.useState('');
     const [nombre, setNombre] = React.useState('');
     const [descripcion, setDescripcion] = React.useState('');
     const [asignatura, setAsignatura] = React.useState('');
@@ -113,17 +118,18 @@ function MisClasesProfesor (props) {
     const [frequency, setFrequency] = React.useState('');
     const [costo, setcosto] = React.useState(0);
     const [valoracion, setValoracion] = React.useState(0);
-    const [comentarios, setComentarios] = React.useState([{comentario: '', isVisible: false}]);
+    const [comentarios, setComentarios] = React.useState([]);
     const [calificaciones, setCalificaciones] = React.useState([{valor: 0}]);
     const [isPublicada, setIsPublicada] = React.useState(false);
     const [isGrupal, setIsGrupal] = React.useState(false);
     const[listaClases, setListaClases] = React.useState([]);
-    
+
+   
     React.useEffect(()=>{
-       fetch(`http://localhost:3001/clases/by_profesor/${user}`)
+       fetch(`http://localhost:3001/clases/by_profesor/${location.state.nombre}`)
        .then((response) => response.json())
         .then((response) => {
-            console.log(response)
+            
             var lista = []
             for (var i in response){
                 var publicada = ""
@@ -183,9 +189,8 @@ function MisClasesProfesor (props) {
     }
 
     function crearClase(){
-        console.log("creando")
         const data2 ={
-            profesor: props.nombre,
+            profesor: location.state.nombre,
             nombre: nombre,
             descripcion: descripcion,
             materia: materia,
@@ -217,7 +222,7 @@ function MisClasesProfesor (props) {
 
     return(
        <div className="MisClasesProfesor">
-        <MenuProfesor id={props.id} nombre={props.nombre} />
+        <MenuProfesor  />
         <div className="contenedor-mis-clases">
             <div className="cabecera-pantalla-profesor">
                 <div className="titulo-pantalla">

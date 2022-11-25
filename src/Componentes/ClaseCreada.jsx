@@ -302,7 +302,7 @@ function ClaseCreada({Nombre, Descripcion, Materia, Duracion, Tipo, Frecuencia, 
                     />
                 </div>
                 <div className="comentarios-clase-creada">
-                    <Tooltip title="Comentarios"><Link to="/comentariosProfesor"><button><ion-icon name="chatbubble-outline"></ion-icon></button></Link></Tooltip>
+                    <Tooltip title="Comentarios"><Link to="/comentariosProfesor" state={{id}}><button><ion-icon name="chatbubble-outline"></ion-icon></button></Link></Tooltip>
                 </div>
             </div>
             <PopupWindowPublicar trigger={buttonPopupPublicar} setTrigger={setButtonPopupPublicar} id={id} recarga={recarga} setRecarga={setRecarga}>

@@ -3,54 +3,68 @@ import { useState } from "react";
 import '../Hojas-de-estilo/Mis-clases.css';
 import ClaseContratada from "../Componentes/ClaseContratada";
 import MenuAlumno from '../Componentes/Menu/MenuAlumno';
+import { useLocation } from 'react-router-dom';
 
-function MisClasesAlumno ({id}) {
+function MisClasesAlumno () {
 
-    const user = "637825f755610aa44323d5f2"
+    
+    const location = useLocation()
+    const { from } = location.state
+
+    
     const [recarga, setRecarga] = React.useState(-20);
-    const userid = "637825f755610aa44323d5f2"
     const[listaClases, setListaClases] = useState([]);
 
     React.useEffect(()=>{
-        fetch(`http://localhost:3001/clases/solicitudes/user/${user}`)
+        
+        fetch(`http://localhost:3001/clases/solicitudes/user/${location.state}`)
         .then((response) => response.json())
          .then((response) => {
              var lista2 = []
+
              for (var i in response){
+
                      lista2.push({
                         "_id": response[i]._id,
+                        "idClase": response[i].idClase,
                          "profesor": response[i].profesor,
                          "nombre": response[i].nombre,
                          "materia": response[i].materia,
                          "frecuencia": response[i].frecuencia,
                          "costo": response[i].costo,
-                         "calificaciones": response[i].calificacion,
+                         "valoracion": response[i].valoracion,
                          "descripcion": response[i].descripcion,
+                         "estado": response[i].estado,
                          "tipo": response[i].tipo,
-                         "estado": response[i].estado
+                         "duracion": response[i].duracion,
+                         "idAlumno": response[i].idAlumno
                          }
-                    
- 
-                 ) 
+                 )  
+                  
+                
              }
+            
              setListaClases(lista2)
      
         })
  
         setRecarga(1)
-        console.log(listaClases)
      },[recarga]);
+
+
+
+ 
 
      return(
         <div className="misClasesAlumno">
-            <MenuAlumno />
+            <MenuAlumno  state = {location.state} />
             <div className="contenedor-mis-clases">
             <div className="titulo-pantalla">
                 <h3 style={{color:"#334756"}}>Mis clases</h3>
             </div>
             <div className="lista-clases">
             {listaClases.map((clase) =>{
-                return <ClaseContratada Nombre={clase.nombre} Descripcion={clase.descripcion} Materia={clase.materia} Profesor={clase.profesor} Dia="hola" Horario='1 hora' Tipo={clase.tipo} Frecuencia={clase.frecuencia} Calificacion="4" Costo={clase.costo} Estado={clase.estado}/>
+                return <ClaseContratada  Nombre={clase.nombre} Descripcion={clase.descripcion} Materia={clase.materia} Profesor={clase.profesor}  duracion={clase.duracion} Tipo={clase.tipo} Frecuencia={clase.frecuencia} Calificacion= {clase.valoracion} Costo={clase.costo} Estado={clase.estado} Id ={clase._id}/>
                     })
             }
                

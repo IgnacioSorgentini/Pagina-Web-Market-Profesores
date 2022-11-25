@@ -11,6 +11,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { useLocation } from 'react-router-dom';
 
 function ClaseDisponible({Nombre, Descripcion, Materia, Profesor, Dia, Horario, Tipo, Frecuencia, Calificacion, Costo, idClase}) {
 
@@ -21,12 +22,20 @@ function ClaseDisponible({Nombre, Descripcion, Materia, Profesor, Dia, Horario, 
     const [telefono,setTelefono] = React.useState('');
     const [mensaje,setMensaje] = React.useState('');
     const [horario,setHorario] = React.useState('');
+    const [mail, setMail] = React.useState('');
+
+    const location = useLocation()
+    const { from } = location.state
+
 
     function handleChangeTelefono(e){
         setTelefono(e.target.value);
     }
     function handleChangeMensaje(e){
         setMensaje(e.target.value);
+    }
+    function handleChangeMail(e){
+        setMail(e.target.value);
     }
     function handleChangeHorario(e){
         setHorario(e.target.value);
@@ -41,7 +50,7 @@ function ClaseDisponible({Nombre, Descripcion, Materia, Profesor, Dia, Horario, 
     const handleCloseContratarConfirmar = () => {
 
         const data2 ={
-            idAlumno: id,
+            idAlumno: location.state,
             idClase: idClase,
             horario: horario ,
             telefono: telefono,
@@ -53,7 +62,9 @@ function ClaseDisponible({Nombre, Descripcion, Materia, Profesor, Dia, Horario, 
             profesor: Profesor,
             tipo: Tipo,
             frecuencia: Frecuencia,
-            calificacion: Calificacion
+            valoracion: Calificacion,
+            mail: mail,
+            duracion: Horario
         }
 
         fetch(`http://localhost:3001/clases/solicitar`, {
@@ -139,7 +150,7 @@ function ClaseDisponible({Nombre, Descripcion, Materia, Profesor, Dia, Horario, 
                                 Inserte los siguientes datos para contratar la clase {Nombre}
                             </DialogContentText>
                             <TextField autoFocus margin="dense" id="name" label="Telefono" type="telefono" fullWidth variant="standard" onChange={handleChangeTelefono}/>
-                            <TextField autoFocus margin="dense" id="name" label="Mail" type="mail" fullWidth variant="standard"/>
+                            <TextField autoFocus margin="dense" id="name" label="Mail" type="mail" fullWidth variant="standard" onChange={handleChangeMail}/>
                             <TextField autoFocus margin="dense" id="name" label="Horario de referencia para el contacto" type="horario" fullWidth variant="standard" onChange={handleChangeHorario}/>
                             <TextField autoFocus margin="dense" id="name" label="Mensaje al profesor" type="comentario" fullWidth variant="standard" onChange={handleChangeMensaje}/>
                         </DialogContent>
@@ -150,7 +161,7 @@ function ClaseDisponible({Nombre, Descripcion, Materia, Profesor, Dia, Horario, 
                     </Dialog>
                     </div>
                     <div className="caja-icono-comentarios">
-                    <div className="comentarios-clase-disp"><Link to="/comentariosAlumno" style={{color:"black"}}><ion-icon name="chatbox-outline"></ion-icon></Link></div>
+                    <div className="comentarios-clase-disp"><Link to="/comentariosAlumno" state={location.state} style={{color:"black"}}><ion-icon name="chatbox-outline"></ion-icon></Link></div>
                     </div>
             </div>
         </div>

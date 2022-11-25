@@ -12,8 +12,8 @@ function InicioSesion() {
     const [error,setError] = useState(0)
     const [nombre, setNombre] = useState('');
     const [rol,setRol] = useState('')
-    const [id, setId] = useState(''); 
-    
+    const [Id, setId] = useState(''); 
+    const [pase,SetPase] = useState(0)
 
     
     const handleUserChange = (e) => {
@@ -41,7 +41,6 @@ function InicioSesion() {
         .then((data) => {
             setNombre(data.nombre)
             setId(data.id)
-            console.log(data)
             
 
             if (data.id == "-1"){
@@ -50,7 +49,8 @@ function InicioSesion() {
             else{
                 setId(data.id)
                 setRol(data.rol)
-                setValidar(0)
+                SetPase(1)
+                //setValidar(0)
             }
            
             
@@ -85,10 +85,18 @@ function InicioSesion() {
             <a  className="vinculos" href="#"><Link to={"/Cambiocontraseña"} className="nav-link">¿Olvidaste tu contraseña? </Link></a> 
             <br/>
             {error == -1 && <div className="contenedorError"><text className="error">Los datos ingresados no son correctos</text></div>}
-            <br/>
-            <button className="boton" onClick={comprobarUsuario}>
+            {rol == 'Alumno' && pase==1 && <div><Link to = "/misClasesAlumno" state={Id}>   <button className="boton2" onClick={comprobarUsuario}>
                 INGRESAR
-            </button>
+            </button> </Link> </div>}
+            {rol == 'Profesor' && pase==1 && <div><Link to = "/misClasesProfesor" state={{id:Id,nombre:nombre}}>  <button className="boton2" onClick={comprobarUsuario}>
+                INGRESAR
+            </button> </Link> </div>}
+
+
+
+           {pase==0 && <button className="boton" onClick={comprobarUsuario}>
+                INGRESAR
+            </button>}
             <Link to="/" style={{textDecoration:"none"}}>
                 <button className="boton">
                     CANCELAR
@@ -98,19 +106,6 @@ function InicioSesion() {
             </div>
             </div>
         )
-    }
-    else{
-            if (rol == 'Alumno'){
-               return  <MisClasesAlumno id={id}/>
-            
-                
-        }
-        
-            if (rol == 'Profesor'){
-                return  <MisClasesProfesor id={id} nombre={nombre}/>
-            }
-          
-        
     }
     
 }

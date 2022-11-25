@@ -18,9 +18,14 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Finalizada from "./EstadosClase/Finalizada";
+import { useLocation } from 'react-router-dom';
 
 
-function ClaseContratada({Nombre, Descripcion, Materia, Profesor, Horario, Tipo, Frecuencia, Calificacion, Estado}) {
+function ClaseContratada({ Nombre, Descripcion, Materia, Profesor, duracion, Tipo, Frecuencia, Calificacion, Estado, Id}) {
+
+
+    const location = useLocation()
+    const { from } = location.state
 
     
     
@@ -28,21 +33,75 @@ function ClaseContratada({Nombre, Descripcion, Materia, Profesor, Horario, Tipo,
     
     
     const [value, setValue] = React.useState(0);
-
+    const [comentario, setComentario] = React.useState("")
     const [openComentar, setOpenComentar] = React.useState(false);
+    const [nombreUsuario, setNombreUsuario] = React.useState("")
+
+    const [recarga, setRecarga] = React.useState(-200);
+
+    React.useEffect(()=>{
+        fetch(`http://localhost:3001/users/${IdAlumno}`)
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+            setNombreUsuario(data.nombre)
+        })
+        
+        setRecarga(1)
+     },[recarga]);
+
     const handleClickOpenComentar = () => {
         setOpenComentar(true);
     };
     const handleCloseComentar = () => {
         setOpenComentar(false);
     };
+    const handleCloseComentarEnviar = () => {
+        console.log(nombreUsuario)
+        const data2 ={
+            "usuario": nombreUsuario,
+            "comentario": comentario
+        }
 
-
+        fetch(`http://localhost:3001/clases/comentar/${IdClase}`, {
+            method: 'PATCH', 
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data2),
+            })
+        .then((response) => response.json())
+        .then((response) => console.log(response))
+        setRecarga(10)
+        setOpenComentar(false);
+    }
+    function handleChangeComentario(e){
+        setComentario(e.target.value);
+    }
     const [openValorar, setOpenValorar] = React.useState(false);
     const handleClickOpenValorar = () => {
         setOpenValorar(true);
     };
     const handleCloseValorar = () => {
+        setOpenValorar(false);
+    };
+    const handleCloseValorarConfirmar = () => {
+        console.log(nombreUsuario)
+        const data2 ={
+            "usuario": nombreUsuario,
+            "comentario": comentario
+        }
+
+        fetch(`http://localhost:3001/clases/actualizar_valoracion/${IdClase}/${value}`, {
+            method: 'PATCH', 
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data2),
+            })
+        .then((response) => response.json())
+        .then((response) => console.log(response))
+        setRecarga(90)
         setOpenValorar(false);
     };
 
@@ -75,6 +134,10 @@ function ClaseContratada({Nombre, Descripcion, Materia, Profesor, Horario, Tipo,
         }
       }
     }, [openDescripcion]);
+
+
+    
+    
 
 
 
@@ -111,7 +174,7 @@ function ClaseContratada({Nombre, Descripcion, Materia, Profesor, Horario, Tipo,
                         <Button onClick={handleCloseDescripcion}>Entendido</Button>
                     </DialogActions>
                 </Dialog>
-                <div className="horario-clase-cont"><ion-icon name="time-outline"></ion-icon><h6>{Horario}</h6></div>
+                <div className="horario-clase-cont"><ion-icon name="time-outline"></ion-icon><h6>{duracion + " hs"}</h6></div>
                 <div className="tipo-clase"><ion-icon name="people-outline"></ion-icon><h6>{Tipo}</h6></div>
                 <div className="frecuencia-clase"><ion-icon name="barbell-outline"></ion-icon><h6>{Frecuencia}</h6></div>
                 <div className="calificacion-clase"><Rating name="read-only" value={Calificacion} size="small" readOnly style={{color:"black"}} /></div>
@@ -133,10 +196,11 @@ function ClaseContratada({Nombre, Descripcion, Materia, Profesor, Horario, Tipo,
                                 type="comentario"
                                 fullWidth
                                 variant="standard"
+                                onChange={handleChangeComentario}
                             />
                         </DialogContent>
                         <DialogActions>
-                            <Button onClick={handleCloseComentar}>Enviar</Button>
+                            <Button onClick={handleCloseComentarEnviar}>Enviar</Button>
                             <Button onClick={handleCloseComentar}>Cancelar</Button>
                         </DialogActions>
                     </Dialog>
@@ -151,19 +215,21 @@ function ClaseContratada({Nombre, Descripcion, Materia, Profesor, Horario, Tipo,
                             <Rating
                                 name="simple-controlled"
                                 value={value}
-                                onChange={(event, newValue) => {
+                                onChange={(value, newValue) => {
                                 setValue(newValue);
+
+
                                 }}
                             />
                             </div>
                         </DialogContent>
                         <DialogActions>
-                            <Button onClick={handleCloseValorar}>Valorar</Button>
+                            <Button onClick={handleCloseValorarConfirmar}>Valorar</Button>
                             <Button onClick={handleCloseValorar}>Cancelar</Button>
                         </DialogActions>
                     </Dialog>
                 </div>
-                <div className="comentarios-clase-cont"><Link to="/comentariosAlumno" style={{color:"black"}}><ion-icon name="chatbox-outline"></ion-icon></Link></div>
+                <div className="comentarios-clase-cont"><Link to="/comentariosAlumno" state={location.state} style={{color:"black"}}><ion-icon name="chatbox-outline"></ion-icon></Link></div>
             </div>
         </div>
     )
