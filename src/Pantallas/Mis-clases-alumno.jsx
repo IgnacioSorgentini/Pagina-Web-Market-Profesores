@@ -14,7 +14,6 @@ function MisClasesAlumno () {
     
     const [recarga, setRecarga] = React.useState(-20);
     const[listaClases, setListaClases] = useState([]);
-    console.log(typeof(location.state))
     React.useEffect(()=>{
         
         fetch(`http://localhost:3001/clases/solicitudes/user/${location.state}`)
