@@ -83,7 +83,6 @@ function Registro() {
         }
         else{
 
-      
         const data = { 
                     nombre: nombre + " " + apellido,
                     mail: mail,
@@ -140,7 +139,7 @@ function Registro() {
                 <br/>
                 <text className="texto"> Ingrese su apellido: </text>
                 <br/>
-                <input className="input" type ="text" placeholder="Apellido" onChange={handleNombreChange}/>
+                <input className="input" type ="text" placeholder="Apellido" onChange={handleApellidoChange}/>
                 <br/>
                 <text className="texto"> Ingrese su mail: </text>
                 <br/>
