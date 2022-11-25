@@ -23,7 +23,7 @@ function Aceptada(){
     
     return(
         <div style={{cursor:"pointer"}}>
-            <Tooltip title="Cambiar estado"><Link style={{textDecoration:"none"}} onClick={handleClickOpen}><Chip color="success" icon={<DoneIcon />} label="Aceptada" size="small" /></Link></Tooltip>
+            <Tooltip title="Cambiar estado"><Button onClick={handleClickOpen}><Chip color="success" icon={<DoneIcon />} label="Aceptada" size="small" /></Button></Tooltip>
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Cambiar Estado</DialogTitle>
                 <DialogContent>

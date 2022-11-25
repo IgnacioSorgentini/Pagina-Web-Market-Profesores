@@ -1,10 +1,11 @@
 import React from "react";
 import Chip from '@mui/material/Chip';
 import DoneAllIcon from '@mui/icons-material/DoneAll';
+import { Button } from "@mui/material";
 
 function Finalizada() {
     return(  
-        <Chip color="primary" icon={<DoneAllIcon />} label="Finalizada" size="small" />
+        <Button><Chip color="primary" icon={<DoneAllIcon />} label="Finalizada" size="small" /></Button>
     )
 }
 

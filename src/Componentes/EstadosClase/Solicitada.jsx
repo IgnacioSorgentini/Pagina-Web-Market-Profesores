@@ -24,7 +24,7 @@ function Solicitada() {
     
     return(  
         <div>
-            <Tooltip title="Cambiar estado"><Link style={{textDecoration:"none"}} onClick={handleClickOpen}><Chip color="warning" icon={<AccessTimeIcon />} label="Solicitada" size="small" /></Link></Tooltip>
+            <Tooltip title="Cambiar estado"><Button onClick={handleClickOpen}><Chip color="warning" icon={<AccessTimeIcon />} label="Solicitada" size="small" /></Button></Tooltip>
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Cambiar Estado</DialogTitle>
                 <DialogContent>
