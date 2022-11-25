@@ -109,6 +109,19 @@ const options = [
 
 // Esta es la única función que se exporta
 function Contratacion ({Clase, Alumno, Telefono, Mail, HorarioRef, Mensaje, IdSolicitud, Estado, setRecarga}) {
+  const [nombreUsuario, setNombreUsuario] = React.useState("")
+
+    const [recarga2, setRecarga2] = React.useState(-200);
+
+    React.useEffect(()=>{
+        fetch(`http://localhost:3001/users/${Alumno}`)
+        .then((response) => response.json())
+        .then((data) => {
+            setNombreUsuario(data.nombre)
+        })
+        
+        setRecarga2(1)
+     },[recarga2]);
 
   let estado = "Pendiente"
   if (Estado=="Solicitada"){
@@ -165,7 +178,7 @@ function Contratacion ({Clase, Alumno, Telefono, Mail, HorarioRef, Mensaje, IdSo
                 </div>
                 <div className="detalles-contratacion">
                     <div className="alumno-contratador">
-                        <h6>Nombre del interesado: {Alumno}</h6>
+                        <h6>Nombre del interesado: {nombreUsuario}</h6>
                     </div>
                     <div className="telefono-contratador">
                         <h6>Numero de telefono: {Telefono}</h6>
