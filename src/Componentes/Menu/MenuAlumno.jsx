@@ -7,10 +7,13 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import Badge from '@mui/material/Badge';
-
+import { useLocation } from 'react-router-dom';
 
 function MenuAlumno(){
     
+    const location = useLocation()
+    const { from } = location.state
+
     const [anchorEl, setAnchorEl] = React.useState(null);
     const handleClickNotificaciones = (event) => {
       setAnchorEl(event.currentTarget);
@@ -27,18 +30,18 @@ function MenuAlumno(){
     const handleBadgeVisibility = () => {
         setInvisible(!invisible);
     };
-
+   
 
     return(
         <div className="menu">
             <div className="titulo-menu">
-                <Link to="/misClasesAlumno" style={{textDecoration:"none"}}><h1 style={{color:"#E6E6E6"}}>Cursos Online</h1></Link>
+                <Link to="/misClasesAlumno" style={{textDecoration:"none"}} state ={location.state} ><h1 style={{color:"#E6E6E6"}}>Cursos Online</h1></Link>
             </div>
             <div className="botones-menu">
-                <Link to="/contratarClase" style={{textDecoration:"none"}}>
+                <Link to="/contratarClase" style={{textDecoration:"none"}} state = {location.state}  >
                     <Button variant="outlined" style={{color:"#E6E6E6", borderColor:"#E6E6E6", marginLeft:"30px"}}>Contratar clase</Button>
                 </Link>
-                <Link to="/misClasesAlumno" style={{textDecoration:"none"}}>
+                <Link to="/misClasesAlumno" style={{textDecoration:"none"}} state ={location.state}>
                     <Button variant="outlined" style={{color:"#E6E6E6", borderColor:"#E6E6E6", marginLeft:"30px"}}>Mis clases</Button>
                 </Link>
                 <Link to="/" style={{textDecoration:"none"}}>

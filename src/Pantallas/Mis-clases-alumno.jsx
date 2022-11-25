@@ -3,23 +3,21 @@ import { useState } from "react";
 import '../Hojas-de-estilo/Mis-clases.css';
 import ClaseContratada from "../Componentes/ClaseContratada";
 import MenuAlumno from '../Componentes/Menu/MenuAlumno';
+import { useLocation } from 'react-router-dom';
 
-function MisClasesAlumno ({id}) {
+function MisClasesAlumno () {
 
+    
+    const location = useLocation()
+    const { from } = location.state
 
-    const user = "637825f755610aa44323d5f2"
+    
     const [recarga, setRecarga] = React.useState(-20);
     const[listaClases, setListaClases] = useState([]);
 
     React.useEffect(()=>{
-        let userid
-        if (id==undefined){
-            userid = user
-        }
-        else{
-            userid = id
-        }
-        fetch(`http://localhost:3001/clases/solicitudes/user/${userid}`)
+        
+        fetch(`http://localhost:3001/clases/solicitudes/user/${location.state}`)
         .then((response) => response.json())
          .then((response) => {
              var lista2 = []
@@ -59,14 +57,14 @@ function MisClasesAlumno ({id}) {
 
      return(
         <div className="misClasesAlumno">
-            <MenuAlumno />
+            <MenuAlumno  state = {location.state} />
             <div className="contenedor-mis-clases">
             <div className="titulo-pantalla">
                 <h3 style={{color:"#334756"}}>Mis clases</h3>
             </div>
             <div className="lista-clases">
             {listaClases.map((clase) =>{
-                return <ClaseContratada Nombre={clase.nombre} Descripcion={clase.descripcion} Materia={clase.materia} Profesor={clase.profesor}  Horario={clase.duracion} Tipo={clase.tipo} Frecuencia={clase.frecuencia} Calificacion= {clase.valoracion} Costo={clase.costo} Estado={clase.estado} Id ={clase._id} IdClase = {clase.idClase} IdAlumno={clase.idAlumno}/>
+                return <ClaseContratada  Nombre={clase.nombre} Descripcion={clase.descripcion} Materia={clase.materia} Profesor={clase.profesor}  duracion={clase.duracion} Tipo={clase.tipo} Frecuencia={clase.frecuencia} Calificacion= {clase.valoracion} Costo={clase.costo} Estado={clase.estado} Id ={clase._id}/>
                     })
             }
                

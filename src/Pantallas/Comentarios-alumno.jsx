@@ -37,7 +37,7 @@ function ComentariosAlumno () {
    },[recarga]);
     return(
         <div className="ComentariosAlumno">
-            <MenuAlumno />
+            <MenuAlumno state={location.state}/>
             <div className="contenedor-comentarios">
             <div className="titulo-pantalla">
                 <h3 style={{color:"#334756"}}>Comentarios</h3>

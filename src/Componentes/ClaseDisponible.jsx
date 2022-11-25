@@ -11,6 +11,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { useLocation } from 'react-router-dom';
 
 function ClaseDisponible({Nombre, Descripcion, Materia, Profesor, Dia, Horario, Tipo, Frecuencia, Calificacion, Costo, idClase}) {
 
@@ -22,6 +23,10 @@ function ClaseDisponible({Nombre, Descripcion, Materia, Profesor, Dia, Horario, 
     const [mensaje,setMensaje] = React.useState('');
     const [horario,setHorario] = React.useState('');
     const [mail, setMail] = React.useState('');
+
+    const location = useLocation()
+    const { from } = location.state
+
 
     function handleChangeTelefono(e){
         setTelefono(e.target.value);
@@ -45,7 +50,7 @@ function ClaseDisponible({Nombre, Descripcion, Materia, Profesor, Dia, Horario, 
     const handleCloseContratarConfirmar = () => {
 
         const data2 ={
-            idAlumno: id,
+            idAlumno: location.state,
             idClase: idClase,
             horario: horario ,
             telefono: telefono,
@@ -58,7 +63,8 @@ function ClaseDisponible({Nombre, Descripcion, Materia, Profesor, Dia, Horario, 
             tipo: Tipo,
             frecuencia: Frecuencia,
             valoracion: Calificacion,
-            mail: mail
+            mail: mail,
+            duracion: Horario
         }
 
         fetch(`http://localhost:3001/clases/solicitar`, {
@@ -155,7 +161,7 @@ function ClaseDisponible({Nombre, Descripcion, Materia, Profesor, Dia, Horario, 
                     </Dialog>
                     </div>
                     <div className="caja-icono-comentarios">
-                    <div className="comentarios-clase-disp"><Link to="/comentariosAlumno" state={{id:idClase}} style={{color:"black"}}><ion-icon name="chatbox-outline"></ion-icon></Link></div>
+                    <div className="comentarios-clase-disp"><Link to="/comentariosAlumno" state={location.state} style={{color:"black"}}><ion-icon name="chatbox-outline"></ion-icon></Link></div>
                     </div>
             </div>
         </div>
