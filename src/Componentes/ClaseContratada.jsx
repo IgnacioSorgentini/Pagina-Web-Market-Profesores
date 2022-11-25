@@ -16,9 +16,14 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { useLocation } from 'react-router-dom';
 
 
-function ClaseContratada({Nombre, Descripcion, Materia, Profesor, Horario, Tipo, Frecuencia, Calificacion, Estado, Id}) {
+function ClaseContratada({ Nombre, Descripcion, Materia, Profesor, duracion, Tipo, Frecuencia, Calificacion, Estado, Id}) {
+
+
+    const location = useLocation()
+    const { from } = location.state
 
     const [value, setValue] = React.useState(0);
 
@@ -72,7 +77,7 @@ function ClaseContratada({Nombre, Descripcion, Materia, Profesor, Horario, Tipo,
 
     
     
-    console.log(Id)
+
 
 
     return(
@@ -108,7 +113,7 @@ function ClaseContratada({Nombre, Descripcion, Materia, Profesor, Horario, Tipo,
                         <Button onClick={handleCloseDescripcion}>Entendido</Button>
                     </DialogActions>
                 </Dialog>
-                <div className="horario-clase-cont"><ion-icon name="time-outline"></ion-icon><h6>{Horario + " hs"}</h6></div>
+                <div className="horario-clase-cont"><ion-icon name="time-outline"></ion-icon><h6>{duracion + " hs"}</h6></div>
                 <div className="tipo-clase"><ion-icon name="people-outline"></ion-icon><h6>{Tipo}</h6></div>
                 <div className="frecuencia-clase"><ion-icon name="barbell-outline"></ion-icon><h6>{Frecuencia}</h6></div>
                 <div className="calificacion-clase"><Rating name="read-only" value={Calificacion} size="small" readOnly style={{color:"black"}} /></div>
@@ -162,7 +167,7 @@ function ClaseContratada({Nombre, Descripcion, Materia, Profesor, Horario, Tipo,
                         </DialogActions>
                     </Dialog>
                 </div>
-                <div className="comentarios-clase-cont"><Link to="/comentariosAlumno" style={{color:"black"}} state={{id:Id}}><ion-icon name="chatbox-outline"></ion-icon></Link></div>
+                <div className="comentarios-clase-cont"><Link to="/comentariosAlumno" state={location.state} style={{color:"black"}}><ion-icon name="chatbox-outline"></ion-icon></Link></div>
             </div>
         </div>
     )

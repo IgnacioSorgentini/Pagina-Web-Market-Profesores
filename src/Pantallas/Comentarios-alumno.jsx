@@ -8,10 +8,10 @@ function ComentariosAlumno () {
     const location = useLocation()
     const { from } = location.state
 
-    console.log(location.state.id)
+    console.log(location.state)
     return(
         <div className="ComentariosAlumno">
-            <MenuAlumno />
+            <MenuAlumno state={location.state}/>
             <div className="contenedor-comentarios">
             <div className="titulo-pantalla">
                 <h3 style={{color:"#334756"}}>Comentarios</h3>

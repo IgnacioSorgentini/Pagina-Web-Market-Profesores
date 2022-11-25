@@ -11,6 +11,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
+import { useLocation } from 'react-router-dom';
 
 function ContratarCLase () {
 
@@ -18,7 +19,10 @@ function ContratarCLase () {
         const [listaClases,setListaClases] = React.useState([]);
         const [recarga, setRecarga] = React.useState(0);
     
-      
+        const location = useLocation()
+        const { from } = location.state
+        console.log(location.state)
+        
         const handleChangeMateria = (event) => {
           setMateria(event.target.value);
           getClasesByMateria(event.target.value)
@@ -75,7 +79,7 @@ function ContratarCLase () {
                    
 
                 ) }
-                console.log(response[i].valoracion)
+            
             }
             setListaClases(lista)
             setRecarga(1)
@@ -258,7 +262,9 @@ function ContratarCLase () {
                         }
                    
 
-                ) }
+             
+               ) }
+               
             }
             setListaClases(lista10)
             
@@ -273,7 +279,7 @@ function ContratarCLase () {
 
     return(
         <div className="ContratarClase">
-            <MenuAlumno />
+            <MenuAlumno  state ={location.state}/>
             <div className="contenedor-mis-clases">
             <div className="cabecera-pantalla">
                 <div className="titulo-pantalla">

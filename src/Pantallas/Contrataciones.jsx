@@ -2,15 +2,20 @@ import React from "react";
 import Contratacion from "../Componentes/Contratacion";
 import '../Hojas-de-estilo/Contrataciones.css'
 import MenuProfesor from "../Componentes/Menu/MenuProfesor";
+import { useLocation } from 'react-router-dom';
 
 function Contrataciones() {
+
+    const location = useLocation()
+    const { from } = location.state
+    
 
     const[listaClases, setListaClases] = React.useState([]);
     const[recarga, setRecarga] = React.useState(0);
     const user = "profesor"
     
     React.useEffect(()=>{
-       fetch(`http://localhost:3001/clases/solicitudes/profesor/${user}`)
+       fetch(`http://localhost:3001/clases/solicitudes/profesor/${location.state.nombre}`)
        .then((response) => response.json())
         .then((response) => {
             var lista3 = []
@@ -30,12 +35,12 @@ function Contrataciones() {
        })
 
        setRecarga(1)
-       console.log(listaClases)
+
     },[recarga]);
 
     return(
         <div className="Contrataciones">
-            <MenuProfesor />
+            <MenuProfesor  state ={location.state}/>
             <div className="contenedor-contrataciones">
             <div className="titulo-pantalla">
                 <h3 style={{color:"#334756"}}>Contrataciones</h3>
