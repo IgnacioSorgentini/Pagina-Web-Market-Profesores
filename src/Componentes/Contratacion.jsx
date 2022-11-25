@@ -27,6 +27,7 @@ const options = [
   ];
   
   function ConfirmationDialogRaw(props) {
+    console.log(props)
     const { onClose, value: valueProp, open, ...other } = props;
     const [value, setValue] = React.useState(valueProp);
     const radioGroupRef = React.useRef(null);
@@ -48,6 +49,13 @@ const options = [
     };
   
     const handleOk = () => {
+      fetch(`http://localhost:3001/clases/solicitudes/updateEstado/${props.IdSolicitud}/${value}`, {
+            method: 'PATCH'
+            })
+        .then((response) => response.json())
+        .then((response) => console.log(response))
+      console.log(value)
+      props.setRecarga(120)
       onClose(value);
     };
   
@@ -100,7 +108,15 @@ const options = [
 
 
 // Esta es la única función que se exporta
-function Contratacion ({Clase, Alumno, Telefono, Mail, HorarioRef, Mensaje}) {
+function Contratacion ({Clase, Alumno, Telefono, Mail, HorarioRef, Mensaje, IdSolicitud, Estado, setRecarga}) {
+
+  let estado = "Pendiente"
+  if (Estado=="Solicitada"){
+    estado = "Pendiente"
+  }
+  else{
+    estado = Estado
+  }
     
     const [openCambiar, setOpenCambiar] = React.useState(false);
     const [value, setValue] = React.useState('Dione');
@@ -108,6 +124,8 @@ function Contratacion ({Clase, Alumno, Telefono, Mail, HorarioRef, Mensaje}) {
         setOpenCambiar(true);
       };
       const handleCloseCambiar = (newValue) => {
+        console.log(newValue)
+        console.log("llegue")
         setOpenCambiar(false);
     
         if (newValue) {
@@ -125,6 +143,17 @@ function Contratacion ({Clase, Alumno, Telefono, Mail, HorarioRef, Mensaje}) {
     const handleCloseEliminar = () => {
         setOpenEliminar(false);
     };
+
+    const handleCloseEliminarConfirmar = () => {
+      fetch(`http://localhost:3001/clases/solicitud/${IdSolicitud}`, {
+            method: 'DELETE'
+            })
+        .then((response) => response.json())
+        .then((response) => console.log(response))
+      setRecarga(150)
+      setOpenEliminar(false);
+  };
+  
     
     
     return(
@@ -132,7 +161,7 @@ function Contratacion ({Clase, Alumno, Telefono, Mail, HorarioRef, Mensaje}) {
             <div className="datos-contratacion">
                 <div className="clase-contratada">
                     <div className="nombre-clase-contratada"><h4 style={{color:"#E6E6E6"}}>{Clase}</h4></div>
-                    <div className="estado-clase-contratada" style={{display:"flex", alignItems:"center"}}> <Chip color="warning" size="small" icon={<AccessTimeIcon />} label="Pendiente" /></div>
+                    <div className="estado-clase-contratada" style={{display:"flex", alignItems:"center"}}> <Chip color="warning" size="small" icon={<AccessTimeIcon />} label={estado} /></div>
                 </div>
                 <div className="detalles-contratacion">
                     <div className="alumno-contratador">
@@ -165,6 +194,8 @@ function Contratacion ({Clase, Alumno, Telefono, Mail, HorarioRef, Mensaje}) {
                                 open={openCambiar}
                                 onClose={handleCloseCambiar}
                                 value={value}
+                                IdSolicitud = {IdSolicitud}
+                                setRecarga = {setRecarga}
                             />
                         </List>
                     </Box>
@@ -182,14 +213,14 @@ function Contratacion ({Clase, Alumno, Telefono, Mail, HorarioRef, Mensaje}) {
                         </DialogTitle>
                         <DialogContent>
                             <DialogContentText id="alert-dialog-description">
-                                ¿Seguro que desea eliminar la contratacion de {Alumno} ?
+                                ¿Seguro que desea eliminar la contratacion?
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions>
                             <Button onClick={handleCloseEliminar}>
                                 Disagree
                             </Button>
-                            <Button onClick={handleCloseEliminar} autoFocus>
+                            <Button onClick={handleCloseEliminarConfirmar} autoFocus>
                                 Agree
                             </Button>
                         </DialogActions>
