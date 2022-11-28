@@ -19,7 +19,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { useLocation } from 'react-router-dom';
 
 
-function ClaseContratada({ Nombre, Descripcion, Materia, Profesor, duracion, Tipo, Frecuencia, Calificacion, Estado, Id, idClase}) {
+function ClaseContratada({ Nombre, Descripcion, Materia, Profesor, duracion, Tipo, Frecuencia, Calificacion, Estado, Id, idClase, setRecarga}) {
 
 
     const location = useLocation()
@@ -30,7 +30,7 @@ function ClaseContratada({ Nombre, Descripcion, Materia, Profesor, duracion, Tip
     const [openComentar, setOpenComentar] = React.useState(false);
     const [nombreUsuario, setNombreUsuario] = React.useState("")
 
-    const [recarga, setRecarga] = React.useState(-200);
+    const [recarga2, setRecarga2] = React.useState(-200);
 
     React.useEffect(()=>{
         fetch(`http://localhost:3001/users/${location.state}`)
@@ -39,8 +39,8 @@ function ClaseContratada({ Nombre, Descripcion, Materia, Profesor, duracion, Tip
             setNombreUsuario(data.nombre)
         })
         
-        setRecarga(1)
-     },[recarga]);
+        setRecarga2(1)
+     },[recarga2]);
 
     const handleClickOpenComentar = () => {
         setOpenComentar(true);
@@ -65,7 +65,7 @@ function ClaseContratada({ Nombre, Descripcion, Materia, Profesor, duracion, Tip
             })
         .then((response) => response.json())
         .then((response) => console.log(response))
-        setRecarga(10)
+        setRecarga2(10)
         setOpenComentar(false);
     }
     function handleChangeComentario(e){
@@ -78,23 +78,18 @@ function ClaseContratada({ Nombre, Descripcion, Materia, Profesor, duracion, Tip
     const handleCloseValorar = () => {
         setOpenValorar(false);
     };
-    const handleCloseValorarConfirmar = () => {
-        console.log(nombreUsuario)
-        const data2 ={
-            "usuario": nombreUsuario,
-            "comentario": comentario
-        }
 
-        fetch(`http://localhost:3001/clases/actualizar_valoracion/${Id}/${value}`, {
+    const handleCloseValorarConfirmar = () => {
+        console.log(Id + "   " + value)
+        fetch(`http://localhost:3001/clases/actualizar_valoracion/${idClase}/${value}`, {
             method: 'PATCH', 
             headers: {
             'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data2),
+            }
             })
         .then((response) => response.json())
         .then((response) => console.log(response))
-        setRecarga(90)
+        setRecarga(900)
         setOpenValorar(false);
     };
 

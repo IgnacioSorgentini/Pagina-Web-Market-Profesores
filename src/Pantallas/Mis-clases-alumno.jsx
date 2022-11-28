@@ -63,7 +63,7 @@ function MisClasesAlumno () {
             </div>
             <div className="lista-clases">
             {listaClases.map((clase) =>{
-                return <ClaseContratada  Nombre={clase.nombre} Descripcion={clase.descripcion} Materia={clase.materia} Profesor={clase.profesor}  duracion={clase.duracion} Tipo={clase.tipo} Frecuencia={clase.frecuencia} Calificacion= {clase.valoracion} Costo={clase.costo} Estado={clase.estado} Id ={clase._id} idClase={clase.idClase}/>
+                return <ClaseContratada  Nombre={clase.nombre} Descripcion={clase.descripcion} Materia={clase.materia} Profesor={clase.profesor}  duracion={clase.duracion} Tipo={clase.tipo} Frecuencia={clase.frecuencia} Calificacion= {clase.valoracion} Costo={clase.costo} Estado={clase.estado} Id ={clase._id} idClase={clase.idClase} setRecarga={setRecarga}/>
                     })
             }
                
