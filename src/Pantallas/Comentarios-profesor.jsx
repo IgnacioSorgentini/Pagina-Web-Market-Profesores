@@ -10,7 +10,7 @@ function ComentariosProfesor () {
     const [recarga, setRecarga] = React.useState(-20);
     const[listaClases, setListaClases] = React.useState([]);
 
-    console.log(location.state.id)
+    console.log(location.state.nombre)
 
     React.useEffect(()=>{
         fetch(`http://localhost:3001/clases/comentarios/${location.state.idclase}`)
@@ -49,7 +49,7 @@ function ComentariosProfesor () {
             </div>
             <div className="lista-comentarios">
             {listaClases.map((clase) =>{
-                return  <ComentarioProfesor Nombre={clase.usuario} Comentario={clase.comentario} Id={clase._id} setRecarga={setRecarga}/>
+                return  <ComentarioProfesor Nombre={clase.usuario} Comentario={clase.comentario} Id={clase._id} setRecarga={setRecarga} NombreProfesor={location.state.nombre} IdClase={location.state.idclase}/>
                 })
             }
 

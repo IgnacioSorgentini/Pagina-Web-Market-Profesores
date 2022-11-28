@@ -10,9 +10,13 @@ import Badge from '@mui/material/Badge';
 import { useLocation } from 'react-router-dom';
 
 function MenuAlumno(){
+
+    
     
     const location = useLocation()
     const { from } = location.state
+    const [recarga3, setRecarga3] = React.useState(0)
+    const [listaNotificaciones, setListaNotificaciones] = React.useState([])
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const handleClickNotificaciones = (event) => {
@@ -20,6 +24,15 @@ function MenuAlumno(){
     };
     const handleCloseNotificaciones = () => {
       setAnchorEl(null);
+      {listaNotificaciones.map((n) => 
+        fetch(`http://localhost:3001/clases/abrirNotificacion/${n._id}/`, {
+            method: 'PATCH'
+            })
+        .then((response) => response.json())
+        .then((response) => console.log(response))
+
+        )}
+        setRecarga3(100)
     };
     const openNotificaciones = Boolean(anchorEl);
     const id = openNotificaciones ? 'simple-popover' : undefined;
@@ -30,7 +43,6 @@ function MenuAlumno(){
     const handleBadgeVisibility = () => {
         setInvisible(!invisible);
     };
-   console.log(location.state)
 
    let iduser = 0
    if (typeof(location.state) == "object"){
@@ -39,6 +51,30 @@ function MenuAlumno(){
    else{
     iduser = location.state
    }
+
+   React.useEffect(()=>{
+    fetch(`http://localhost:3001/clases/notificaciones/${iduser}`) 
+    .then((response) => response.json())
+    .then((response) => {
+        var lista = []
+        for (var i in response){
+         if (response[i].isAbierta==false){
+                lista.push({
+                    "_id": response[i]._id,
+                    "idAlumno": response[i].idAlumno,
+                    "nombreClase": response[i].nombreClase,
+                    "descargo": response[i].descargo,
+                    "nombreProfesor": response[i].nombreProfesor
+                }
+            )
+             }
+        }
+        setListaNotificaciones(lista)
+        setCount(lista.length)
+    })
+    console.log(listaNotificaciones)
+    setRecarga3(1)
+},[recarga3]);
 
     return(
         <div className="menu">
@@ -66,7 +102,12 @@ function MenuAlumno(){
                         horizontal: 'left',
                     }}
                 >
-                    <Typography sx={{ p: 2 }}>Acá van las notificaciones</Typography>
+                    {count!=0 && listaNotificaciones.map((n) =>{
+                    return <Typography sx={{ p: 2 }}> El profesor {n.nombreProfesor} bloqueó su comentario de la clase {n.nombreClase} por el siguiente motivo: {n.descargo} </Typography>
+                })
+            }
+              {count==0 && <Typography sx={{ p: 2 }}> No hay notificaciones pendientes </Typography>
+                }
                 </Popover>
             </div>
         </div>

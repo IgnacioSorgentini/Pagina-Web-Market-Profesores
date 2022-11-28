@@ -174,7 +174,7 @@ function ClaseContratada({ Nombre, Descripcion, Materia, Profesor, duracion, Tip
             </div>
             <div className="caja-comentarios-clase">
                 <div className="caja-boton-comentar">
-                    <button className="btn-comentar" onClick={handleClickOpenComentar}>COMENTAR</button>
+                    {(Estado=="Aceptada" || Estado=="Finalizada") && <button className="btn-comentar" onClick={handleClickOpenComentar}>COMENTAR</button>}
                     <Dialog open={openComentar} onClose={handleCloseComentar}>
                         <DialogTitle>Comentar clase</DialogTitle>
                         <DialogContent>
@@ -197,7 +197,7 @@ function ClaseContratada({ Nombre, Descripcion, Materia, Profesor, duracion, Tip
                             <Button onClick={handleCloseComentar}>Cancelar</Button>
                         </DialogActions>
                     </Dialog>
-                    <button className="btn-valorar" onClick={handleClickOpenValorar}>VALORAR</button>
+                    {(Estado=="Aceptada" || Estado=="Finalizada") && <button className="btn-valorar" onClick={handleClickOpenValorar}>VALORAR</button>}
                     <Dialog open={openValorar} onClose={handleCloseValorar}>
                         <DialogTitle>Valorar clase</DialogTitle>
                         <DialogContent>

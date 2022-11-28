@@ -9,11 +9,31 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
-function ComentarioProfesor ({Nombre, Comentario, Id, setRecarga}) {
+function ComentarioProfesor ({Nombre, Comentario, Id, setRecarga, NombreProfesor, IdClase}) {
 
     const [openBloquear, setOpenBloquear] = React.useState(false);
     const [openAceptar, setOpenAceptar] = React.useState(false);
     const [openDescargo, setOpenDescargo] = React.useState(false);
+    const [descargo, setDescargo] = React.useState("")
+    const [recarga2, setRecarga2] = React.useState(0)
+    const [nombreClase, setNombreClase] = React.useState("")
+    const [idUsuario, setIdUsuario] = React.useState(-1)
+
+    React.useEffect(()=>{
+        fetch(`http://localhost:3001/clases/by_id/${IdClase}`) 
+       .then((response) => response.json())
+       .then((data) => {
+           setNombreClase(data[0].nombre)     
+       })
+
+       fetch(`http://localhost:3001/users/nombre/${Nombre}`)
+       .then((response) => response.json())
+       .then((data) => {
+           setIdUsuario(data._id)  
+       })
+
+       setRecarga2(1)
+   },[recarga2]);
 
     const handleClickOpenBloquear = () => {
         setOpenBloquear(true);
@@ -42,11 +62,28 @@ function ComentarioProfesor ({Nombre, Comentario, Id, setRecarga}) {
     };
 
     const handleCloseDescargoConfirmar = () => {
+        const data = {descargo: descargo}
+        const data2 = {idAlumno: idUsuario, nombreClase: nombreClase,  descargo: descargo,nombreProfesor: NombreProfesor}
         fetch(`http://localhost:3001/clases/rechazarComentario/${Id}/`, {
-            method: 'PATCH'
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                },
+            body: JSON.stringify(data),
             })
         .then((response) => response.json())
         .then((response) => console.log(response))
+
+        fetch(`http://localhost:3001/clases/crearNotificacion/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                },
+            body: JSON.stringify(data2),
+            })
+        .then((response) => response.json())
+        .then((response) => console.log(response))
+
         setRecarga(101)
         setOpenDescargo(false);
     };
@@ -60,6 +97,9 @@ function ComentarioProfesor ({Nombre, Comentario, Id, setRecarga}) {
         setOpenDescargo(false);
     };
 
+    const handleDescargoChange = (event) => {
+        setDescargo(event.target.value)
+    };
 
     
     function stringToColor(string) {
@@ -152,6 +192,7 @@ function ComentarioProfesor ({Nombre, Comentario, Id, setRecarga}) {
                         type="email"
                         fullWidth
                         variant="standard"
+                        onChange={handleDescargoChange}
                     />
                     </DialogContent>
                     <DialogActions>
@@ -190,6 +231,6 @@ function ComentarioProfesor ({Nombre, Comentario, Id, setRecarga}) {
             </div>
         </div>
     )
-}
+    }
 
 export default ComentarioProfesor;
